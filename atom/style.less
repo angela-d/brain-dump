@@ -1,0 +1,29 @@
+/* atom stylesheet */
+
+/* make the scrollbars fatter */
+.scrollbars-visible-always {
+  /deep/ ::-webkit-scrollbar {
+  width:25px !important;
+  height:25px !important;
+    &-track {
+      border:0px;
+      border-radius:0px;
+      background-color:#4e504a !important;
+    }
+    &-thumb {
+      background-color: rgba(32, 31, 31, 0.8) !important;
+      border: 0px;
+      border-radius: 0px;
+    }
+  }
+}
+
+/* purple glow around the matching brackets */
+.bracket-matcher {
+  border-bottom: 1px solid lime;
+  position: absolute;
+  -webkit-box-shadow:0 0 20px #ff01fc;
+  -moz-box-shadow: 0 0 20px #ff01fc;
+  box-shadow:0 0 20px #ff01fc;
+  background-color: rgba(162, 0, 255, 0.23);
+}
