@@ -3,8 +3,13 @@ Archive of configuration files I regularly use across multiple systems
 
 Atom colored bracket matcher CSS:
 
-![atom colored bracket matcher](https://raw.githubusercontent.com/z0m8i3/configs/master/img/atom-tab-highlighting.png)
+![atom colored bracket matcher](img/atom-tab-highlighting.png)
 
 .bashrc git branch display in active terminal:
 
-![bashrc git branch](https://raw.githubusercontent.com/z0m8i3/configs/master/img/bashrc.png)
+![bashrc git branch](img/bashrc.png)
+
+Waterfox launch page:
+
+![waterfox launch page](img/waterfox-launch-page.png)
+Ghostbusters art by Devon Whitehead
