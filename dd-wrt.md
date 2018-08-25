@@ -10,7 +10,10 @@ Hit Apply Settings
 Under `Administration > Management`
 Add the following startup cron:
 ```bash
-wget -qO /tmp/blkhosts http://raw.githubusercontent.com/StevenBlack/hosts/master/hosts && stopservice dnsmasq && startservice dnsmasq
+0 1 * * * root curl -k -o /tmp/ad-hosts https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+0 1 * * * echo >> fonts.gstatic.com /tmp/ad-hosts
+0 1 * * * echo >> 0.0.0.0 graph.facebook.com /tmp/ad-hosts
+0 1 * * * echo >> 0.0.0.0 0.0.0.0 ads.linkedin.com stopservice dnsmasq && startservice dnsmasq
 ```
 
 Hit Apply Settings
