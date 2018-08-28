@@ -19,7 +19,7 @@ cd /etc
 git init
 ```
 
-Add your user info (tracks who made what commit; this is kind of useless if changes are only made locally, but do it anyway)
+Add your user info (tracks who made what commit; this is kind of useless if changes are only made locally, but do it anyway).  You only need to run these two commands once, during initial setup of the repository.
 ```bash
 git config user.email "angela@example.com"
 git config user.name "angela"
@@ -157,7 +157,7 @@ If your config has sensitive data like passwords, you may want to forgo remote h
 
 The easiest way to provision a remote repo is to use the provider's GUI, which will ensure no duplicates or conflicts will arise.  If you use the CLI to create a remote repo, you run the risk of conflicts.
 
-Once your remote repository is initialized, they'll provide you with a https or ssh URL, pick one and attach it to the local repo. (If you opt for SSH, make sure the local machine has your pubkey installed.)
+Once your remote repository is initialized, they'll provide you with a https or ssh URL, pick one and attach it to the local repo. (If you opt for SSH, make sure the local machine has your private key installed.)
 
 ```bash
 git remote add origin [your remote git URL].git
@@ -168,9 +168,44 @@ Send it off (only run this command once, when you make your first push.  For sub
 git push --set-upstream origin master
 ```
 
+### Branches (Modifiable versions that can stray from the master branch)
+master = parent of the repository
+
+branches = copies of the parent repo that can be changed and later merged into master, or kept entirely separate
+
+Create a branch locally
+```bash
+git checkout -b branchname
+```
+
+Create it remotely (if using a remote repo) - note the --set-upstream flag only needs to be ran once, for a new repository.  For subsequent pushes, `git push` will suffice.
+```bash
+git push --set-upstream origin branchname
+```
+
+See what branch you're working in (worth checking anytime you want to make branch-specific changes, to ensure you're in the correct one)
+```bash
+git branch
+```
+
+Done editing and want to commit your work?
+```bash
+git add .
+```
+
+Leave a concise comment
+```bash
+git commit -m "Comment about changes"
+```
+
+Send to the remote repository
+```bash
+git push origin branchname
+```
+
 ### Revision Snapshots
 
-Useful for making points in time, like version numbers.
+Useful for making points in time, like version numbers.  Unlike branches, tags *cannot* be modified, they're literal snapshots.
 ```bash
 git tag v1.0
 ```
@@ -194,7 +229,9 @@ If you ran `git add .` and files you did not want getting sent to the repo came 
 ```bash
 git reset --hard HEAD^
 ```
-Undoes all local changes (you will lose any edits in this directory)
+'HEAD' (capitalized) is the most current part of the branch - the recent commit object and parent of the next commit.
+
+`git reset --hard HEAD^` undoes all local changes (you will lose any edits in this directory)
 ***
 
 **Deleting committed pushes from the repository**
