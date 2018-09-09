@@ -29,6 +29,21 @@ Art by [sabin-boykinov](https://www.deviantart.com/art/Halloween-harvest-3352743
 
 Visited page box shadows, new tab page wallpaper &amp; matching search input with semi-transparent background.
 
+***
+### Firefox ESR 60 Fixes to Restore old New Tab / about:home / about:tab Page
+![firefox 60 fixes with ](img/firefox-60-fixes-tabs.png)
+- Restores the classic new tab layout page in pure CSS, *without an extension* needed!
+- Restore the original visited pages thumbnail size, from the new tiny squares to the old rectangle boxes
+- Rid the Firefox branding in the corner
+- Auto-adjusting layout independent of static screen resolution
+- Status bar reclaimed after the Status 4 Evar extension became deprecated, thanks to [MatMoul](https://github.com/MatMoul/firefox-gui-chrome-css)
+- Restore the rounded tabs, thanks to [wilfredwee](https://github.com/wilfredwee/photon-australis)
+- Restore logo, except more theme-fitting this time; instead of the Firefox logo. Cauldron clipart from [Rocket Theme](http://www.rockettheme.com/)
+- Halloween background art by Art by [Frostwindz](https://frostwindz.deviantart.com/art/Halloween-2014-489048562)
+
+![firefox 60 fixes without visited pages](img/firefox-60-fixes.png)
+Looks just as cool without the visited page boxes :)
+
 ### GTK Dark Theme
 Qogir-dark customizations:
 ![gtk dark theme](img/qogir-nautilus.png)
