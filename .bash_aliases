@@ -1,5 +1,4 @@
 # excluding private, work-related aliases :)
-alias github='cd ~/Github/z0m8i3'
+alias github='cd ~/Github/angela-d'
 
 alias gitlab='cd ~/Gitlab'
-
