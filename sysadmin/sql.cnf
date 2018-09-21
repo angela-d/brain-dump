@@ -1,0 +1,5 @@
+# used in conjunction with backup cron: https://github.com/z0m8i3/crons
+[client]
+user = xx
+password = xx
+host = localhost
