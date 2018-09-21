@@ -11,10 +11,16 @@ dmesg | grep tty
 ```
 > .... console [tty0USB] enabled
 
-Start Minicom config in a terminal window
+Start Minicom config in a terminal window and maneuver it by using the arrow and enter keys.
 ```bash
 minicom -s
 ```
+
+Launch the Minicom terminal emulator:
+```bash
+minicom
+```
+
 Select *Serial Port Setup*:
 ```txt
 +-----[configuration]------+
@@ -51,4 +57,9 @@ show ?
 Show interfaces on the VLAN:
 ```bash
 show vlan
+```
+
+Get the status of a port on the Gigabit ethernet switch (interface type - rack/port)
+```bash
+show interface Gi6/27
 ```
