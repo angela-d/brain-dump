@@ -1,4 +1,4 @@
-# used in conjunction with backup cron: https://github.com/z0m8i3/crons
+# used in conjunction with backup cron: https://github.com/angela-d/crons
 [client]
 user = xx
 password = xx
