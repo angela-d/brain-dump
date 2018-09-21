@@ -16,11 +16,6 @@ Start Minicom config in a terminal window and maneuver it by using the arrow and
 minicom -s
 ```
 
-Launch the Minicom terminal emulator:
-```bash
-minicom
-```
-
 Select *Serial Port Setup*:
 ```txt
 +-----[configuration]------+
@@ -46,7 +41,13 @@ Change the following options:
 |    Change which setting?                                              |
 +-----------------------------------------------------------------------+
 ```
-Exit and save.  Launch the DMZ by hitting the Enter key.
+Exit and save.  
+
+Launch the Minicom terminal emulator:
+```bash
+minicom
+```
+Launch the DMZ by hitting the Enter key.
 
 ### Info commands
 Show a list of commands:
