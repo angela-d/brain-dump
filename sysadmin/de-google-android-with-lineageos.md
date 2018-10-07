@@ -12,7 +12,7 @@ Lineage for microG didn't exist when I first installed Lineage, but if I were to
 - Install [ADB](https://www.xda-developers.com/install-adb-windows-macos-linux/) to your PC to manage the phone with a command-line interface. (ADB is a tool made and maintained by Google)
 - Custom recovery will have to be set up.  Make sure your phone is compatible with [TWRP](https://twrp.me/Devices/) and then install it (click on the device name for instructions).
 - [Download Lineage OS](https://download.lineageos.org/) .zip for your device.
-- Install Git and Python.  It will be used to download a [patching application](https://github.com/ale5000-git/tingle) to allow spoofing of Google Services Framework
+- Install Git and Python.  It will be used to download a [patching application](https://github.com/ale5000-git/tingle) to allow spoofing of Google Play Services Framework
 
 Assuming your bootloader is now unlocked, begin:
 - Load the Lineage OS zip onto an SD card inside the phone. (Attach it to a USB to the PC > if it defaults to charge mode, switch to **Transfer File** mode and navigate to the SD card; usually by selecting the phone as a mounted drive from the PC's file manager > sdcard1 > drop the .zip somewhere.)
@@ -135,12 +135,14 @@ You can now browse ad & tracker free.  I haven't gotten around to testing autoho
 # Enable Push Notifications
 On a de-googled Android operating system like Lineage, you lose push notifications, because the push notifications route through the Google mothership.
 
-You can get them back, *without* contaminating your phone with a Google app, by means of spoofing Google Services Framework signature.  [More info at the microG project](https://microg.org/)
+You can get them back, *without* contaminating your phone with a Google app, by means of spoofing Google Play Services Framework signature.  [More info at the microG project](https://microg.org/)
 
 - [Install microG *Services Core*, *Services Framework Proxy* and *Store (FakeStore release)*](https://microg.org/download.html)
 - [UnifiedNlp](https://f-droid.org/en/packages/com.google.android.location) to regain GPS functionality
 
-After every Lineage OS update, you'll lose spoofing capabilities.  You can get it back, by utilizing [Tingle](https://github.com/ale5000-git/tingle).
+Native Lineage doesn't support signature spoofing.  (Some ROMs do, but they're unofficial Lineage, like [LineageOS for microG](https://lineage.microg.org/)).  In order to spoof Google Play Services, a [spoof patching application](https://github.com/ale5000-git/tingle) must be used.
+
+*After every Lineage OS update, you'll lose spoofing capabilities.*  You can get it back, by re-running [Tingle](https://github.com/ale5000-git/tingle).
 
 You'll only need to clone the repository, once.  Put this somewhere on your PC where you'll know how to find it, when it's time to re-patch.
 ```bash
