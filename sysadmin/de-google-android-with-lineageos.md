@@ -172,7 +172,7 @@ adb logcat -C | grep wlan0
 ```
 (Substitute wlan0 for whatever you want to search for in the logs) - grep may or may not work on Windows.  I've only used adb commands on a Linux machine.
 
-*CNTRL + C key combo to quit the log.*
+*CNTRL + C keyboard combo to quit the log.*
 
 ### Download a File from the Phone to Your Computer
 This is only useful in situations where you don't want to use the file manager of your computer and/or the directory isn't already mounted as read+write.
@@ -204,6 +204,6 @@ Delete old images of Lineage.  The built-in installer doesn't (currently) clean 
 - Allow root access when launched
 - Navigate to `/data/lineageos_updates` and long press delete old .img files.
 
-You could also skip installing Amaze and delete old .img via adb and cli, but as any experienced sysadmin will tell you, running `rm -rf` with inexperienced hands is asking for trouble.  I do not recommend anyone do it.
+You could also skip installing Amaze and delete old .img via adb and cli, but as any experienced sysadmin will tell you, running `rm` with inexperienced hands is asking for trouble.  I do not recommend anyone do it.
 
 You can also install Lineage to [Raspberry Pi](https://www.maketecheasier.com/install-lineage-os-on-raspberry-pi/)
