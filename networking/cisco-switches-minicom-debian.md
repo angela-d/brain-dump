@@ -11,6 +11,11 @@ dmesg | grep tty
 ```
 > .... console [tty0USB] enabled
 
+Minicom needs root privileges
+```bash
+su
+```
+
 Start Minicom config in a terminal window and maneuver it by using the arrow and enter keys.
 ```bash
 minicom -s
@@ -41,13 +46,16 @@ Change the following options:
 |    Change which setting?                                              |
 +-----------------------------------------------------------------------+
 ```
-Exit and save.  
+Exit and save as "cisco".  
 
 Launch the Minicom terminal emulator:
 ```bash
-minicom
+minicom cisco
 ```
-Launch the DMZ by hitting the Enter key.
+
+*If Minicom acts up, redo the settings and **Save setup as dfl***
+
+Launch the switch config by hitting the Enter key (1-2 times)
 
 ### Info commands
 Show a list of commands:
@@ -76,7 +84,7 @@ Enable the terminal for config (config mode is potentially destructive with fat 
 enable
 ```
 
-Specify mode type (`config` yields a list of choices), to select terminal):
+Specify mode type (`config` yields a list of choices), to select terminal:
 ```bash
 configure terminal
 ```
@@ -97,10 +105,21 @@ switchport access vlan 10
 Test the port.  If it returns the proper IP (assuming it's not a trunk port), exit out of config mode to save these changes.
 
 ```bash
-exit
-exit
+exit # exit config-if
+exit # exit config
 ```
 
 Write the changes to memory
-```wr mem
+```bash
+wr mem
+```
+
+
+### Debugging Minicom
+Config saves to `/etc/minicom/minirc` (if originally processed as root), otherwise to `~/.minirc.dfl` or `~/.minicom.cisco`
+
+**Minicom config variables**
+```bash
+pu = public
+pr = private
 ```
