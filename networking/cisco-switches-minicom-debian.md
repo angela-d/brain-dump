@@ -1,4 +1,4 @@
-# Configure Debian with Minicom for Cisco Switches
+# Configure Debian with Minicom for Cisco IOS Switches
 
 Install Minicom
 
@@ -60,7 +60,47 @@ Show interfaces on the VLAN:
 show vlan
 ```
 
+List the interfaces
+```bash
+show interface
+```
+
 Get the status of a port on the Gigabit ethernet switch (interface type - rack/port)
 ```bash
 show interface Gi6/27
+```
+
+### Re-configuring a switch port
+Enable the terminal for config (config mode is potentially destructive with fat fingered changes)
+```bash
+enable
+```
+
+Specify mode type (`config` yields a list of choices), to select terminal):
+```bash
+configure terminal
+```
+
+*The terminal will now enter **config** mode*
+
+Specify the port for changes (switch 6, port 8)
+```bash
+interface GigabitEthernet6/8
+```
+*The terminal will switch from **config** to **config-if** mode*
+
+Assign a new vlan to it
+```bash
+switchport access vlan 10
+```
+
+Test the port.  If it returns the proper IP (assuming it's not a trunk port), exit out of config mode to save these changes.
+
+```bash
+exit
+exit
+```
+
+Write the changes to memory
+```wr mem
 ```
