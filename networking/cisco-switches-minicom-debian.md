@@ -113,6 +113,21 @@ Assign a new vlan to it
 switchport access vlan 10
 ```
 
+** or **
+** ..start trunk port reconfigure **
+***
+(everything inside the lined box is not part of basic switchport config)
+Assign a trunk port)
+```bash
+switchport mode trunk
+```
+
+Specify the native VLAN (switchport trunk native vlan)
+```bash
+swi tr nat vl 6
+```
+** ..end trunk port reconfigure **
+***
 Test the port.  If it returns the proper IP (assuming it's not a trunk port), exit out of config mode to save these changes.
 
 ```bash
