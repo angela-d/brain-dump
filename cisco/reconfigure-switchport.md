@@ -17,11 +17,16 @@ interface GigabitEthernet6/8
 ```
 *The terminal will switch from **config** to **config-if** mode*
 
-Assign a new vlan to it
+Assign a native VLAN to it
 ```bash
-switchport access vlan 10
+switchport trunk native vlan 6
+```
+Set the allowed VLANs (*omitting the `vlan add` will override existing VLANs for the referenced VLAN ID*)
+```bash
+switchport trunk allowed vlan add 2
 ```
 
+When done, return to the interface view (exiting config mode)
 ```bash
 exit # exit config-if
 exit # exit config
