@@ -1,6 +1,7 @@
 # Windows Brain Dumps
 For times when touring purgatory is necessary
 
+```bash
                         _.-;:q=._
                       .' j=""^k;:\.
                      ; .F       ";`Y
@@ -28,3 +29,4 @@ For times when touring purgatory is necessary
               `""--..__   `"==="'    -        .'
                        ``""---...__        .-'
                                    ``""---'
+```
