@@ -1,4 +1,6 @@
 # Re-configuring a switch port
+Modifying trunk setups of a previously active trunk port
+
 Enable the terminal for config (config mode is potentially destructive with fat fingered changes)
 ```bash
 enable
@@ -17,36 +19,47 @@ interface GigabitEthernet6/8
 ```
 *The terminal will switch from **config** to **config-if** mode*
 
-Assign a native VLAN to it
+Turn off any residual native VLAN linkage (1 & 2 being previously configured VLANs)
 ```bash
-switchport trunk native vlan 6
+no swi tr nat vl 1
+no swi tr nat vl 2
 ```
-Set the allowed VLANs (*omitting the `vlan add` will override existing VLANs for the referenced VLAN ID*)
+Remove the previously enabled voice VLAN
 ```bash
-switchport trunk allowed vlan add 2
+no swi vo vl 3
+```
+
+Turn off access mode
+```bash
+no swi mod ac
+```
+
+Make it a trunk
+```bash
+swi mod tru
+```
+
+Set dot1q encapsulation
+```bash
+swi tr enc do
+```
+
+Set the new native VLAN
+```bash
+swi tr nat vl 6
+```
+
+## Adding a description label to a switch port
+Write something descriptive
+```bash
+TC12-17 Someones Phone
 ```
 
 When done, return to the interface view (exiting config mode)
 ```bash
-exit # exit config-if
+exit # exit config interface
 exit # exit config
-end  # two for one exit
-```
-## Adding a description label to a switch port
-Start config mode
-```bash
-enable
-```
-Select the terminal
-```bash
-configure terminal
-```
-
-Specify the interface, rack and port number you want to edit (get the interface type and rack number by running `sh int status`)
-- GigabitEthernet = shorthand `Gi`
-- FastEthernet = shorthand `Fa`
-```bash
-int Git6/25
+end  # (end in place of the dual exits)
 ```
 
 Write the changes to memory (outside of config mode)
