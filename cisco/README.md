@@ -8,6 +8,11 @@ Commands frequently used in Cisco IOS, so I don't forget them.
 - [Remove a Trunk Port](remove-trunk-port.md) - Reset a trunk port to a basic switchport
 
 ## Global Info
+Bring up a disabled interface
+```bash
+no shut
+```
+
 Return all IPs registered to the switch
 ```bash
 show ip interface brief
