@@ -49,6 +49,8 @@ Set the new native VLAN
 swi tr nat vl 6
 ```
 
+***
+
 ## Adding a description label to a switch port
 Write something descriptive
 ```bash
@@ -61,6 +63,29 @@ exit # exit config interface
 exit # exit config
 end  # (end in place of the dual exits)
 ```
+
+***
+
+### Adjust an Invidual Switchport's Speed
+- Half-Duplex = Send or Receive (Airport with one landing strip)
+- Full-Duplex = Send or Receive at the Same Time (Airport with two landing strips; one for incoming, one for outgoing)
+
+- *`speed [tab key]` will list available speeds to this switchport*
+- *`duplex ?` lists available duplex speeds to this port*
+
+**Mismatches at the client-side could experience performance degredation if their machine is not equipped for 1000 and 1000 is chosen as the hardcoded speed.**
+
+'Auto' is less risky.
+
+```bash
+enable
+conf t
+int Gi0/2
+speed auto
+duplex auto
+```
+
+***
 
 Write the changes to memory (outside of config mode)
 ```bash
