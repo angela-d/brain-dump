@@ -70,6 +70,18 @@ Preview the changes
 ```bash
 show interface GigabitEthernet6/25 status
 ```
+***
+### Remove VLAN from a Switchport
+
+```bash
+enable
+conf t
+int Gi0/2
+no switchport access vlan 67
+```
+*To remove the VLAN from the entire switch, see [VLAN config](vlan-config.md)*
+
+***
 
 Save changes to memory
 ```bash
