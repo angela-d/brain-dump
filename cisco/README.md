@@ -8,6 +8,7 @@ Commands frequently used in Cisco IOS, so I don't forget them.
 - [Remove a Trunk Port](remove-trunk-port.md) - Reset a trunk port to a basic switchport
 - [VLAN Config](vlan-config.md) - Basic VLAN commands
 - [Assign Single VLAN to a Port](assign-single-vlan-switchport.md) - Single VLAN access mode on a switchport
+- [Troubleshooting](troubleshooting.md) - Gather info about drops and errors
 
 ## Informational Commands
 Bring up a disabled interface
