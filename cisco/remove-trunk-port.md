@@ -35,19 +35,26 @@ Specify the port you're editing
 int Fa0/38
 ```
 
-Set access mode to the switch port
+Remvoe the trunk
 ```bash
-swi mod ac
-```
-Set the VLAN
-```bash
-no swi tr allowed add vlan 1
+no swi tr allowed
 ```
 
 Remove dot1q encapsulation
 ```bash
 no swi tr enc do
 ```
+
+Set access mode to the switch port
+```bash
+swi mod ac
+```
+
+Assign the single VLAN
+```bash
+switchport access vlan 2
+```
+
 Exit the config interface
 ```bash
 end
@@ -67,5 +74,5 @@ switch 1#sh int Fa0/38 status
 
 Port    Name               Status       Vlan     Duplex Speed   Type
 ------- ------------------ ------------ -------- ------ ------- ----
-Fa0/38  RM E               notconnect   1          Auto    Auto 100BaseTX/FX
+Fa0/38  RM E               notconnect   2          Auto    Auto 100BaseTX/FX
 ```
