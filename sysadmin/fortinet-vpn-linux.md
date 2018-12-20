@@ -1,4 +1,4 @@
-# Fortiguard SSL VPN on Linux
+# Fortinet SSL VPN on Linux
 
 Fortinet's proprietary Linux client doesn't work well on Debian 9.
 
@@ -6,7 +6,7 @@ Fortinet's proprietary Linux client doesn't work well on Debian 9.
 - Non-proprietary [GUI version](https://github.com/theinvisible/openfortigui) or [apt installation](https://apt.iteas.at/)
 
 ## GUI Installation
-These instructions are for Debian 9.  For Ubuntu, check the [author's blog](https://hadler.me/linux/openfortigui/).
+These instructions are for Debian 9.  For Ubuntu, check the [developer's blog](https://hadler.me/linux/openfortigui/).
 
 Add the developer's signing key
 ```bash
@@ -18,7 +18,7 @@ Add the developer's repo to apt's sources list
 echo "deb https://apt.iteas.at/iteas stretch main" > /etc/apt/sources.list.d/iteas.list
 ```
 
-### Has to be ran as root or sudo
+### It Has to be ran as root or sudo
 
 ```bash
 sudo openfortigui
@@ -49,10 +49,12 @@ Add *beneath* (replace angela for your username):
 angela    ALL=(ALL) NOPASSWD: /usr/bin/openfortigui
 ```
 
-Now Find OpenFortiGui in your application menu and click it, auto launch as sudo with zero additional steps.
+Find OpenFortiGui in your application menu and click it, it'll auto launch as sudo with zero additional steps.
 
 ### Worth noting
-If you have a chattr lock on /etc/resolv.conf, this application will not load the VPN's DNS resolvers.
+- If you enable the sudo launch *after* you have connections configured as a normal user, you might jag up your connections, as the AES key that encrypts the passwords will be registered to another user.  If you can't log back onto them, delete the connections and re-add them.
+
+- If you have a chattr lock on /etc/resolv.conf, this application will not load the VPN's DNS resolvers.
 ```bash
 chattr -i /etc/resolv.conf
 ```
