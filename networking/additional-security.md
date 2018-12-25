@@ -11,9 +11,9 @@ To remedy this:
 vi /etc/dnsmasq.conf
 ```
 
-Add the following:
+Add the following (All gateway IPs of each VLAN used):
 ```bash
-listen-address=192.168.1.1, 127.0.0.1
+listen-address=192.168.1.1, 192.168.3.1, 192.168.2.1, 127.0.0.1
 bind-interfaces
 ```
 
