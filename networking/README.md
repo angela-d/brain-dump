@@ -9,3 +9,6 @@ DD-WRT
 OpenWRT
 - [Wired switchport VLAN](openwrt-switchport-vlan.md) - Isolate untrusted wired devices
 - [Wifi VLAN](openwrt-wifi-vlan.md) - Isolate untrusted wifi devices / guest network
+
+Post Installation
+- [Additional Security](additional-security.md) - Even with previous hardening, some stuff slips through the cracks
