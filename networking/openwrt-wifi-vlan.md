@@ -102,6 +102,6 @@ If you want to tweak or extend the firewall filtering, you can make changes in t
 - Run `/etc/init.d/firewall restart`
 - The rules are now in effect!
 
-Reboot the firewall by SSHing into the router and running `/etc/init.d/firewall restart` and try to access a device/IP on the forbidden VLAN.
+Try to access a device/IP on the forbidden VLAN.
 
 Done!
