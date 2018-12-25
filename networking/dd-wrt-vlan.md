@@ -21,6 +21,9 @@ Enable the following:
 - [x] Net Isolation (creates a Firewall rule to keep them from peeping at the parent network)
 - [x] Forced DNS Redirection (should prevent them from using custom DNS to bypass any filters you may have set at DNS-level)
 
+**Set a WIFI Password** - Wireless > Wireless Security
+Under the virtual interface, find the SSID you just added and set a secure password.
+
 **Optional DNS Target** - Use [OpenNIC](https://www.opennic.org/) or OpenDNS to bypass your ISP's ad-ridden DNS resolvers; set to a different DNS server than what your main access point uses, as an easy way to test whether or not the connections are segmented.
 
 Set the IP Address and Subnet Mask (ie. 172.16.1.1 / 255.255.255.0
@@ -29,7 +32,7 @@ Hit Save and Apply Settings.
 
 **Setup > Networking** - Enable DHCPd
 - Click "Add" under the *DHCPD* menu
-- Select the interfact (ie. ath0.1 if this is your first guest network)
+- Select the interface (ie. ath0.1 if this is your first guest network)
 - Specify starting and maximum number of IPs, as well as lease time.  (Default is usually Start: 100, Max: 50 and Leasetime: 3600)
 
 Hit Save and Apply Settings.
