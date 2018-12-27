@@ -1,4 +1,4 @@
-# Additional Security / Post-Installation
+# Additional Security / Post-Installation Hardening
 
 Default router setups are not secure.  Utilizing [GRC's Shields Up!](https://www.grc.com/default.htm) > All Service Ports scans can help locate things overlooked while configuring the network.
 
@@ -65,3 +65,24 @@ ssh router
 It should be noted that if you do *not* firewall by IP range (only allow *your* local, trusted IP range), the port can still be discovered if its wide open by any self-respecting script-kiddie.
 
 If you do not intend to use SSH, turn it off altogether.
+
+***
+### Stealth Ports
+With just the above setup, classic hot ports are sealed, but still advertising their existence to probers.
+
+Network > Firewall
+- wan: change **input** values to drop, accept, drop
+
+Network > Firewall > Traffic Routes tab (same page)
+- Under *Allow-Ping: source address any*
+- Change *source address* to 192.168.0.0/22
+
+This gives the trusted VLAN the ability to send ICMP/pings to other VLANs (and devices allowed to probe eachother, within their respective network) which is useful for debugging and testing devices.
+
+**Warning:** If your ISP needs to troubleshoot latency, you may want to change back to 'any' until they're done.
+
+- *Allow-ICMPv6* entries: I deleted these, I don't maintain ip6 at home.  Leaving them running is just another vector for probes.
+
+- `/etc/init.d/firewall restart` and run a new test at GRC.
+
+![GRC results](../../brain-dump/img/grc.png)
