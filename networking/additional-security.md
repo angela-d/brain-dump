@@ -85,4 +85,4 @@ This gives the trusted VLAN the ability to send ICMP/pings to other VLANs (and d
 
 - `/etc/init.d/firewall restart` and run a new test at GRC.
 
-![GRC results](../../brain-dump/img/grc.png)
+![GRC results](../img/grc.png)
