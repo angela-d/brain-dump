@@ -86,3 +86,24 @@ This gives the trusted VLAN the ability to send ICMP/pings to other VLANs (and d
 - `/etc/init.d/firewall restart` and run a new test at GRC.
 
 ![GRC results](../img/grc.png)
+
+***
+### Torrenting with OpenWRT
+This setup blocks torrenting.  To open torrenting capabilities, some 'holes' need to be punched.
+
+To whitelist torrenting on all VLANs, first go into the torrent client preferences and un-tick incoming/outgoing random ports.  Pick port(s) and assign them there.
+
+It's probably a good idea to use non-standard port(s), as a lot of ISPs block the defaults (6881-6889).
+
+ Then, in OpenWRT:
+
+Network > Firewall > Custom Rules tab
+- Append the following:
+```bash
+# allow torrenting to all vlans
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -p udp --dport 50412 -j ACCEPT
+iptables -A OUTPUT -p udp --sport 50412 -j ACCEPT
+```
+- Replace 50412 for the port(s) chose and duplicate the rule syntax for each port to allow.
+
+- `/etc/init.d/firewall restart` and switch on a VPN, download some torrents.
