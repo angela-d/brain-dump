@@ -12,3 +12,8 @@ OpenWRT
 
 Post Installation
 - [Additional Security](additional-security.md) - Even with previous hardening, some stuff slips through the cracks
+
+***
+OpenWRT 18.06 is bugged out on my router; DHCP refuses to issue new IPs (even after a wipe of settings/'factory reset'), so these instructions are valid for 17.01 branch releases (17.01.6 at the time of writing).
+***
+DD-WRT latest utilized Oct 19, 2018 beta; r37442 (never had a single issue with DD-WRT throughout all of my upgrades, always stable and awesome despite being labled a beta release).
