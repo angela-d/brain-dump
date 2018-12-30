@@ -12,6 +12,8 @@ OpenWRT
 
 Post Installation
 - [Additional Security](additional-security.md) - Even with previous hardening, some stuff slips through the cracks
+- [Troubleshooting](openwrt-troubleshooting,md) - OpenWRT troubleshooting
+- [Site Blocking](openwrt-site-blocking.md) - Ad and tracker filtering on OpenWRT
 
 ***
 OpenWRT 18.06 is bugged out on my router; DHCP refuses to issue new IPs (even after a wipe of settings/'factory reset'), so these instructions are valid for 17.01 branch releases (17.01.6 at the time of writing).
