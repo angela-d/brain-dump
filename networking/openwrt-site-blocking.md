@@ -30,6 +30,8 @@ address=/googlesyndication.com/0.0.0.0
 address=/googleadservices.com/0.0.0.0
 address=/pagead-googlehosted.l.google.com/0.0.0.0
 address=/tiqcdn.com/0.0.0.0
+address=/pingdom.net/0.0.0.0
+address=/newrelic.com/0.0.0.0
 ```
 - When done, hit **ESC** key
 - `:wq` to save your changes
