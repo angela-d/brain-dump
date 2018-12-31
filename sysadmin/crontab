@@ -1,0 +1,20 @@
+# desktop reminders
+# as normal user (not root): crontab -e
+#
+# m h  dom mon dow   command -i icon "subject" (no timeout/click to remove) "concise message"
+#
+# icon directories:
+# /usr/share/icons or ~/.local/share/icons (filename without extension)
+#
+# export variables are necessary as the crontab runs headless in the background with no display utility
+DISPLAY=":0.0"
+XAUTHORITY="/home/angela/.Xauthority"
+# full path to your .Xauthority file
+XDG_RUNTIME_DIR="/run/user/1000"
+# if your user id is not 1000, find via cli by: id -u
+
+00 19 26 * * notify-send -i gnome-warning "Reminder" -u critical "message body"
+05 19 11 * * notify-send -i gnome-warning "Reminder" -u critical "message body"
+10 19 22-28 * 5 notify-send -i calligraplan "Reminder" -u critical "message body"
+15 19 */15 * * notify-send -i kchart "Reminder" -u critical "message body"
+50 23 30 * * notify-send -i gnome-warning "Reminder" -u critical "message body"
