@@ -1,5 +1,5 @@
 # Windows Brain Dumps
-For times when touring purgatory is necessary
+For times when hanging out in purgatory is necessary.
 
 ```bash
                         _.-;:q=._
@@ -30,3 +30,10 @@ For times when touring purgatory is necessary
                        ``""---...__        .-'
                                    ``""---'
 ```
+
+Active Directory Users
+- [Troubleshooting](active-directory-troubleshooting.md)
+- [User Creation Templates](active-directory-user-templates.md)
+
+Active Directory Domains
+- [Forward Lookup Zones](forward-lookup-zones.md)
