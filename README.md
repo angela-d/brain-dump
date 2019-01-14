@@ -11,7 +11,7 @@ Reject the automated pull if a VPN session is detected:
 
 ![git output](img/git-up-to-date.png)
 
-Find this on the [crontab](blob/master/sysadmin/crons)
+Find this on the [crontab](sysadmin/crons)
 
 ***
 
