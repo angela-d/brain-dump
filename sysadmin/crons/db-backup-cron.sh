@@ -17,7 +17,6 @@ then
 
   cd "$LOCAL_REPO" && \
   ssh-agent bash -c "ssh-add -t "$TIMEOUT" "$USEKEY"; git pull 2>&1" && \
-  ssh-agent -k \
   cd && \
   notify-send -i git-gui "Remote Database Backup" -u critical "Weekly backup complete, at $LOCAL_REPO"
 
