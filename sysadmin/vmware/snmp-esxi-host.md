@@ -62,7 +62,10 @@ When it's done, you'll see:
 
 - Add your ESXI host's IP to your monitoring system and you're done.
 
-### SSH TLS Warnings
+### SSl TLS Warnings
+From PRTG:
+> Warning by lookup value 'Weak Protocols Available' in channel 'Security Rating' — Warning by lookup value 'Accepted' in channel 'TLS 1.0 (Weak)'
+
 If your browser is equipped to prefer better versions of TLS than the insecure TLS1, the warnings are a non-issue and can be deleted from your sensors.
 
 In Firefox/Waterfox:
@@ -83,4 +86,6 @@ This value will tell you which version of TLS your browser will take, at minumum
 
 **security.tls.version.min** is a fallback if **security.tls.version.max** is not available.
 
-Disabling TLS1 on an ESXI host will break compatibility with browsers that do not support more secure versions - like in legacy environments.  Not an inherent security issue; yet attempts to disable in my lab environment have to-date proven futile; [Nuthouse](http://nuthouse.us/vsphere/2018/10/07/TLSDisable.html) has a nice writeup if you want to give it a shot in your environment.
+Disabling TLS1 on an ESXI host will break compatibility with browsers (or scripts/processes you may be using that also aren't up-to-par with more secure options) that do not support more secure versions - like in legacy environments.  
+
+Not an inherent security issue; yet attempts to disable in my lab environment have to-date proven futile (despite the dependencies existing and returning expected values and changes); [Nuthouse](http://nuthouse.us/vsphere/2018/10/07/TLSDisable.html) has a nice writeup if you want to give it a shot in your environment.
