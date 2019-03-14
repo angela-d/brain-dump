@@ -2,6 +2,11 @@
 
 VLAN config is automatically saved to the VLAN database on flash memory in Cisco IOS; vlan.dat (no `wr mem` necessary)
 
+### List Available VLANs
+```bash
+sh vl
+```
+
 ### Change a VLAN's name
 ```bash
 enable
