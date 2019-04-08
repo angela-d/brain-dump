@@ -101,7 +101,7 @@ Network > Firewall > Custom Rules tab
 - Append the following:
 ```bash
 # allow torrenting to all vlans
-iptables -A INPUT -m state --state RELATED,ESTABLISHED -p udp --dport 50412 -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -p udp --dport 50412 -j ACCEPT
 iptables -A OUTPUT -p udp --sport 50412 -j ACCEPT
 ```
 - Replace 50412 for the port(s) chose and duplicate the rule syntax for each port to allow.
