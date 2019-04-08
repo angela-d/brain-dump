@@ -37,6 +37,54 @@ address=/newrelic.com/0.0.0.0
 - `:wq` to save your changes
 - `/etc/init.d/dnsmasq restart` to restart DNSMasq
 
+***
+Note that this is basically poor man's filtering.  If you have a spare Pi, [Pi-Hole](https://pi-hole.net/) offers superior filtering.
+
+[DD-WRT](https://dd-wrt.com/) is comparable router firmware to OpenWRT and is more friendly to cheap routers' space; the only advantage (imo) is OpenWRT VLAN support for select devices is superior to DD-WRT's.
+
+[PC-based](https://github.com/angela-d/autohosts) filtering will offer substantially more protection, also.
+
+***
+## Automated Ad-Blocking
+
+If your router has enough space (check: System > Software) you can install pre-made packages to maintain lists for you (especially useful when configuring a router that is not your own where your custom filters are too strict; for the types of people that click on ads because "they're convenient" ...)
+
+Install SSL
+```bash
+opkg install libustream-openssl
+```
+
+Prepare the cert directory
+```bash
+mkdir -p /etc/ssl/certs
+```
+
+Set the environment variable
+```bash
+export SSL_CERT_DIR=/etc/ssl/certs
+```
+
+Install root certs
+```bash
+opkg install ca-certificates
+```
+
+Install the adblock package
+```bash
+opkg install adblock
+```
+
+And its companion for GUI control
+```bash
+opkg install luci-app-adblock
+```
+
+Select what filters you want to apply:
+
+Services > Adblock
+
+***
+
 Test your new filter; in your local CLI (not the router):
 ```bash
 dig +short @192.168.1.1 google-analytics.com A
@@ -59,10 +107,3 @@ angela@debian: dig +short @192.168.1.1 github.com A
 ```
 
 Returning two routable addresses to github.com
-
-***
-Note that this is basically poor man's filtering.  If you have a spare Pi, [Pi-Hole](https://pi-hole.net/) offers superior filtering.
-
-[DD-WRT](https://dd-wrt.com/) is comparable router firmware to OpenWRT and is more friendly to cheap routers' space; the only advantage (imo) is OpenWRT VLAN support for select devices is superior to DD-WRT's.
-
-[PC-based](https://github.com/angela-d/autohosts) filtering will offer substantially more protection, also.
