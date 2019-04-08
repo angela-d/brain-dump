@@ -75,27 +75,7 @@ Note that if you try to send data to the "smart" TV from another wifi network, y
 **Note:** This page is a continuation of my [OpenWRT Switchport VLAN notes](openwrt-switchport-vlan.md), if you're utilizing both of these.. the firewall rules there might make more sense, as the version below was redone to fit vlan3 into the mix.
 
 Append the following:
-
-```bash
-# bridged connections are not automatically thumped from the web gui w/ later rules, so do a hard filter on ssh & http
-iptables -I INPUT -p tcp -m multiport --dports 80,443,22 -j DROP
-# whitelist the trusted vlan to ssh & http
-iptables -I INPUT -p tcp -s 192.168.1.0/24 -m multiport --dports 80,443,22 -j ACCEPT
-
-# allow trusted vlan devices to see eachother
-iptables -I FORWARD 1 -m state --state RELATED,ESTABLISHED -j ACCEPT
-
-# global block for untrusted vlans (this does not block access to the router gateway! just inter-vlan chatter)
-# iprange would be ideal right here, but the version of iptables used in openwrt does not like it, its usage triggers: Bad argument `iprange', fyi
-iptables -I FORWARD 2 -s 192.168.2.0/24 -d 192.168.1.0/24 -j DROP
-iptables -I FORWARD 3 -s 192.168.2.0/24 -d 192.168.3.0/24 -j DROP
-iptables -I FORWARD 4 -s 192.168.3.0/24 -d 192.168.1.0/24 -j DROP
-iptables -I FORWARD 5 -s 192.168.3.0/24 -d 192.168.2.0/24 -j DROP
-
-# block vlan2 (wired switchport vlan) from internal network pages
-iptables -I INPUT -i eth0.2 -m state --state NEW -j DROP
-iptables -I INPUT -i eth0.2 -p udp -m multiport --dports 53,67 -j ACCEPT
-```
+- Firewall rules toward the bottom of [Switchport VLAN](openwrt-switchport-vlan.md)
 
 If you want to tweak or extend the firewall filtering, you can make changes in the GUI, but they won't be loaded until next reboot of the router.
 - SSH into the router
