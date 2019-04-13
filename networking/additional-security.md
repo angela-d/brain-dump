@@ -2,29 +2,6 @@
 
 Default router setups are not secure.  Utilizing [GRC's Shields Up!](https://www.grc.com/default.htm) > All Service Ports scans can help locate things overlooked while configuring the network.
 
-**After [setting up VLANs](README.md) for untrusted devices**
-- Most ports were closed
-- On OpenWRT, DNS/port 53 was wide open
-
-To remedy this:
-```bash
-vi /etc/dnsmasq.conf
-```
-
-Add the following (All gateway IPs of each VLAN used):
-```bash
-listen-address=192.168.1.1, 192.168.3.1, 192.168.2.1, 127.0.0.1
-bind-interfaces
-```
-
-Restart the daemon:
-```bash
-/etc/init.d/dnsmasq restart
-```
-
-- Test any affected networks/VLANs
-- Re-run the scan
-
 
 ***
 
@@ -68,10 +45,12 @@ If you do not intend to use SSH, turn it off altogether.
 
 ***
 ### Stealth Ports
-With just the above setup, classic hot ports are sealed, but still advertising their existence to probers.
+With a typical thorough setup, classic hot ports are sealed; but still advertising their existence to probers.
 
 Network > Firewall
 - wan: change **input** values to drop, accept, drop
+
+![Stealth Port Setup](../img/stealth-ports.png)
 
 Network > Firewall > Traffic Routes tab (same page)
 - Under *Allow-Ping: source address any*
