@@ -72,16 +72,10 @@ I set the rule numbers numerically to ensure they load sequentially.
 
 Paste the following:
 ```bash
-# only allow local ips access to dns
-iptables -I INPUT -p tcp -m multiport --dports 80,2383 -j DROP
-# whitelist the trusted vlan to ssh & http
-iptables -I INPUT -p tcp -s 192.168.1.0/24 -m multiport --dports 80,2383 -j ACCEPT
-
-
 # bridged connections are not automatically thumped from the web gui w/ later rules, so do a hard filter on ssh & http
-iptables -I INPUT -p tcp -m multiport --dports 80,2383 -j DROP
+iptables -I INPUT -p tcp -m multiport --dports 443,2383,80 -j DROP
 # whitelist the trusted vlan to ssh & http
-iptables -I INPUT -p tcp -s 192.168.1.0/24 -m multiport --dports 80,2383 -j ACCEPT
+iptables -I INPUT -p tcp -s 192.168.1.0/24 -m multiport --dports 443,2383,80 -j ACCEPT
 
 
 # allow trusted vlan devices to see eachother
