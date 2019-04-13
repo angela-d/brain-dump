@@ -31,6 +31,9 @@ For times when hanging out in purgatory is necessary.
                                    ``""---'
 ```
 
+Windows Troubleshooting
+- [Regex File Searches with Powershell](regex-search-with-powershell.md)
+
 Active Directory Users
 - [Troubleshooting](active-directory-troubleshooting.md)
 - [User Creation Templates](active-directory-user-templates.md)
