@@ -10,6 +10,7 @@ DD-WRT
 OpenWRT
 - [Wired switchport VLAN](openwrt-switchport-vlan.md) - Isolate untrusted wired devices
 - [Wifi VLAN](openwrt-wifi-vlan.md) - Isolate untrusted wifi devices / guest network
+- [SSL Setup](openwrt-enable-ssl-gui.md) - Enabling SSL connections on the Luci gui
 
 Post Installation
 - [Additional Security](additional-security.md) - Even with previous hardening, some stuff slips through the cracks
