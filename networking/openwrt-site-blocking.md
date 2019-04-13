@@ -107,3 +107,26 @@ angela@debian: dig +short @192.168.1.1 github.com A
 ```
 
 Returning two routable addresses to github.com
+
+
+## Now that Site Filtering is Working, Automate List Updates
+Add a cron entry
+```bash
+crontab -e
+```
+
+Customize your preferred update schedule (if you're using UTC time, run `date -u` in SSH to correlate the current time):
+```bash
+30 02 * * 5 /etc/init.d/adblock reload
+```
+
+
+According to OpenWRT documentation, crons aren't enabled by default, so activate it for good measure:
+```bash
+/etc/init.d/cron start && /etc/init.d/cron enable
+```
+
+If you added today's date/time to test, you can see if it ran by viewing the logs:
+```bash
+logread
+```
