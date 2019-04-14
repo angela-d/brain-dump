@@ -29,23 +29,13 @@ Back up toward the top of the interface settings > 'Firewall Settings' tab
 - Save and Apply (bottom of the page)
 
 ### Switch configuration
-The interface creation should have automatically generated a new VLAN ID for VLAN 2
+The interface creation should have automatically generated a new VLAN ID for VLAN 2.  VLAN 1 is the "trusted" / default VLAN.
 
-For me, the port ordering was backwards to the port numbers on back of the router; I unplugged the connections and set the one I wanted to isolate so I was sure to get the right port.
+For me, the port ordering was backwards to the port numbers on back of the router; I unplugged the connections and set the one I wanted to isolate so I was sure to get the right port.  (OpenWRT will auto load/reload the active switchports with the baseT reading)
 
-- CPU: tagged for all VLANs
-- For the trusted VLAN, I left everything untagged.
+![OpenWRT VLAN Ports](../img/openwrt-vlan-ports.png)
 
-VLAN 2 settings:
-- Port 1 (the port the untrusted device will be going into) > untagged
-- All other ports set to 'off'
-- For *all other* VLANs, set **Port 1** to 'off'
-
-The 'proper' way to do this would be to *tag* the untrusted VLAN, but for whatever reason, doing so caused a dead port.  Possibly a bug in the firmware for my specific router.  Try both ways and see what works, for different models.
-
-Since this VLAN is going to be firewalled off from the others, it doesn't really matter in this particular case.
-
-### Configure isolation via Firewall rules
+### Configure Forwarding and Isolation via Firewall Rules
 **Network > Firewall from the main pulldown**
 
 In this area we'll make it so the VLAN has web access.
