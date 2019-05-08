@@ -25,3 +25,4 @@ My Notes:
 - [De-Googling Android with Lineage OS](de-google-android-with-lineageos.md)
 - [Downloading APKs from one Android to Another](apks-multiple-phones.md)
 - [Sideloading](sideloading.md) - Firmware upgrades or apps
+- [Updates](updating.md) - Updates that boot into recovery mode
