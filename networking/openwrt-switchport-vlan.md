@@ -60,40 +60,7 @@ Manually setting the firewall rules to segment the traffic; the GUI vlan setup d
 
 I set the rule numbers numerically to ensure they load sequentially.
 
-Paste the following:
-```bash
-# bridged connections are not automatically thumped from the web gui w/ later rules, so do a hard filter on ssh & http
-iptables -I INPUT -p tcp -m multiport --dports 443,2383,80 -j DROP
-# whitelist the trusted vlan to ssh & http
-iptables -I INPUT -p tcp -s 192.168.1.0/24 -m multiport --dports 443,2383,80 -j ACCEPT
+Paste the [firewall rules](custom-firewall-rules.md)
 
-
-# allow trusted vlan devices to see eachother
-iptables -I FORWARD 1 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-
-
-# global block for untrusted vlans (this does not block access to the router gateway! just inter-vlan chatter)
-iptables -I FORWARD 2 -s 192.168.2.0/24 -d 192.168.1.0/24 -j DROP
-iptables -I FORWARD 3 -s 192.168.2.0/24 -d 192.168.3.0/24 -j DROP
-iptables -I FORWARD 4 -s 192.168.3.0/24 -d 192.168.1.0/24 -j DROP
-iptables -I FORWARD 5 -s 192.168.3.0/24 -d 192.168.2.0/24 -j DROP
-
-
-# eth0.2 = vlan2 switchport; the following 2 rules reject all traffic, short of dns (port 53), dhcp (port 67)
-# also prevents untrusted vlan from seeing the web gui
-iptables -I INPUT -i eth0.2 -m conntrack --ctstate NEW -j DROP
-iptables -I INPUT -i eth0.2 -p udp -m multiport --dports 53,67 -j ACCEPT
-
-
-# allow torrenting from vlan1
-iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -p udp --dport 51413 -j ACCEPT
-iptables -A OUTPUT -p udp --sport 51413 -j ACCEPT
-```
-
-Reboot the firewall by SSHing into the router and running `/etc/init.d/firewall restart` and try to access a device/IP on the forbidden VLAN.
-
-**Why you want to SSH in to reboot:**
-
-When I set these rules through the GUI, the page refreshed without any message.  Restarting through SSH will throw explicit error messages if something isn't set correctly.
 
 Done!
