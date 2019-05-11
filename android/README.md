@@ -21,8 +21,11 @@ App Stores:
 - [Aurora Store](https://f-droid.org/en/packages/com.dragons.aurora/) - Access to Play Store apps, without needing Google for anything
 
 ***
-My Notes:
+### My Notes:
 - [De-Googling Android with Lineage OS](de-google-android-with-lineageos.md)
 - [Downloading APKs from one Android to Another](apks-multiple-phones.md)
 - [Sideloading](sideloading.md) - Firmware upgrades or apps
+
+**Troubleshooting**
 - [Updates](updating.md) - Updates that boot into recovery mode
+- [Wi-fi No Internet](wifi-no-internet.md) - Networking and firewall issues
