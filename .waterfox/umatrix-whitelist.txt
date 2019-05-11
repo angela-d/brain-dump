@@ -1,3 +1,0 @@
-# unblock monopolized youtube
-* googlevideo.com * allow
-* ytimg.com * allow
