@@ -25,7 +25,9 @@ App Stores:
 - [De-Googling Android with Lineage OS](de-google-android-with-lineageos.md)
 - [Downloading APKs from one Android to Another](apks-multiple-phones.md)
 - [Sideloading](sideloading.md) - Firmware upgrades or apps
+- [Disable IPv6](disable-ipv6.md) - init.d script
 
 **Troubleshooting**
 - [Updates](updating.md) - Updates that boot into recovery mode
 - [Wi-fi No Internet](wifi-no-internet.md) - Networking and firewall issues
+- [Hidden SSIDs](not-connecting-hidden-ssid.md) - Wifi doesn't connect to hidden SSIDs
