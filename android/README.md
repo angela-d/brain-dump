@@ -26,6 +26,7 @@ App Stores:
 - [Downloading APKs from one Android to Another](apks-multiple-phones.md)
 - [Sideloading](sideloading.md) - Firmware upgrades or apps
 - [Disable IPv6](disable-ipv6.md) - init.d script
+- [Wireshark](wireshark-android.md) - tcpdump with Wireshark
 
 **Troubleshooting**
 - [Updates](updating.md) - Updates that boot into recovery mode
