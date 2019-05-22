@@ -27,6 +27,7 @@ App Stores:
 - [Sideloading](sideloading.md) - Firmware upgrades or apps
 - [Disable IPv6](disable-ipv6.md) - init.d script
 - [Wireshark](wireshark-android.md) - tcpdump with Wireshark
+- [Disabling System Apps](disable-system-apps.md)
 
 **Troubleshooting**
 - [Updates](updating.md) - Updates that boot into recovery mode
