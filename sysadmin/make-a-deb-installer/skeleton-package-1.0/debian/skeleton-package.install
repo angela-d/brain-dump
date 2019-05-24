@@ -1,0 +1,2 @@
+debian/source/skeleton-package	/usr/bin
+debian/source/skeleton-package.conf	/etc

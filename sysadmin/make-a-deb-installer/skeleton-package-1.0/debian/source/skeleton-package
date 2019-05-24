@@ -1,0 +1,4 @@
+#!/usr/bin/ruby
+
+# primary source of the package
+puts "You have installed Skeleton Package successfully!"

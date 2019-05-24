@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+# run a script after the user chooses to uninstall your package
+echo "Post-remove script has ran."

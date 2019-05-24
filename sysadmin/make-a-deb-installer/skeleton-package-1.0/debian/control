@@ -1,0 +1,17 @@
+Source: skeleton-package
+Section: web
+Priority: optional
+Maintainer: Angela <angelad@disroot.org>
+Build-Depends: debhelper
+Standards-Version: 3.9.8
+Vcs-Git: https://github.com/angela-d/brain-dump.git
+Vcs-browser: https://github.com/angela-d/brain-dump.git
+
+Package: skeleton-package
+Architecture: all
+Pre-Depends: ruby (>=2.3.3)
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends:
+Homepage: https://github.com/angela-d/brain-dump
+Description: Skeleton of Debian package.
+ Manually assemble a Debian installer.
