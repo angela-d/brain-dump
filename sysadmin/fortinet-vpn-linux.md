@@ -59,3 +59,20 @@ Find OpenFortiGui in your application menu and click it, it'll auto launch as su
 chattr -i /etc/resolv.conf
 ```
 to unlock it.  (Which also gives Network Manager the ability to fiddle with it, again.)
+
+
+### (Optional) CLI Logon
+```bash
+sudo /usr/bin/openfortigui --start-vpn --vpn-name NameOfMyConnection --main-config '/home/angela/.openfortigui/main.conf'
+```
+
+### Troubleshooting
+I had an issue where I was getting a segfault:
+```text
+debian kernel: [  573.164599] traps: openfortigui[30174] general protection ip:558fd01e9ed4 sp:7fff8bd2c658 error:0
+```
+
+- Logs were empty
+- Debug enabled
+
+Turns out, I had changed my password days before and had forgotten -- OpenFortiGUI had my old password saved in the keyring.  I simply updated it via OpenFortiGUI and was able to connect.
