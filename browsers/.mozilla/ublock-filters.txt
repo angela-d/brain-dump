@@ -1,6 +1,0 @@
-# block reddit automoderator [does not auto-hide after notices are read, so block it]
-reddit.com##[data-author="AutoModerator"]
-
-# useless flairs
-reddit.com##[title="No Meta"]
-reddit.com##[title="Meta"]
