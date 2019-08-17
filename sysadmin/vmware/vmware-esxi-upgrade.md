@@ -80,3 +80,22 @@ uname -a
 > VMkernel vmware 6.5.0 #1 SMP Release build-10719125 Nov  4 2018 15:44:22 x86_64 x86_64 x86_64 ESXi
 
 Confirm on [VMware's site](https://docs.vmware.com/en/VMware-vSphere/6.5/rn/esxi650-201811001.html) the build is what you wanted.
+
+***
+Unexpected issues sometimes happen:
+
+##  [Errno 28] No space left on device
+
+There's a high likelihood you're *not* out of space, eventhough you get this poorly-worded "error."
+
+In the ESXI GUI:
+
+Under **Navigator** > Host > Manage > (under the **System** tab) > Swap
+
+- Make sure Swap is **Enabled**
+- If **Datastore** is none, tick *Edit Settings* and select a datastore for a swap file to be created if the upgrade needs additional RAM
+- Local swap enabled: **Yes**
+- Host cache enabled: **Yes**
+- Save settings
+
+Re-submit your upgrade command.
