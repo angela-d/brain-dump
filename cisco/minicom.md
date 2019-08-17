@@ -1,11 +1,14 @@
 # Configure Debian with Minicom for Cisco IOS Switches
+If you plan on using a serial cable for initial setup (which is a good idea to avoid production network collisions) - or local troubleshooting, these notes are for setting up the Minimcom serial port communications application on Debian.
+
+**Once your switch is set up and secured with SSH access (and a strong password) you probably won't need Minicom too much.**
 
 Install Minicom
 
 ```bash
 apt update && apt install minicom
 ```
-Plug in  the console cable and check the serial port
+Plug in  the cable and check the serial port
 ```bash
 dmesg | grep tty
 ```
@@ -84,7 +87,11 @@ apt remove --purge modemmanager
 ***
 
 ### Putty on Debian often works when Minicom doesn't
-In 35xx switches, intermittent performance seems to occur with Minicom on Debian.  Either it doesn't respond to hitting the enter key to initially login, or the keys 'stick'.. ie. `aaddm` are received instead of `admin`
+In 35xx Cisco switches, intermittent performance seems to occur with Minicom on Debian.  Either it doesn't respond to hitting the enter key to initially login, or the keys 'stick'.. ie. `aaddm` are received instead of `admin`
+
+I've managed to narrow down the intermittent performance issues due to yanking the USB before its unmounted from the switch.  I find, if I gracefully exit ssh/telnet and then unmount the USB serial cable from the laptop, *then* unmount from the switch -- almost all issues do not reoccur.
+
+For moments where logic wasn't heeded:
 
 Most of the time, [Putty for Debian](https://packages.debian.org/stretch/putty) worths without a hitch.  Occasionally it does not, where Windows/Putty will have a 100% success rate using the same hardware.
 
