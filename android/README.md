@@ -28,6 +28,7 @@ App Stores:
 - [Disable IPv6](disable-ipv6.md) - init.d script
 - [Wireshark](wireshark-android.md) - tcpdump with Wireshark
 - [Disabling System Apps](disable-system-apps.md)
+- [Updating a hosts file](updating-hosts-file.md)
 
 **Troubleshooting**
 - [Updates](updating.md) - Updates that boot into recovery mode
