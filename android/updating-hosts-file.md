@@ -22,3 +22,14 @@ adb push /home/angela/Desktop/hosts /system/etc/hosts
 
 
 Check your `/system/etc/` or `/etc` directory and you should see the hosts file modified time with today's date.
+
+
+### Troubleshooting
+> Unable to mount read-only filesystem.
+
+Simply run:
+```bash
+adb remount
+adb root
+```
+Usually fixes the read-write issue.
