@@ -3,26 +3,27 @@
 Notes for DD-WRT and OpenWRT router firmware.
 
 DD-WRT
-- [Troubleshooting](ddwrt-troubleshooting.md) - Initial install failures
-- [Hosts](dd-wrt.md) - Network-based ad and malware filtering, without additional hardware
-- [Wifi VLAN setup](dd-wrt-vlan.md) - Guest wifi network setup
+- [Troubleshooting](ddwrt/ddwrt-troubleshooting.md) - Initial install failures
+- [Hosts](ddwrt/dd-wrt.md) - Network-based ad and malware filtering, without additional hardware
+- [Wifi VLAN setup](ddwrt/dd-wrt-vlan.md) - Guest wifi network setup
 
 OpenWRT
-- [Wired switchport VLAN](openwrt-switchport-vlan.md) - Isolate untrusted wired devices
-- [Wifi VLAN](openwrt-wifi-vlan.md) - Isolate untrusted wifi devices / guest network
-- [SSL Setup](openwrt-enable-ssl-gui.md) - Enabling SSL connections on the Luci gui
-- [Freeing Space](openwrt-freeing-space.md) Freeing up storage space
+- [Wired switchport VLAN](openwrt/openwrt-switchport-vlan.md) - Isolate untrusted wired devices
+- [Wifi VLAN](openwrt/openwrt-wifi-vlan.md) - Isolate untrusted wifi devices / guest network
+- [SSL Setup](openwrt/openwrt-enable-ssl-gui.md) - Enabling SSL connections on the Luci gui
+- [Freeing Space](openwrt/openwrt-freeing-space.md) Freeing up storage space
 
 Post Installation
-- [Additional Security](additional-security.md) - Even with previous hardening, some stuff slips through the cracks
-- [Troubleshooting](openwrt-troubleshooting.md) - OpenWRT troubleshooting
-- [Site Blocking](openwrt-site-blocking.md) - Ad and tracker filtering on OpenWRT
+- [Custom DNS](openwrt/custom-dns.md) - DNSCrypt setup/upgrade warning
+- [Additional Security](openwrt/additional-security.md) - Even with previous hardening, some stuff slips through the cracks
+- [Troubleshooting](openwrt/openwrt-troubleshooting.md) - OpenWRT troubleshooting
+- [Site Blocking](openwrt/openwrt-site-blocking.md) - Ad and tracker filtering on OpenWRT
 
 ***
 
 Most of these instructions were written for OpenWRT 17.01.6; for 18.06+, they are largely still valid - with the exception of iptables -state (which is deprecated in later versions.)
 
-### Fix
+### OpenWRT Fix
 If you try to use the obsolete shared library, you'll see:
 > iptables v1.6.1: Couldn’t load match `state’:No such file or directory
 
