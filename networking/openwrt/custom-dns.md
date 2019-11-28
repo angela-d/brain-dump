@@ -27,7 +27,7 @@ These instructions are based on [David C's OpenWRT build](https://dc502wrt.org/)
 2. Remove dnscrypt-proxy v1 (if installed): `opkg remove --autoremove luci-app-dnscrypt-proxy`
 3. Obtain dnscrypt-proxy v2 from dc502wrt.org:
 ```bash
-cd tmp &&
+cd /tmp &&
 wget https://dc502wrt.org/releases/dnscrypt-proxy.tar.gz && gunzip -d dnscrypt-proxy.tar.gz &&
 tar xvf dnscrypt-proxy.tar &&
 rm -f dnscrypt-proxy.tar
@@ -98,3 +98,9 @@ If modified the dnscrypt-proxy config, simply restart the service (rather than r
 
 ### OpenWRT Upgrades Lose Config
 The next sysupgrade may require the above steps to be re-run.
+
+In my experience, after a system upgrade, all of the files remain in-place - but never activate.  Fastest resolution (to-date) is to simply re-run the install steps.
+
+Reducing the default cache from 512 to 2 & restarting dnscrypt had no effect.
+
+[Build r11583+ has dnscrypt-proxy2 pre-installed](https://dc502wrt.org/releases/openwrt-mvebu-cortexa9.manifest), but I still had to re-run the above install instructions after the latest upgrade.
