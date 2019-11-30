@@ -104,3 +104,12 @@ In my experience, after a system upgrade, all of the files remain in-place - but
 Reducing the default cache from 512 to 2 & restarting dnscrypt had no effect.
 
 [Build r11583+ has dnscrypt-proxy2 pre-installed](https://dc502wrt.org/releases/openwrt-mvebu-cortexa9.manifest), but I still had to re-run the above install instructions after the latest upgrade.
+
+# Caveats
+This will intermittently jag up the tracking from coupon sites like Ebates / Rakuten (if you choose a DNSCrypt provider that offers filtering).
+
+If you keep getting a connection refused, after disabling [the hosts file](https://github.com/angela-d/autohosts), this would be the culprit.
+
+Temporary unblock the trackers:
+- DHCP and DNS > DNS forwardings > remove **127.0.0.1#5300** and temporary place another DNS host like **9.9.9.9** in its place
+- After you're done shopping, reverse the above steps (and restore the hosts block) **and also clear your cookies**!
