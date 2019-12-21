@@ -8,12 +8,12 @@
 
 * Launch Virtualbox
 
-![VirtualBox Menu](img/virtualbox-home.png)
+![VirtualBox Menu](../img/virtualbox-home.png)
 
-![VirtualBox RAM Menu](img/ubuntu-ram.png)
+![VirtualBox RAM Menu](../img/ubuntu-ram.png)
 * Select New > select defaults; but maximize the amount of RAM given to the guest OS, as it is released back to the host system when not in use by VirtualBox
 
-![Optical Menu](img/optical-drive.png)
+![Optical Menu](../img/optical-drive.png)
 
 ### Attach the ISO
 * Select the new Ubuntu VM in the list to highlight > click Settings on the primary menu > Storage
