@@ -130,3 +130,24 @@ If you added today's date/time to test, you can see if it ran by viewing the log
 ```bash
 logread
 ```
+***
+## Adblock Troubleshooting
+From the Luci Adblock log:
+> your adblock config seems to be too old, please update your config with the '--force-maintainer' opkg option
+
+If you're running a custom build, running the --force-maintainer option doesn't seem to work.
+
+I had to pull in the latest adblock.conf from [OpenWRT's Github](https://github.com/openwrt/packages/tree/master/net/adblock/files).
+
+- Log into the router over SSH
+- Navigate to the Adblock config directory: `cd /etc/config/ && ls -l` - you should see **adblock**:
+> -rw-------    1 root     root          9102 Dec 28 20:29 adblock
+
+- Back it up: `mv adblock adblock.old`
+- Pull in the new copy from OpenWRT's Github:
+```bash
+wget -O adblock https://raw.githubusercontent.com/openwrt/packages/master/net/adblock/files/adblock.conf
+```
+
+- Login to the GUI and reconfigure your list hosts, enable adblock > Save & Apply.  If you look at the log now, you should see its satisfied:
+> blocklist with overall 44138 domains loaded successfully
