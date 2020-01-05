@@ -1,0 +1,84 @@
+##############################################################################
+##
+##  Canon Inkjet Printer Driver for Linux
+##  Copyright CANON INC. 2001-2014
+##
+##  This program is free software; you can redistribute it and/or modify
+##  it under the terms of the GNU General Public License as published by
+##  the Free Software Foundation; version 2 of the License.
+##
+##  This program is distributed in the hope that it will be useful,
+##  but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##  GNU General Public License for more details.
+##
+##  You should have received a copy of the GNU General Public License
+##  along with this program; if not, write to the Free Software
+##  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA.
+##
+##############################################################################
+
+L_INST_PRN_00_01="Canon Inkjet Printer Driver"
+L_INST_PRN_00_02="Version %s"
+L_INST_PRN_00_03="Copyright CANON INC. %s-%s"
+
+L_INST_PRN_01_01="プリンターの登録\n"
+L_INST_PRN_01_02="続いて、プリンターの登録を行います。\n"
+L_INST_PRN_01_03="プリンターを接続して、電源を入れてください。\nネットワーク接続で使用する場合は、プリンターをネットワークに接続してください。\n準備が整ったら、Enterキーを押してください。\n"
+
+L_INST_PRN_01_04="接続方法の選択\n"
+L_INST_PRN_01_05="USB\n"
+L_INST_PRN_01_06="ネットワーク\n"
+L_INST_PRN_01_07="接続方法を選択してください。%s"
+
+L_INST_PRN_01_08="プリンターを検索しています...\n"
+
+L_INST_PRN_01_09="プリンターの選択\n"
+L_INST_PRN_01_10="プリンターを選択してください。\n使用したいプリンターが表示されていない場合は、再検索[0]を選択してもう一度プリンターを検索してください。\nキャンセルする場合は、[Q]を入力してください。\n"
+L_INST_PRN_01_11="再検索"
+L_INST_PRN_01_12="検出された対象プリンター (MACアドレス  IPアドレス)\n"
+L_INST_PRN_01_13="検出されたその他のプリンター (MACアドレス  IPアドレス)\n"
+L_INST_PRN_01_14="検出された対象プリンター\n"
+L_INST_PRN_01_15="検出されたその他のプリンター\n"
+L_INST_PRN_01_16="現在の選択値:%s %s\n"
+
+L_INST_PRN_01_17="番号を入力してください。"
+L_INST_PRN_01_18="対象プリンターが検出できませんでした。\n"
+
+L_INST_PRN_01_19="プリンターの登録\n"
+L_INST_PRN_01_20="プリンターの名前を入力してください。%s"
+
+L_INST_PRN_01_21="入力したプリンター名はすでに存在します。プリンター名を上書きしますか？\n上書きする場合は[y]を、しない場合は[n]を入力してください。%s"
+
+L_INST_PRN_01_22="プリンター名が無効です。\nプリンター名には以下の文字のみ使用することができます。:\n 英数字(a-z, A-Z, 0-9), \".\", \"-\", \"_\", \"+\", \"@\"\n"
+
+L_INST_PRN_01_23="通常使うプリンターに設定\n"
+L_INST_PRN_01_24="通常使うプリンターに設定しますか？\n設定する場合は[y]を、しない場合は[n]を入力してください。%s"
+
+L_INST_PRN_01_25="プリンター名 : %s\n"
+
+L_INST_PRN_01_26="印刷時には、このプリンター名を選択してください。\n"
+L_INST_PRN_01_27="プリンターの登録が完了していません。\nlpadminコマンドを使用して、手動でプリンターの登録を行ってください。\n"
+
+L_INST_PRN_02_01="プリンターのアンインストール\n"
+L_INST_PRN_02_02="この機種のプリンター登録をすべて削除します。\n"
+L_INST_PRN_02_03="続行しますか？\n続行する場合は[y]を、しない場合は[n]を入力してください。%s"
+
+L_INST_PRN_02_04="[%s]を削除できませんでした。\nアンインストール処理の終了後、lpadminコマンドを使用して手動で削除してください。\n"
+L_INST_PRN_02_05="プリンターを削除できませんでした。\nアンインストール処理の終了後、lpadminコマンドを使用して手動で削除してください。\n"
+
+
+L_INST_COM_01_01="実行コマンド = %s\n"
+
+L_INST_COM_01_02="エラーが発生しました。パッケージ管理システムが特定できません。\n"
+L_INST_COM_01_03="エラーが発生しました。必要なパッケージが正しい場所にありません。\n"
+L_INST_COM_01_04="インストールが完了しました。\n"
+L_INST_COM_01_05="エラーが発生しました。ご使用になっている環境が32ビットか64ビットかの判別ができません。\n以下のコマンドを使用して、インストールをやり直してください。\n"
+L_INST_COM_01_06="エラーが発生しました。指定された環境は、ご使用になっている環境と異なります。\n以下のコマンドを使用して、インストールをやり直してください。\n"
+
+L_INST_COM_02_01="使用方法: %s\n"
+
+L_INST_COM_02_02="アンインストールが完了しました。\n"
+
+L_INST_COM_03_01="[パッケージ]\n"
+

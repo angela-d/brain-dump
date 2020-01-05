@@ -1,0 +1,84 @@
+##############################################################################
+##
+##  Canon Inkjet Printer Driver for Linux
+##  Copyright CANON INC. 2001-2014
+##
+##  This program is free software; you can redistribute it and/or modify
+##  it under the terms of the GNU General Public License as published by
+##  the Free Software Foundation; version 2 of the License.
+##
+##  This program is distributed in the hope that it will be useful,
+##  but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##  GNU General Public License for more details.
+##
+##  You should have received a copy of the GNU General Public License
+##  along with this program; if not, write to the Free Software
+##  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307, USA.
+##
+##############################################################################
+
+L_INST_PRN_00_01="Pilote d'imprimante Canon Inkjet"
+L_INST_PRN_00_02="Version %s"
+L_INST_PRN_00_03="Copyright CANON INC. %s-%s"
+
+L_INST_PRN_01_01="Enregistrer l'imprimante\n"
+L_INST_PRN_01_02="Ensuite, enregistrez l'imprimante sur l'ordinateur.\n"
+L_INST_PRN_01_03="Branchez l'imprimante et mettez-la sous tension.\nPour utiliser l'imprimante en réseau, connectez-la au réseau.\nLorsque l'imprimante est prête, appuyez sur la touche Entrée.\n"
+
+L_INST_PRN_01_04="Méthode de connexion\n"
+L_INST_PRN_01_05="USB\n"
+L_INST_PRN_01_06="Réseau\n"
+L_INST_PRN_01_07="Sélectionnez la méthode de connexion.%s"
+
+L_INST_PRN_01_08="Recherche des imprimantes en cours...\n"
+
+L_INST_PRN_01_09="Sélectionner une imprimante\n"
+L_INST_PRN_01_10="Sélectionnez l'imprimante.\nSi l'imprimante à utiliser ne figure pas dans la liste, sélectionnez Mettre à jour [0] pour lancer de nouveau la recherche.\nPour annuler le processus, entrez [Q].\n"
+L_INST_PRN_01_11="Mettre à jour"
+L_INST_PRN_01_12="Imprimantes cibles détectées (adresse MAC  adresse IP)\n"
+L_INST_PRN_01_13="Autres imprimantes détectées (adresse MAC  adresse IP)\n"
+L_INST_PRN_01_14="Imprimantes cibles détectées\n"
+L_INST_PRN_01_15="Autres imprimantes détectées\n"
+L_INST_PRN_01_16="Sélection actuelle : %s %s\n"
+
+L_INST_PRN_01_17="Entrez la valeur."
+L_INST_PRN_01_18="Impossible de détecter l'imprimante cible.\n"
+
+L_INST_PRN_01_19="Enregistrer l'imprimante\n"
+L_INST_PRN_01_20="Entrez le nom de l'imprimante.%s"
+
+L_INST_PRN_01_21="Le nom de l'imprimante que vous avez entré existe déjà. Voulez-vous l'écraser ?\nEntrez [y] pour Oui ou [n] pour Non.%s"
+
+L_INST_PRN_01_22="Le nom de l'imprimante n'est pas valide.\nVous ne pouvez utiliser que les caractères suivants pour le nom de l'imprimante :\n caractères alphanumériques (a-z, A-Z, 0-9), \".\", \"-\", \"_\", \"+\", \"@\"\n"
+
+L_INST_PRN_01_23="Définir l'imprimante par défaut\n"
+L_INST_PRN_01_24="Voulez-vous définir cette imprimante par défaut ?\nEntrez [y] pour Oui ou [n] pour Non.%s"
+
+L_INST_PRN_01_25="Nom de l'imprimante : %s\n"
+
+L_INST_PRN_01_26="Sélectionnez le nom de cette imprimante pour l'impression.\n"
+L_INST_PRN_01_27="L'enregistrement de l'imprimante n'est pas terminée.\nEnregistrez l'imprimante manuellement à l'aide de la commande lpadmin.\n"
+
+L_INST_PRN_02_01="Désinstaller l'imprimante\n"
+L_INST_PRN_02_02="L'enregistrement de toutes les imprimantes de ce modèle sera supprimé.\n"
+L_INST_PRN_02_03="Voulez-vous continuer ?\nEntrez [y] pour Oui ou [n] pour Non.%s"
+
+L_INST_PRN_02_04="Echec de la suppression de [%s].\nA l'issue du processus de désinstallation, supprimez cette imprimante manuellement à l'aide de la commande lpadmin.\n"
+L_INST_PRN_02_05="Echec de la suppression des imprimantes.\nA l'issue du processus de désinstallation, supprimez ces imprimantes manuellement à l'aide de la commande lpadmin.\n"
+
+
+L_INST_COM_01_01="Commande exécutée = %s\n"
+
+L_INST_COM_01_02="Une erreur s'est produite. Impossible d'identifier le gestionnaire de paquets.\n"
+L_INST_COM_01_03="Une erreur s'est produite. Impossible de trouver un paquet requis à l'emplacement approprié.\n"
+L_INST_COM_01_04="L'installation est terminée.\n"
+L_INST_COM_01_05="Une erreur s'est produite. Impossible d'identifier votre environnement comme 32 bits ou 64 bits.\nEssayez à nouveau d'installer à l'aide de la commande suivante :\n"
+L_INST_COM_01_06="Une erreur s'est produite. Votre environnement ne correspond pas à l'environnement spécifié.\nEssayez à nouveau d'installer à l'aide de la commande suivante :\n"
+
+L_INST_COM_02_01="Syntaxe : %s\n"
+
+L_INST_COM_02_02="La désinstallation est terminée.\n"
+
+L_INST_COM_03_01="[Paquet]\n"
+
