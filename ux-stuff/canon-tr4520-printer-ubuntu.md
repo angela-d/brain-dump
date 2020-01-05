@@ -5,7 +5,7 @@ The auto-detect of Canon's TR4520 didn't bring in the necessary drivers for prin
 Or, if the path has changed, I saved the file I used [here](canon-driver/cnijfilter2-5.70-1-deb).
 
 - There is a [shell script](canon-driver/cnijfilter2-5.70-1-deb/install) you can run via CLI (run as your user, not sudo/root)
-- Or a [.deb](canon-driver/cnijfilter2-5.70-1-deb/packages/cnijfilter2_5.70-1_amd64.deb) - use the .deb if you plan to keep the driver up-to-date
+- Or a [.deb](canon-driver/cnijfilter2-5.70-1-deb/cnijfilter2-5.70-1-deb/packages/cnijfilter2_5.70-1_amd64.deb) - use the .deb if you plan to keep the driver up-to-date
 
 
 ### Install via shell script
