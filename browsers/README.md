@@ -1,3 +1,8 @@
+# Cookie Auto-Delete Doesn't Work in Waterfox or Firefox
+The `about:config` setting for **privacy.firstparty.isolate** collides with Cookie Auto-Delete and prevents it from working.  Setting it to *false* regains Cookie Auto-Delete's capabilities.
+
+***
+
 # Noscript/Firefox > This is a privileged page, whose permissions cannot be configured.
 
 On Firefox 60 ESR, I first ran into this garbage:
