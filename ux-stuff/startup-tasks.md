@@ -1,6 +1,57 @@
 # Startup Tasks
 `rc.local` is for the sysadmin/root/sudo user to execute tasks or services after normal system services have started.
 
+This was "deprecated" in distros with systemd but you can restore rc.local-like functionality by simply creating a service, enabling at startup and *calling* it rc-local.
+
+***
+
+## Create the rc.local service on systemd
+Create a service:
+```bash
+pico /etc/systemd/system/rc-local.service
+```
+
+Add the following to `rc-local.service`
+```bash
+[Unit]
+Description=Create rc.local functionality in systemd
+ConditionPathExists=/etc/rc.local
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Make the script executable so it may be invoked by the service
+```bash
+chmod +x /etc/rc.local
+```
+
+If you haven't already, pre-pend the shebang to the beginning of `/etc/rc.local`, otherwise systemd won't run it, and an exit
+```bash
+#!/bin/sh
+
+# .. your commands here
+
+exit
+```
+
+Enable it at startup and start it
+```bash
+systemctl enable rc-local && systemctl start rc-local.service
+```
+
+Check for errors (it would crash right away on start, typically)
+```bash
+service rc-local status
+```
+
 ***
 
 ## Disable Bluetooth on Startup
