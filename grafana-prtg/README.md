@@ -1,6 +1,12 @@
 # Grafana and PRTG
 My notes + bits from the Grafana documentation and [neuralfraud's wiki](https://github.com/neuralfraud/grafana-prtg/wiki) (which is sorely lacking in thorough documentation).
 
+My running versions:
+
+**Grafana version:** Grafana v6.5.3 (05025c5)
+
+**PRTG Plugin version:** v4.0.3 (development branch from Github)
+
 ## Install Grafana
 Apparently Grafana also runs on Linux, but since this is primarily for PRTG, it made the most sense to install it to PRTG's Windows Server.
 
