@@ -99,6 +99,9 @@ Experiment with the color pallete inside this table.
 **Regex Queries**
 - [Group Sensor](regex-query.md) - Query similarly-named (but different) sensors that are members of the same Group
 
+**Custom background / images and CSS**
+- [Custom styles](custom-background-styles.md) - Add gradients, heading styles and custom icons to your dashboard
+
 **Preview Your Dashboard**
 
 While on the dashboard view, click the monitor icon; click once more to enter kiosk mode and remove the headers.  ESC to quit kiosk mode.
