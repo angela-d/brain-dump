@@ -1,6 +1,8 @@
 # Grafana and PRTG
 My notes + bits from the Grafana documentation and [neuralfraud's wiki](https://github.com/neuralfraud/grafana-prtg/wiki) (which is sorely lacking in thorough documentation).
 
+![Dashboard](img/grafana-prtg.png)
+
 My setup:
 
 Application | Version
