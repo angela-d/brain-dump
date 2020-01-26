@@ -40,7 +40,9 @@ As are the neon colors:
 On the color pallete, click on the red circle to change the red color (for example) > Custom > move the dial until you find the color you like.  Repeat for other color options.
 
 ### Linux and Windows Dashboard Icons
-These too, are available thanks to Boom Theme Panel.  Create a new html/markdown panel and simply call your image with **Mode** `markdown`:
+These too, are via native capability. Create a new **Text Panel**, similarly to the Gradient Text setup.
+
+Create a new html/markdown panel and simply call your image with **Mode** `markdown`:
 ```html
 ![Tux](http://grafana.example.com:3000/public/img/custom/tux.png)
 ```
