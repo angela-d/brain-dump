@@ -1,5 +1,23 @@
 # SNMP Monitoring on Debian/Debian downstream Linux distros
 
+First, check if you have **non-free** added to your apt sources list.  The **snmp-mibs-downloader** package cannot be obtained without non-free.
+```bash
+grep "non-free" /etc/apt/sources.list
+```
+
+If no results, simply append **non-free** to your `/etc/apt/sources.list` repo list, like so:
+- Before:
+```bash
+deb http://ftp.us.debian.org/debian/ stretch main contrib
+deb-src http://ftp.us.debian.org/debian/ stretch main contrib
+```
+
+- After:
+```bash
+deb http://ftp.us.debian.org/debian/ stretch main non-free contrib
+deb-src http://ftp.us.debian.org/debian/ stretch main non-free contrib
+```
+
 Install SNMP, nmap and snmp-mibs-downloader
 ```bash
 apt update && apt install snmpd nmap snmp-mibs-downloader
