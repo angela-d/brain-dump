@@ -18,9 +18,9 @@ deb http://ftp.us.debian.org/debian/ stretch main non-free contrib
 deb-src http://ftp.us.debian.org/debian/ stretch main non-free contrib
 ```
 
-Install SNMP, nmap and snmp-mibs-downloader
+Install SNMP and snmp-mibs-downloader
 ```bash
-apt update && apt install snmpd nmap snmp-mibs-downloader
+apt update && apt install snmpd snmp-mibs-downloader
 ```
 
 
