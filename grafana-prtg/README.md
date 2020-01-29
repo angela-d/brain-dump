@@ -24,6 +24,28 @@ Apparently Grafana also runs on Linux, but since this is primarily for PRTG, it 
 
 *The following only needs to be done once, the first time Grafana is installed.*
 
+### Create a User in PRTG for API Access
+Set up an **administrator** user in PRTG.
+Setup > System Administration > User Accounts > **+** to add a new user
+
+Use the following options:
+
+Option | Value
+-------|-------
+**Account Type** | Read/write user
+**Acknowledge Alarms** | User may not acknowledge alarms (default)
+**Primary Group** | PRTG Administrators
+**Date Format** | MM/DD/YYYY HH:MM:SS (AM/PM)
+
+Save the user.
+
+Now, obtain the Passhash by clicking the **Passhash** button, after the page refreshes.
+
+- If you try to enable the API in Grafana by using the password, authentication will fail.
+- If the user is in the PRTG User Group/read-only, you will not get full API access.
+- When the user’s password is changed, the passhash will change, also.
+
+
 You will need to configure PRTG to add an `Access-Control-Allow-Origin` HTTP header. This can be done in two simple steps:
 
 1. Add a String value named `AccessControlAllowOriginHTTPHeader` to the registry key: `HKLM\Software\Wow6432Node\Paessler\PRTG Network Monitor\Server\Webserver`
