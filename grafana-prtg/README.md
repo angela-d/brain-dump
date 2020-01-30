@@ -132,6 +132,9 @@ Experiment with the color pallete inside this table.
 **Troubleshooting**
 - [Common Problems](troubleshooting.md) - Weird bugs and quirks and how to bypass them
 
+**Add https to Grafana**
+- [Encrypt your connection](enabling-ssl.md) - Enable SSL on your Grafana server
+
 **Preview Your Dashboard**
 
 While on the dashboard view, click the monitor icon; click once more to enter kiosk mode and remove the headers.  ESC to quit kiosk mode.
