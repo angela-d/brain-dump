@@ -126,6 +126,12 @@ Experiment with the color pallete inside this table.
 **Custom background / images and CSS**
 - [Custom styles](custom-background-styles.md) - Add gradients, heading styles and custom icons to your dashboard
 
+**Data Transfer Unit Measurements**
+- [Data Transfer Rates](data-transfer-rates.md) - Getting the correct unit measurements
+
+**Troubleshooting**
+- [Common Problems](troubleshooting.md) - Weird bugs and quirks and how to bypass them
+
 **Preview Your Dashboard**
 
 While on the dashboard view, click the monitor icon; click once more to enter kiosk mode and remove the headers.  ESC to quit kiosk mode.
