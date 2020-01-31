@@ -3,6 +3,8 @@ My notes + bits from the Grafana documentation and [neuralfraud's wiki](https://
 
 ![Dashboard](img/grafana-prtg.png)
 
+![Old Dashboard](img/grafana-prtg-1.png)
+
 My setup:
 
 Application | Version
@@ -25,26 +27,41 @@ Apparently Grafana also runs on Linux, but since this is primarily for PRTG, it 
 *The following only needs to be done once, the first time Grafana is installed.*
 
 ### Create a User in PRTG for API Access
-Set up an **administrator** user in PRTG.
-Setup > System Administration > User Accounts > **+** to add a new user
+1. Create an API user group, with restricted permissions.  Setup > System Administration > User Groups > **+** > Add User Group
 
 Use the following options:
 
 Option | Value
 -------|-------
-**Account Type** | Read/write user
+**User Group Name** | API
+**Use Active Directory** | No
+**Allowed Sensors** | Users may create certain sensor types only
+**Members** | *(add grafana here, later)*
+
+
+
+2. Setup the Grafana user.  Setup > System Administration > User Accounts > **+** to add a new user
+
+Use the following options:
+
+Option | Value
+-------|-------
+**Account Type** | Read-only user
 **Acknowledge Alarms** | User may not acknowledge alarms (default)
-**Primary Group** | PRTG Administrators
+**Primary Group** | API
 **Date Format** | MM/DD/YYYY HH:MM:SS (AM/PM)
 
 Save the user.
 
 Now, obtain the Passhash by clicking the **Passhash** button, after the page refreshes.
 
-- If you try to enable the API in Grafana by using the password, authentication will fail.
-- If the user is in the PRTG User Group/read-only, you will not get full API access.
-- When the user’s password is changed, the passhash will change, also.
+3. Go back to the **API** group and add **grafana** to it.
 
+Worth noting:
+- *If you try to enable the API in Grafana by using the password, authentication will fail.*
+- *When the user’s password is changed, the passhash will change, also.*
+
+***
 
 You will need to configure PRTG to add an `Access-Control-Allow-Origin` HTTP header. This can be done in two simple steps:
 
