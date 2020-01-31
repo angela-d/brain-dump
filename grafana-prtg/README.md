@@ -57,6 +57,8 @@ Now, obtain the Passhash by clicking the **Passhash** button, after the page ref
 
 3. Go back to the **API** group and add **grafana** to it.
 
+4. Go to your **Root** group, probably at `https://prtg.example.com/group.htm?id=0&tabid=8` (change URL to suit your setup) >  > scroll to "Access Rights" > adjust API > Read access > Save
+
 Worth noting:
 - *If you try to enable the API in Grafana by using the password, authentication will fail.*
 - *When the user’s password is changed, the passhash will change, also.*
