@@ -1,6 +1,12 @@
 # Troubleshooting the Grafana-PRTG Plugin
 Taking note of issues I run into!
 
+## Values Don’t Quite Match Up
+Check the timing in the top right (of the dashboard).
+
+Set the quick range to Last 5 Minutes. Make sure that the Value Stat is set to **Current** (under *Visualization*), as it defaults to Average
+
+
 ## Query > Metrics > Can Only Select *
 I ran into this a few times, it seems the API refresh gets hung up (or caching interferes).  Haven't noticed a pattern as to why or what gets done to cause it, yet.
 
