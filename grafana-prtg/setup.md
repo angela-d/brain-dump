@@ -2,7 +2,7 @@
 *The following only needs to be done once, the first time Grafana is installed.*
 
 - [Install instructions from Grafana](https://grafana.com/docs/grafana/latest/installation/)
-- **To upgrade:** (Windows) Download a newer package from the install link above and extract to the same location (and overwrite the existing files). **This might overwrite your config changes.** Save a copy of the config to the desktop, prior to upgrading - from `C:\Program Files\GrafanaLabs\grafana\conf\custom.ini` as this will make upgrades easier without risking losing your config changes.
+- **To upgrade:** (Windows) First, **backup**.  Then, download a newer package from the install link above and extract to the same location (and overwrite the existing files). **This might overwrite your config changes.** Save a copy of the config to the desktop, prior to upgrading - from `C:\Program Files\GrafanaLabs\grafana\conf\custom.ini` as this will make upgrades easier without risking losing your config changes.  Shut down the Grafana service, else you'll be prompt for a system reboot to complete the upgrade.  *If custom.ini gets wiped during the upgrade, it is also wise to diff the new custom.ini with your backup, incase new options were added.*
 
 ### Create a User in PRTG for API Access
 1. Create an API user group, with restricted permissions.  Setup > System Administration > User Groups > **+** > Add User Group
