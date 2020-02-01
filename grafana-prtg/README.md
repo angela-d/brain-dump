@@ -9,8 +9,8 @@ My setup:
 
 Application | Version
 ------------|----------
-**Grafana** | Grafana v6.5.3 (05025c5)
-**PRTG Plugin** |  v4.0.3 (development branch from Github)
+**Grafana** | Grafana v6.6.0 (5c11bbdfb4)
+**PRTG Plugin** |  v4.0.3 (development branch from Github; master branch seems to break historic data charts)
 **PRTG** | 19.4.54.1506+
 
 
@@ -39,6 +39,9 @@ Some of my notes will reference the Windows-install, as a result.  If you use Gr
 
 **Grouping Results**
 - [Combining Queries](grouping-results.md) - Combining two separate sensor results in the same map
+
+**Cosmetic Annoyances**
+- [Adjust Bar Gauge Legend](remove-bar-gauge-label.md) - Remove the repeated channel on the bar gauge legend
 
 **Troubleshooting**
 - [Common Problems](troubleshooting.md) - Weird bugs and quirks and how to bypass them
