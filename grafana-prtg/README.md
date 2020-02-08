@@ -28,20 +28,15 @@ Some of my notes will reference the Windows-install, as a result.  If you use Gr
 **Build a Dashboard**
 - [First Step](build-a-dashboard.md) - Single results or grouped graphs
 
-**Regex Queries**
+**Statistical**
 - [Group Sensor](regex-query.md) - Query similarly-named (but different) sensors that are members of the same Group
-
-**Custom background / images and CSS**
-- [Custom styles](custom-background-styles.md) - Add gradients, heading styles and custom icons to your dashboard
-
-**Data Transfer Unit Measurements**
 - [Data Transfer Rates](data-transfer-rates.md) - Getting the correct unit measurements
-
-**Grouping Results**
 - [Combining Queries](grouping-results.md) - Combining two separate sensor results in the same map
 
-**Cosmetic Annoyances**
+**Visual**
+- [Custom styles](custom-background-styles.md) - Add gradients, heading styles and custom icons to your dashboard
 - [Adjust Bar Gauge Legend](remove-bar-gauge-label.md) - Remove the repeated channel on the bar gauge legend
+- [Sort Ordering](sorting.md) - Sort options in graphs
 
 **Troubleshooting**
 - [Common Problems](troubleshooting.md) - Weird bugs and quirks and how to bypass them
