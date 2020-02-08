@@ -6,6 +6,26 @@ Check the timing in the top right (of the dashboard).
 
 Set the quick range to Last 5 Minutes. Make sure that the Value Stat is set to **Current** (under *Visualization*), as it defaults to Average
 
+***
+
+## l is undefined
+I encountered this when I added a device to a group that was running a graph.
+
+**Cause:**
+- (In PRTG) Device/Sensor Settings > Scanning Interval: 4 hours
+
+**Why it Caused the Map to Return as Undefined:**
+- The dashboard (Grafana) is set to pull data from the last 6 hours
+
+**Fix:**
+- Adjust either the PRTG scanning interval or how long the dashboard goes back
+- Changes won't be immediate; log out of the dashboard/clear cookies and/or trigger a sensor scan on PRTG (click the two arrows or the chevron > Scan Now)
+
+Not sure why this didn't gracefully fail and grey out the particular sensor object.. bug in either the plugin/Grafana, perhaps.  Though its worth noting on the TV Display (Pi that runs throughout the night), I *did* see a similar object greyed out on the same graph during the morning.
+
+The instance that prompted me to take note of this was triggered while adding new devices and viewing on my PC, so plausibly a cache bug.  I suspect the same warning appeared on the Pi, but no one was around to see it.  By the time it was seen, the cache was created?  Not enough info to submit a bug report, yet.
+
+***
 
 ## Query > Metrics > Can Only Select *
 I ran into this a few times, it seems the API refresh gets hung up (or caching interferes).  Haven't noticed a pattern as to why or what gets done to cause it, yet.
