@@ -52,18 +52,15 @@ You will need to configure PRTG to add an `Access-Control-Allow-Origin` HTTP hea
 
 **Plugin Setup**
 
-Due to prior reported bugs, I selected the Development branch.
-
 1. Obtain the plugin from https://github.com/neuralfraud/grafana-prtg
-2. On the small branch button (that says Branch: **master**), click it and select **Development**
-3. Click the green **Clone or Download** Button
-4. Select **Download ZIP** and save
-5. Unzip the downloaded file > Navigate to the `jasonlashua-prtg-datasource` directory; drag `jasonlashua-prtg-datasource` into the Grafana directory (on the Grafana server): **data/plugins** - on a Windows machine, this is `C:\Program Files\GrafanaLabs\grafana\data\plugins`
-6. Go to `services.msc` and restart the **Grafana** service
-7. Select the **Datasource** page and click the "**Add new**" button
-8. Under Edit Data Source, Choose a simple name, e.g., "PRTG" and select "prtg" as the data source type.
-9. Under HTTP Settings, provide the API URL (http://prtg.example.com/api)
-10. Typically you should chose "**Server**" as the **access** mode unless you specifically want the web browser to directly communicate with PRTG
-11. Skip the **Http Auth** section
-12. Under **PRTG API Configuration**, provide the username for the account you will be accessing the API as. For the passhash, you will find this in the PRTG account page for that user. **Providing the password will not work.** ![PRTG Data Source](img/prtg-data-source.png)
-13. Click the "Test Connection" button to verify your datasource connection ![Test Successful](img/test-successful.png)#
+2. Click the green **Clone or Download** Button
+3. Select **Download ZIP** and save
+4. Unzip the downloaded file > Navigate to the `jasonlashua-prtg-datasource` directory; drag `jasonlashua-prtg-datasource` into the Grafana directory (on the Grafana server): **data/plugins** - on a Windows machine, this is `C:\Program Files\GrafanaLabs\grafana\data\plugins`
+5. Go to `services.msc` and restart the **Grafana** service
+6. Select the **Datasource** page and click the "**Add new**" button
+7. Under Edit Data Source, Choose a simple name, e.g., "PRTG" and select "prtg" as the data source type.
+8. Under HTTP Settings, provide the API URL (http://prtg.example.com/api)
+9. Typically you should chose "**Server**" as the **access** mode unless you specifically want the web browser to directly communicate with PRTG
+10. Skip the **Http Auth** section
+11. Under **PRTG API Configuration**, provide the username for the account you will be accessing the API as. For the passhash, you will find this in the PRTG account page for that user. **Providing the password will not work.** ![PRTG Data Source](img/prtg-data-source.png)
+12. Click the "Test Connection" button to verify your datasource connection ![Test Successful](img/test-successful.png)#
