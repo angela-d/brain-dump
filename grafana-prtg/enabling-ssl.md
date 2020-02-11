@@ -40,9 +40,11 @@ cert_key =
 
 Change to (the path of the SSL cert that PRTG uses):
 ```bash
-cert_file = "C:\Program Files (x86)\PRTG Network Monitor\cert\prtg.crt"
+cert_file = "C:\Program Files (x86)\PRTG Network Monitor\cert\fullchain.pem"
 cert_key = "C:\Program Files (x86)\PRTG Network Monitor\cert\prtg.key"
 ```
+
+Note that if you use **prtg.crt** instead of **fullchain.pem** for `cert_file` some browsers (like Midori) may untrust the cert; I didn't experience such in Firefox.
 
 Go into `services.msc` on the Windows host and locate the Grafana service > right-click > restart
 
@@ -54,3 +56,24 @@ If you previously uploaded images under your http connection, you'll note that G
 To fix it:
 
 Simply edit that object and change the URL prefix to `https://grafana.example.com:3000`
+
+
+### Test the Certificate
+From a Linux machine:
+```bash
+openssl s_client -showcerts -connect grafana.example.com:3000
+```
+
+You'll see statistical output, like so:
+```text
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Server public key is 4096 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 0 (ok)
+```
+
+The last line being the important message.  Anything other than (ok) indicates the config isn't correct.
