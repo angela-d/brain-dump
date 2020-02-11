@@ -10,8 +10,10 @@ My setup:
 Application | Version
 ------------|----------
 **Grafana** | Grafana v6.6.0 (5c11bbdfb4)
-**PRTG Plugin** |  v4.0.3 (development branch from Github; master branch seems to break historic data charts)
+**PRTG Plugin** |  v4.0.4 (master branch from Github)
 **PRTG** | 19.4.54.1506+
+
+Note: When upgrading from v4.0.3 to v4.0.4, some graphs may break due to the channel name change.  To fix, I went in and re-added the channel for the affected visualizations.
 
 
 Grafana also runs on Linux (which is easier to maintain + substantially lighter on resources), but since this is primarily for PRTG, it made the most sense (for me) to install it to PRTG's Windows Server.
@@ -53,7 +55,11 @@ If you want the shared dashboard to refresh, append `&refresh=3m` to the address
 
 **Backup a Dashboard**
 
-Dashboards are kept in a .db file, I haven't experimented much (yet) with some of the backup tools others have built.  For a quick backup, click the *Share* button on a dashboard (arrow icon, top-right of the dashboard) > click the **Export** tab > Save to File
+Dashboards are kept in a .db file/database.
+- For a quick backup, click the *Share* button on a dashboard (arrow icon, top-right of the dashboard) > click the **Export** tab > Save to File
+- [This tool](https://github.com/ysde/grafana-backup-tool) saves all of the board JSON at once, but not the database - though a simple copy of `C:\Program Files\GrafanaLabs\grafana\data\grafana.db` will suffice for infrequent/manual backups.
+
+Since its a database, if backed up in a private git repo, [encrypt it](https://github.com/angela-d/gitenc).  Eventhough the user passwords are hashed and salted, its better to add another layer of security - should the current hashing algorithm get broken in the future.
 
 **Add https to Grafana**
 - [Encrypt your connection](enabling-ssl.md) - Enable SSL on your Grafana server
