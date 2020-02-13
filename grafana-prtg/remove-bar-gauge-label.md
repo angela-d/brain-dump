@@ -15,7 +15,7 @@ The **: Free Memory** (channel) is repeated for *every* device on the map.. I'm 
 
 This setting is controlled by the following script:
 - (Windows installs) `C:\Program Files\GrafanaLabs\grafana\data\plugins\jasonlashua-prtg-datasource\dist\datasource.js`
-- (Linux installs) `/var/lib/grafana/plugins/prtg/jasonlashua-prtg-datasource/dist/datasource.js`
+- (Linux installs) `/var/lib/grafana/plugins/jasonlashua-prtg-datasource/dist/datasource.js`
 
 Change:
 ```javascript
