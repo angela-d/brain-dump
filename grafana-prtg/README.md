@@ -13,7 +13,7 @@ Application | Version
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
 **PRTG** | 19.4.54.1506+
 
-Development / Testing Environment ([see notes for setup](dev-environmend.md)):
+Development / Testing Environment ([see notes for setup](dev-environment.md)):
 
 Application | Version
 ------------|-----------
