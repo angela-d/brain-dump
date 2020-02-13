@@ -13,6 +13,16 @@ Application | Version
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
 **PRTG** | 19.4.54.1506+
 
+Development / Testing Environment ([see notes for setup](dev-environmend.md)):
+
+Application | Version
+------------|-----------
+**Grafana** | Grafana v6.7.0-pre (63d999a739)
+**PRTG Plugin** |  v4.0.4 (master branch from Github)
+**PRTG** | 19.4.54.1506+
+
+^ The plugin is tested & working up to (at least) this Grafana version.
+
 Note: When upgrading from v4.0.3 to v4.0.4, some graphs may break due to the channel name change.  To fix, I went in and re-added the channel for the affected visualizations.
 
 
