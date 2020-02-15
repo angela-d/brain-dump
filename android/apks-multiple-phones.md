@@ -8,7 +8,7 @@ Pre-requisites:
 
 There are ways to do this without root, but I've never done it as I always root my phones.
 
-In my example I copy the Waterfox apk.
+In my example I copy the Firefox apk.
 
 ### Hook up the source phone to your computer via USB.
 
@@ -26,12 +26,12 @@ adb shell pm list packages | sort
 
 Once you see the one you want, get the path (**omit** package:):
 ```bash
-adb shell pm path org.waterfoxproject.waterfox
+adb shell pm path org.mozilla.firefox
 ```
 
 Pull it into your pc (it will load to whatever folder you're currently in, so if on Linux and you want it on your desktop: `cd ~/Desktop` first:
 ```bash
-adb pull /data/app/org.waterfoxproject.waterfox-1/base.apk
+adb pull /data/app/org.mozilla.firefox-1/base.apk
 ```
 
 You should now see **base.apk** on your desktop.
@@ -45,7 +45,7 @@ You should now see **base.apk** on your desktop.
 
 Plug in the source phone via USB.
 
-You could use these commands to snag any kind of app data, my example is using Waterfox's preferences.  App data is stored in **/data/data/**
+You could use these commands to snag any kind of app data, my example is using Firefox's preferences.  App data is stored in **/data/data/**
 
 Get root privileges over ADB:
 ```bash
@@ -59,7 +59,7 @@ cd /data/data && ls -l
 
 If you want to see the contents you're about to grab, go into the directory:
 ```bash
-cd cd org.waterfoxproject.waterfox/ && ls -l
+cd cd org.mozilla.firefox/ && ls -l
 ```
 
 Print the full path of the directory and copy it to notepad:
@@ -67,7 +67,7 @@ Print the full path of the directory and copy it to notepad:
 pwd
 ```
 
-> /data/data/org.waterfoxproject.waterfox
+> /data/data/org.mozilla.firefox
 
 Exit the terminal session with this phone:
 ```bash
@@ -78,11 +78,11 @@ Now you should be back in your PC's terminal, so cd into the directory you want 
 
 Grab the data:
 ```bash
-adb pull /data/data/org.waterfoxproject.waterfox
+adb pull /data/data/org.mozilla.firefox
 ```
 
 It returned an error about a lock file, which I ignored because I don't care about it.
-> adb: error: failed to copy '/data/data/org.waterfoxproject.waterfox/files/mozilla/m9gy7yqx.default/lock' to './org.waterfoxproject.waterfox/files/mozilla/z3eg2uua.default/lock': open failed: No such file or directory
+> adb: error: failed to copy '/data/data/org.mozilla.firefox/files/mozilla/m9gy7yqx.default/lock' to './org.mozilla.firefox/files/mozilla/z3eg2uua.default/lock': open failed: No such file or directory
 
 Files are now in **wf-phone**
 
@@ -94,7 +94,7 @@ adb devices
 ```
 
 ```bash
-adb push /home/angela/Desktop/wf-phone/org.waterfoxproject.waterfox/ /data/data/
+adb push /home/angela/Desktop/wf-phone/org.mozilla.firefox/ /data/data/
 ```
 
 Bookmarks are now in place.

@@ -43,4 +43,4 @@ Each conf you modify or add, requires a restart of rsyslog.
 You need to know the application name, as rsyslog sees it.
 - View `/var/log/syslog` and look for the app name to the left of [pid]: like so: `firefox-esr[17145]:` -- `firefox-esr` is the application name.
 
-- gtk warnings tend to trigger with the binary app name, not .desktop shortcut (but also depends on how you're launching the application on the desktop); so you may need to do both (see waterfox.conf for an example)
+- gtk warnings tend to trigger with the binary app name, not .desktop shortcut (but also depends on how you're launching the application on the desktop); so you may need to do both (see firefox-esr.conf for an example)

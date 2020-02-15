@@ -13,13 +13,12 @@ Go to `about:profiles` and create a new profile > a wizard will launch
 ### Bring Over Bookmarks
 If you want to copy bookmarks from another Firefox install, the path is as follows:
 - Firefox: `/home/yourusername/.mozilla/firefox/[profile id].default/bookmarkbackups`
-- Waterfox: `/home/yourusername/.waterfox/[profile id].default-[profile id]/bookmarkbackups`
 
 Simply drag **bookmarkbackups** into your new profile, at: `/home/yourusername/.mozilla/firefox/[profile id].browsing/bookmarkbackups` (note the **.browsing** in the profile path -- that's my new profile)
 
 ### Copy Extensions from One Profile to Another
 
-Don't do this from Waterfox <> Firefox.  Only copy the extensions from the same browser instance/directory.
+Only copy the extensions from the same browser instance/directory.
 
 Copy the following folders and their content from your **.default** profile:
 ```text

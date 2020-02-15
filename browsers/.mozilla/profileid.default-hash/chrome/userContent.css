@@ -6,7 +6,7 @@
     background-position: center center;
   }
 
-  /* override default waterfox layouts on the launch page to match wallpaper */
+  /* override default firefox-esr layouts on the launch page to match wallpaper */
   .launchButton {
     color: #fff !important;
   }
