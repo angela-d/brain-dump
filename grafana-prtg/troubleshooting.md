@@ -8,10 +8,10 @@ Set the quick range to Last 5 Minutes. Make sure that the Value Stat is set to *
 
 ***
 
-## l is undefined
-I encountered this when I added a device to a group that was running a graph.
+## l is undefined (multiple causes)
+I first encountered this when I added a device to a group that was running a graph.
 
-**Cause:**
+**Cause 1:**
 - (In PRTG) Device/Sensor Settings > Scanning Interval: 4 hours
 
 **Why it Caused the Map to Return as Undefined:**
@@ -24,6 +24,17 @@ I encountered this when I added a device to a group that was running a graph.
 Not sure why this didn't gracefully fail and grey out the particular sensor object.. bug in either the plugin/Grafana, perhaps.  Though its worth noting on the TV Display (Pi that runs throughout the night), I *did* see a similar object greyed out on the same graph during the morning.
 
 The instance that prompted me to take note of this was triggered while adding new devices and viewing on my PC, so plausibly a cache bug.  I suspect the same warning appeared on the Pi, but no one was around to see it.  By the time it was seen, the cache was created?  Not enough info to submit a bug report, yet.
+
+
+**Cause 2:**
+- A device (or sensor) in the target group is paused
+
+
+**Fix:**
+- Unpause (or remove the device from the group)
+- Refresh the dashboard
+
+Unclear if this is a Grafana bug or sourced in the PRTG plugin.
 
 ***
 
