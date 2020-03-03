@@ -25,36 +25,13 @@ These instructions are based on [David C's OpenWRT build](https://dc502wrt.org/)
 
 1. Login to the router via CLI
 2. Remove dnscrypt-proxy v1 (if installed): `opkg remove --autoremove luci-app-dnscrypt-proxy`
-3. Obtain dnscrypt-proxy v2 from dc502wrt.org:
-```bash
-cd /tmp &&
-wget https://dc502wrt.org/releases/dnscrypt-proxy.tar.gz && gunzip -d dnscrypt-proxy.tar.gz &&
-tar xvf dnscrypt-proxy.tar &&
-rm -f dnscrypt-proxy.tar
-```
+3. Current versions of David's build include dnscrypt-proxy v2 by default
 
-4. Copy the extracted service script to its destination:
-```bash
-cp /tmp/dnscrypt-proxy/dnscrypt-proxy /usr/sbin/ &&
-chmod 755 /usr/sbin/dnscrypt-proxy
-```
-
-5. Copy the config to its destination:
-```bash
-cp /tmp/dnscrypt-proxy/dnscrypt-proxy.toml /etc/config/
-```
-
-6. Copy the init script & apply proper permissions:
-```bash
-cp /tmp/dnscrypt-proxy/init.d/dnscrypt-proxy /etc/init.d/ &&
-chmod 755 /etc/init.d/dnscrypt-proxy
-```
-
-7. In the Luci GUI dashboard, set the DNS either per interface (or for all interfaces) -- see *Basic DNS Setup*; to route DNS requests through DNSCrypt, use `127.0.0.1#5300` as the DNS IP.
+4. In the Luci GUI dashboard, set the DNS per interface (Network > Interfaces > Edit > Use custom DNS servers) to route DNS requests through DNSCrypt, use `127.0.0.53` as the DNS IP.
 
 ### Configure DNSCrypt
 By default, *Cloudflare* is the primary; to pick another host, get the server name from the [public servers list](https://dnscrypt.info/public-servers).
-1. Edit the DNSCrypt config: `vi /etc/config/dnscrypt-proxy.toml`
+1. Edit the DNSCrypt config: `vi /etc/dnscrypt-proxy2/dnscrypt-proxy.toml`
 
 2. To choose another host, change the following line:
 ```bash
@@ -67,19 +44,25 @@ server_names = ['arvind-io','adguard-dns-doh','bottlepost-dns-nl','aaflalo-me-ny
 
 3. Test loading configs:
 ```bash
-dnscrypt-proxy -config /etc/config/dnscrypt-proxy.toml -check
+dnscrypt-proxy -config /etc/dnscrypt-proxy2/dnscrypt-proxy.toml -check
 ```
-> [NOTICE] Source [public-resolvers.md] loaded
+> [NOTICE] dnscrypt-proxy 2.0.39
+>
+> [NOTICE] Network connectivity detected
+>
+> [NOTICE] Source [public-resolvers] loaded
+>
+> [NOTICE] Source [relays] loaded
 >
 > [NOTICE] Configuration successfully checked
 
+
 4. Save config
 ```bash
-/etc/init.d/dnscrypt-proxy enable &&
-/etc/init.d/dnscrypt-proxy start
+/etc/init.d/dnscrypt-proxy restart
 ```
 
-5. Adjust the fallback server (if you don't want Cloudflare), from:
+5. Adjust the fallback server (if you don't want Cloudflare or Google), from:
 ```bash
 fallback_resolver = '1.1.1.1:53'
 ```
@@ -92,18 +75,6 @@ fallback_resolver = '9.9.9.9:53'
 
 7. Adjust/enable any other preferred settings
 
-**Note:** If you encounter periodic latency, you may want to swap out any dead resolvers that no longer appear on the public servers list.
-
-If modified the dnscrypt-proxy config, simply restart the service (rather than re-running commands from #4): `/etc/init.d/dnscrypt-proxy restart`
-
-### OpenWRT Upgrades Lose Config
-The next sysupgrade may require the above steps to be re-run.
-
-In my experience, after a system upgrade, all of the files remain in-place - but never activate.  Fastest resolution (to-date) is to simply re-run the install steps.
-
-Reducing the default cache from 512 to 2 & restarting dnscrypt had no effect.
-
-[Build r11583+ has dnscrypt-proxy2 pre-installed](https://dc502wrt.org/releases/openwrt-mvebu-cortexa9.manifest), but I still had to re-run the above install instructions after the latest upgrade.
 
 # Caveats
 This will intermittently jag up the tracking from coupon sites like Ebates / Rakuten (if you choose a DNSCrypt provider that offers filtering).
@@ -111,5 +82,5 @@ This will intermittently jag up the tracking from coupon sites like Ebates / Rak
 If you keep getting a connection refused, after disabling [the hosts file](https://github.com/angela-d/autohosts), this would be the culprit.
 
 Temporary unblock the trackers:
-- DHCP and DNS > DNS forwardings > remove **127.0.0.1#5300** and temporary place another DNS host like **9.9.9.9** in its place
+- DHCP and DNS > DNS forwardings > remove **127.0.0.53** and temporary place another DNS host like **9.9.9.9** in its place
 - After you're done shopping, reverse the above steps (and restore the hosts block) **and also clear your cookies**!
