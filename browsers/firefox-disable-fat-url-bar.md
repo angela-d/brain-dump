@@ -1,4 +1,4 @@
-# Disable Fat UR: Bar in Firefox 75
+# Disable Fat URL Bar in Firefox 75
 If you want to disable the fat URL bar / pop out bar "feature" nobody asked for:
 
 - In the browser's address bar, go to `about:config`
