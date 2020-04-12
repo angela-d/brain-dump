@@ -22,3 +22,6 @@ X-GNOME-Autostart-enabled=true
 ```
 
 Automatically switches on scroll lock as soon as the system is logged on.
+
+### Windows Note
+Simply hitting the Scroll Lock key / SL key lit up the keyboard and persists through reboots.
