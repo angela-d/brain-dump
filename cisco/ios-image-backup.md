@@ -112,6 +112,47 @@ scp -r tftpusername@tftphost:/srv/tftp/*.bin ~/Desktop/switch-backups/
 
 - And remove the source backups from the TFTP server.
 
+## Optionally Setup the TFTP Restore to Send from Your Desktop
+Useful in the event of file restoration; you can copy the restore point directly from the TFTP server.
+
+Note that you need to be on a network accessible/whitelisted to the TFTP server.
+
+In the earlier steps, you `chown` to tftp user, only.  If your SSH user is different (as it should be) you'll need to add your SSH user to the tftp group.
+
+As root/sudo:
+```bash
+usermod -g tftp youruser
+```
+
+At this point, you still can't write to it, as the **tftp** group has no write permissions:
+```text
+root@yourhost[~]: ls -l /srv/
+total 4
+drwxr-xr-x 2 tftp tftp 4096 Apr 21 16:54 tftp
+```
+
+Give the *group* write permissions to the tftp directory:
+```bash
+chmod g+rwx /srv/tftp/
+```
+
+And now you can write to it:
+```text
+root@yourhost[~]: ls -l /srv/
+total 4
+drwxrwxr-x 2 tftp tftp 4096 Apr 21 16:54 tftp
+```
+
+From your desktop:
+```bash
+scp -r /storage/switch-images/filename-to-send.bin youruser@yourhostname:/srv/tftp/
+```
+- Optionally use a `/storage/switch-images/*.bin` wildcard to copy everything
+- Modify the source path if your repo is kept somewhere other than `/storage/switch-images/`
+
+The above will take a copy off of your `/storage/switch-images/` directory and copy the .bin to the TFTP server.
+
+
 ## Troubleshooting
 Possible issues causing timeouts:
 - Check access control lists (ACL) for `deny` rules: `show access-list`
