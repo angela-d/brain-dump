@@ -41,6 +41,8 @@ to the servers you'd like to use:
 ```bash
 server_names = ['arvind-io','adguard-dns-doh','bottlepost-dns-nl','aaflalo-me-nyc']
 ````
+- :warning: When using `ams-dnscrypt-nl` Google appeared as a resolver during a [DNS Leak Test](https://dnsleaktest.com/)
+  - (despite Google already having been removed as a fallback resolver in the default config)
 
 3. Test loading configs:
 ```bash
