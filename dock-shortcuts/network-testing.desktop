@@ -1,0 +1,24 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Network Testing
+GenericName=Network Testing
+Comment=Wifi testing awesomeness
+Icon=cs-network
+Exec=tilix -a app-new-window -x "ntest"
+NoDisplay=false
+Categories=Internet;Network;
+StartupWMClass=ntest
+StartupNotify=false
+Terminal=false
+DBusActivatable=True
+
+Actions=NewShortcut;NewShortcut1;
+
+[Desktop Action NewShortcut]
+Name=Channel usage
+Exec=tilix -a session-add-down -x "ntest c"
+
+[Desktop Action NewShortcut1]
+Name=Another Session
+Exec=tilix -a session-add-down -x "ntest"
