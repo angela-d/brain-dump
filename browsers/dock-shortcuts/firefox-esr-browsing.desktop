@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Firefox Browsing Profile
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Icon=firefox-trunk
+Exec=/usr/lib/firefox-esr/firefox-esr %u -P browsing
+NoDisplay=false
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
+StartupWMClass=Browsing-Profile
+StartupNotify=true
+Terminal=false

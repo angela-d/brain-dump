@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Git
+GenericName=Git
+Comment=Git directories
+Icon=folder-github
+Exec=/usr/bin/nautilus --new-window /storage/git
+NoDisplay=false
+Categories=Core;FileManager;GNOME;GTK;Utility;
+Keywords=folder;manager;explore;disk;filesystem;
+MimeType=inode/directory;application/x-gnome-saved-search;
+StartupWMClass=git
+StartupNotify=true
+Terminal=false
+DBusActivatable=True
