@@ -33,6 +33,7 @@ For times when hanging out in purgatory is necessary.
 
 Windows Troubleshooting
 - [Regex File Searches with Powershell](regex-search-with-powershell.md)
+- [LDAP Binding Change](ldap-binding-change.md)
 
 Active Directory Users
 - [Troubleshooting](active-directory-troubleshooting.md)
@@ -40,3 +41,6 @@ Active Directory Users
 
 Active Directory Domains
 - [Forward Lookup Zones](forward-lookup-zones.md)
+
+Making Windows Machines Cooler
+- [Installing Debian to a Surface Tablet](install-debian-surface-tablet.md)
