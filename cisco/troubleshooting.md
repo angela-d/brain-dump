@@ -122,3 +122,19 @@ no errdisable detect cause gbic-invalid
 ```
 
 You may have to run `shut` and `no shut` on the interface after, if it had been disabled due to the SFP.
+
+
+***
+## Unable to SSH/telnet to Switch from Management VLAN
+I ran into a residual bug left over from a previous setup - in this particular case, inter-VLAN routing is done at the firewall-level and not at the switch.
+
+This particular switch, had that capability enabled:
+```bash
+ip routing
+```
+
+Fix:
+```bash
+no ip routing
+wr mem
+```
