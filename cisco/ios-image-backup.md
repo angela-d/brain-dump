@@ -154,6 +154,43 @@ The above will take a copy off of your `/storage/switch-images/` directory and c
 
 
 ## Troubleshooting
+Bug: %Error reading flash:c3750-ipservicesk9-mz.150-2.SE8 (Is a directory)
+
+Problem:
+```text
+switch#show flash
+
+Directory of flash:/
+
+    2  drwx         256  Feb 28 1993 18:54:22 -06:00  c3750-ipservicesk9-mz.150-2.SE8
+  528  -rwx         109  Feb 28 1993 19:05:25 -06:00  info
+  530  -rwx        8045  Apr 27 1993 19:15:52 -06:00  config.text
+  531  -rwx        2212  May 25 1993 21:33:34 -06:00  vlan.dat
+  532  -rwx        1914  Apr 27 1993 19:15:52 -06:00  private-config.text
+  533  -rwx        3096  Apr 27 1993 19:15:52 -06:00  multiple-fs
+
+32514048 bytes total (10206208 bytes free)
+switch#copy flash tftp
+Source filename []? c3750-ipservicesk9-mz.150-2.SE8
+Address or name of remote host []? 172.18.1.10
+Destination filename [c3750-ipservicesk9-mz.150-2.SE8]? switch.SE8
+%Error reading flash:c3750-ipservicesk9-mz.150-2.SE8 (Is a directory)
+```
+
+Fix:
+```bash
+switch#copy flash tftp                
+Source filename [c3750-ipservicesk9-mz.150-2.SE8]? c3750-ipservicesk9-mz.150-2.SE8/c3750-ipservicesk9-mz.150-2.SE8.bin
+Address or name of remote host []? 172.18.1.10
+Destination filename [c3750-ipservicesk9-mz.150-2.SE8.bin]? switch.bin
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+18286080 bytes copied in 58.989 secs (309991 bytes/sec)
+````
+The "directory" is the .SE8 path and the filename is suffixed by .bin:
+`c3750-ipservicesk9-mz.150-2.SE8`/`c3750-ipservicesk9-mz.150-2.SE8.bin`
+
+***
+
 Possible issues causing timeouts:
 - Check access control lists (ACL) for `deny` rules: `show access-list`
 
