@@ -45,7 +45,7 @@ server_names = ['arvind-io','adguard-dns-doh','bottlepost-dns-nl','aaflalo-me-ny
   - (despite Google already having been removed as a fallback resolver in the default config)
 
 
-  - :warning: When using `yandex` it appears they "poison" the DNS by loading Russian paypal.com over PayPal's own regional auto-detect settings
+- :warning: When using `yandex` it appears they "poison" the DNS by loading Russian paypal.com over PayPal's own regional auto-detect settings
 
 3. Test loading configs:
 ```bash
