@@ -44,6 +44,9 @@ server_names = ['arvind-io','adguard-dns-doh','bottlepost-dns-nl','aaflalo-me-ny
 - :warning: When using `ams-dnscrypt-nl` Google appeared as a resolver during a [DNS Leak Test](https://dnsleaktest.com/)
   - (despite Google already having been removed as a fallback resolver in the default config)
 
+
+  - :warning: When using `yandex` it appears they "poison" the DNS by loading Russian paypal.com over PayPal's own regional auto-detect settings
+
 3. Test loading configs:
 ```bash
 dnscrypt-proxy -config /etc/dnscrypt-proxy2/dnscrypt-proxy.toml -check
@@ -76,6 +79,11 @@ fallback_resolver = '9.9.9.9:53'
 6. Disconnect & reconnect your wifi/wired connection and run a [DNS leak test](https://www.dnsleaktest.com) to ensure your preferred resolvers are set and not your local ISP.
 
 7. Adjust/enable any other preferred settings
+
+# Troubleshooting
+If you're seeing an unexpected page (such as PayPal Russia, as mentioned above) you may want to disable the DNS cache in both OpenWRT and Firefox ESR before testing, or you will encounter a lot of false-positives:
+- In OpenWRT: Network > DHCP and DNS > **Size of DNS query cache**: `0`
+- In Firefox ESR: `about:config` > **network.dnsCacheExpiration**: `0` and **network.dnsCacheExpirationGracePeriod**: `0`
 
 
 # Caveats
