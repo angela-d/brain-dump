@@ -81,9 +81,21 @@ fallback_resolver = '9.9.9.9:53'
 7. Adjust/enable any other preferred settings
 
 # Troubleshooting
+
+**Unexpected Results**
+
 If you're seeing an unexpected page (such as PayPal Russia, as mentioned above) you may want to disable the DNS cache in both OpenWRT and Firefox ESR before testing, or you will encounter a lot of false-positives:
 - In OpenWRT: Network > DHCP and DNS > **Size of DNS query cache**: `0`
 - In Firefox ESR: `about:config` > **network.dnsCacheExpiration**: `0` and **network.dnsCacheExpirationGracePeriod**: `0`
+
+**No Access to the Web**
+
+I ran into this when I decided to move my router: for whatever reason once I hooked everything up, the DNS was unresponsive, yet ping-able.  To fix, I simply went into Luci:
+- Network > DHCP and DNS > Advanced Settings > Size of DNS query cache: `0`
+- Network > DHCP and DNS > General Settings > DNS forwardings: `9.9.9.9` > try to access/ping a page
+
+Once everything appears to be running:
+- Network > DHCP and DNS > General Settings > DNS forwardings: `127.0.0.53` > try to access/ping a page > Go to [DNS Leak Test](https://dnsleaktest.com/) and make sure you're not on 9.9.9.9, anymore
 
 
 # Caveats
