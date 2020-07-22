@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# companion script to github.com/angela-d/autohosts
+# whitelist accounts.google.com on demand without fiddling with the hosts file
+# usage (via ~/.bashrc): alias gsux='/path/to/gsux'
+
+
+function red() {
+  echo -e "\033[0;31m$1\033[0m"
+}
+
+function purple() {
+  echo -e "\033[0;35m$1\033[0m"
+}
+
+function greppy() {
+  purple "grep result:"
+  grep "0.0.0.0 accounts.google.com" /etc/hosts
+}
+
+# make sure elevation is in place
+if [[ $EUID -ne 0 ]]; then
+  red "This script must be ran as root, or with sudo privileges."
+  exit 1
+fi
+
+# sometimes it is required :(
+if [[ $1 == 'start' ]];
+then
+  sed -i "/0.0.0.0 accounts.google.com/c\#0.0.0.0 accounts.google.com" /etc/hosts
+  red "Google is temporarily whitelisted:"
+  greppy
+elif [[ $1 == 'end' ]];
+then
+  sed -i "/#0.0.0.0 accounts.google.com/c\0.0.0.0 accounts.google.com" /etc/hosts
+  figlet "Turds are blocked:" | /usr/games/lolcat
+  greppy
+else
+  purple "You didn't specify an argument!  Try again."
+fi
