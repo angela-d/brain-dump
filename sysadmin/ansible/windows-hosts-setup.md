@@ -129,7 +129,6 @@ KRB5_TRACE=/dev/stdout kinit adusername
 What the above problem ended up being:
 ```text
 [realms]
-```bash
 EXAMPLE.COM = {
 kdc = DC1.EXAMPLE.COM
 kdc = DC2.EXAMPLE.COM
