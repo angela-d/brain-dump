@@ -138,7 +138,6 @@ kdc = DC2.EXAMPLE.COM
 - I had to append `:88` to my **kdc** hosts:
 ```text
 [realms]
-```bash
 EXAMPLE.COM = {
 kdc = DC1.EXAMPLE.COM:88
 kdc = DC2.EXAMPLE.COM:88
