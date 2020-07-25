@@ -1,6 +1,6 @@
 # Set Your Windows Remote Hosts Location for Ansible
 
-Create a Yaml file with info on the remote systems you'd like to manage
+Create a Yaml file with info on the remote systems you'd like to manage, at `~/.ansible/hosts/test.yml`
 ```yaml
 [winvms]
 windows.example.com
@@ -16,6 +16,8 @@ ansible_winrm_server_cert_validation=ignore
 
 - **winvms** are a list of machines, separated by newline
 - **winvms:vars** is config override to specify any parameters you want to ensure are used
+
+> Ansible knows to look in ~/.ansible/hosts because of the config change you did during [setup](initial-setup.md)
 
 ## Prepare the Remote Host
 On the *target* machine that you want Ansible to manage, you have to enable WinRM.
