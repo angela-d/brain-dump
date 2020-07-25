@@ -37,6 +37,19 @@ Segmentation fault
 ```
 That's because, I *also* have the `python-cryptography` package installed through apt.  Removing it and installing via pip would remove a ton of stuff I use (Ansible, being one of them!) so I decided to ignore it.
 
+## Directory tree of `~/.ansible`
+This isn't the "official" (or required) formatting, but it's how I set my environment.
+```text
+├── hosts
+│   └── test.yml
+├── playbooks
+│   └── critical-win.yml
+└── tmp
+```
+- `hosts` = where I list the hosts for Ansible to manage
+- `playbooks` = rulesets for Ansible to use against the hosts
+- `tmp` = Default folder added by Ansible, ignore it
+
 ## Initial Configuration
 See where the Ansible config is kept
 ```bash
