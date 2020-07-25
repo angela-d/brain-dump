@@ -148,7 +148,7 @@ kdc = DC2.EXAMPLE.COM:88
 ***
 Error:
 ```bash
-windowsvm.example.com | UNREACHABLE! => {
+windows.example.com | UNREACHABLE! => {
     "changed": false,
     "msg": "kerberos: authGSSClientStep() failed: (('Unspecified GSS failure.  Minor code may provide more information', 851968), ('KDC reply did not match expectations', -1765328237))",
     "unreachable": true
