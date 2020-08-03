@@ -19,3 +19,44 @@ git push -f
 ```
 
 All should be well
+
+***
+
+## Specify an SSH Key During `git push`
+This error:
+> Pushing to git@bitbucket.org:username/repo.git
+>
+> Forbidden
+>
+> fatal: Could not read from remote repository.
+
+typically occurs when Bitbucket doesn't find the key it expects to see. (id_rsa, usually)
+
+- Host = alias for bitbucket.org
+- HostName = actual destination for the alias
+- IdentityFile = path to your preferred SSH key
+- IdentitiesOnly = override sending the wrong key for multiple users/identities (identities are tried in sequence)
+
+In your local `~/.ssh/config`:
+```bash
+Host bblocal
+HostName bitbucket.org
+IdentityFile ~/.ssh/keyname
+IdentitiesOnly yes
+```
+
+In the repo's `.git/config`:
+- All spots where you have entries like `git@bitbucket.org:username/repo.git` change `bitbucket.org` to your alias: `bblocal`
+
+### Example
+From:
+```bash
+url = git@bitbucket.org:username/repo.git
+pushurl = git@bitbucket.org:username/repo.git
+```
+
+To:
+```bash
+url = git@bblocal:username/repo.git
+pushurl = git@bblocal:username/repo.git
+```
