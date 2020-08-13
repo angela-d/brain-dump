@@ -1,12 +1,12 @@
 # Fortinet SSL VPN on Linux
 
-Fortinet's proprietary Linux client doesn't work well on Debian 9.
+Fortinet's proprietary Linux client didn't work well on Debian 9. (Haven't bothered trying it on Debian 10, as OpenFortiGUI has worked quite well)
 
 - Compile from source for a non-proprietary [CLI version](https://github.com/adrienverge/openfortivpn)
 - Non-proprietary [GUI version](https://github.com/theinvisible/openfortigui) or [apt installation](https://apt.iteas.at/)
 
 ## GUI Installation
-These instructions are for Debian 9.  For Ubuntu, check the [developer's blog](https://hadler.me/linux/openfortigui/).
+These instructions are for Debian 10.  For Ubuntu, check the [developer's blog](https://hadler.me/linux/openfortigui/).
 
 Add the developer's signing key
 ```bash
@@ -15,24 +15,28 @@ apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2FAB19E7CCB7F415
 
 Add the developer's repo to apt's sources list
 ```bash
-echo "deb https://apt.iteas.at/iteas stretch main" > /etc/apt/sources.list.d/iteas.list
+echo "deb https://apt.iteas.at/iteas buster main" > /etc/apt/sources.list.d/iteas.list
 ```
 
-### It Has to be ran as root or sudo
+### Fix Previous Setups
+If you've recently done an in-place upgrade from stretch to buster and the VPN won't connect:
+- File > Settings > check **SUDO -E Option**
 
-```bash
-sudo openfortigui
-```
-
-Or be lazy and set a desktop shortcut via the Menu Editor
+Also **Modify your desktop shortcut:**
 - Super user key (windows key)
 - Search 'Menu Editor' (go to the software center & install one if its not currently installed)
 - Mine installed under 'Internet' > click it > Properties
-- Under 'Command' > change from `/usr/bin/openfortigui` to: `sudo /usr/bin/openfortigui`
+- Under 'Command' > change from `sudo /usr/bin/openfortigui` to: `/usr/bin/openfortigui`
 
-When you go to use the application, you'll be prompt for a password.
 
-### Get rid of the password prompt
+### Fix sudo environment issues
+In `~/.openfortigui/logs/vpn/[connection].log` or `~/.openfortigui/logs/openfortigui.log` you may see:
+
+> sudo: sorry, you are not allowed to preserve the environment
+
+or
+
+> No protocol specified
 
 As root, run:
 ```bash
@@ -46,19 +50,32 @@ root    ALL=(ALL:ALL) ALL
 
 Add *beneath* (replace angela for your username):
 ```bash
-angela    ALL=(ALL) NOPASSWD: /usr/bin/openfortigui
+angela    ALL=(ALL) NOPASSWD:SETENV: /usr/bin/openfortigui
+```
+*If you have other NOPASSWD entries, this does not need to be concatenated to existing entries to append SETENV; you can have multiples with varying options, like so:*
+```text
+angela  ALL=(ALL) NOPASSWD: /usr/bin/apt
+angela  ALL=(ALL) NOPASSWD:SETENV: /usr/bin/openfortigui
 ```
 
-Find OpenFortiGui in your application menu and click it, it'll auto launch as sudo with zero additional steps.
+Explanation of options:
+- **NOPASSWD** allows the last argument (openfortigui app) to invoke sudo controls when necessary, without prompting for your sudo password -- without this argument, if I ran OpenFortiGUI it would not connect and with no warning prompt signaling anything was wrong.. so I ran via CLI and noticed it requesting my sudo password. (If there is a flag to better fix this to avoid setting NOPASSWD to the application, I am not yet aware of it.)
+- **SETENV** preserves the user environment to the last argument; without this, sudo cannot invoke display controls to run a GUI application on Wayland.
+
+Find OpenFortiGui in your application menu and click it, it'll auto launch with zero additional steps.
 
 ### Worth noting
-- If you enable the sudo launch *after* you have connections configured as a normal user, you might jag up your connections, as the AES key that encrypts the passwords will be registered to another user.  If you can't log back onto them, delete the connections and re-add them.
 
 - If you have a chattr lock on /etc/resolv.conf, this application will not load the VPN's DNS resolvers.
 ```bash
 chattr -i /etc/resolv.conf
 ```
 to unlock it.  (Which also gives Network Manager the ability to fiddle with it, again.)
+
+No internet after using OpenFortiGUI:
+- Open `/etc/resolv.conf` and ensure your default DNS servers came back after exiting the OpenFortiGUI application.  If they're still there, simply remove the DNS added by your VPN (usually 172.xx.xx.xx or 10.xx.xx.xx)
+- In many cases, *your* DNS is coming from your home router, so you would want your router's gateway there, instead: most commonly that's `192.168.1.1`
+- As a last-ditch attempt, you can always append a public DNS resolver here, like `9.9.9.9`.  
 
 
 ### (Optional) CLI Logon
