@@ -25,7 +25,13 @@ angela  ALL=(ALL) NOPASSWD: /home/angela/.config/keyboard-led-wayland.sh
 ```
 (replace **angela** with your username in both the user and /home path) -- this allows the specified user abilities to elevate sudo permissions, (but **only** to this script path) to write the */sys/class/leds* options, without affecting any other sudo options or giving the user *too much* power, since all we want to do is simply activate this config change.)
 
-As the user you previously granted one-time sudo executions to, create the .desktop file for autostart:
+If you're security consious and don't give your everyday user unfitted sudo permissions, you can lock down permissions even further and only give read and execute permissions (should your user be exploited, a rogue service shouldn't be able to modify *keyboard-led-wayland.sh* to gain super-user access):
+```bash
+chmod 550 /home/angela/.config/keyboard-led-wayland.sh
+```
+If you need to modify this file in the future, invoke `su -` or `su - othersudouser`
+
+As the user you previously granted restricted sudo executions to, create the .desktop file for autostart:
 ```bash
 pico ~/.config/autostart/keyboard-backlight.desktop
 ```
@@ -40,6 +46,8 @@ Icon=input-keyboard
 X-GNOME-Autostart-enabled=true
 ```
 That is it!
+
+The keyboard LED setup will now persist through reboots.
 
 
 ***
