@@ -2,18 +2,28 @@
 When I got a backlit gaming keyboard, the 'Scroll Lock' toggle didn't work (out of the box) in Debian 9 / Gnome 3.22.3.
 Fixing that was simply running the `xset led 3` command, or modifying `~/.config/autostart/` or `/etc/xdg/autostart/` entries.
 
-Since Debian 10 (Gnome 3.30.2) uses Wayland instead of X, this functionality no longer works!
+Since Debian 10 (Gnome 3.30.2) uses Wayland instead of X (if you keep defaults, of course), this functionality no longer works!
+
+### What display manager are you running?
+Run:
+```bash
+echo $XDG_SESSION_TYPE
+```
+For me:
+
+> wayland
+
 
 ## For Systems Running Wayland
 ### Enable autostart LED, without needing any drivers / firmware:
 Here's a workaround:
-- I threw together a bash script to gather info about scrolllock led inputs: [keyboard-led-wayland.sh](keyboard-led-wayland.sh) -- put this in `~/.config`
+- I threw together a bash script to gather scrolllock led inputs and activate them: [keyboard-led-wayland.sh](keyboard-led-wayland.sh) -- put this in `~/.config`
 - As root/sudo, open the sudo config: `visudo`
 - Append the following line, under *# User privilege specification* (beneath any existing entries):
 ```bash
 angela  ALL=(ALL) NOPASSWD: /home/angela/.config/keyboard-led-wayland.sh
 ```
-(replace **angela** with your username in both the user and /home path) -- this allows a one-time execution of this script to write the */sys/class/leds* options
+(replace **angela** with your username in both the user and /home path) -- this allows the specified user abilities to elevate sudo permissions, (but **only** to this script path) to write the */sys/class/leds* options, without affecting any other sudo options or giving the user *too much* power, since all we want to do is simply activate this config change.)
 
 As the user you previously granted one-time sudo executions to, create the .desktop file for autostart:
 ```bash
