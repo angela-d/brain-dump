@@ -18,7 +18,12 @@ Add the developer's repo to apt's sources list
 echo "deb https://apt.iteas.at/iteas buster main" > /etc/apt/sources.list.d/iteas.list
 ```
 
-### Fix Previous Setups
+That's it.
+
+***
+***
+
+### Fix Previous Installation Setups, After In-Place OS Upgrade
 If you've recently done an in-place upgrade from stretch to buster and the VPN won't connect:
 - File > Settings > check **SUDO -E Option**
 
@@ -38,17 +43,42 @@ or
 
 > No protocol specified
 
-As root, run:
+
+## Cause
+OpenFortiGUI sets a sudoers permission, in `/etc/sudoers.d/openfortigui`
+
+There are two optional approaches to fixing this:
+
+1)
+
+- Are you in **sudo** group? Check: `groups angela`
+- Do you have the following line in `visudo` (Run as `su`):
+```bash
+#includedir /etc/sudoers.d
+```
+If so, uncomment it - as this indicates it's not being processed (or copy its contents to `/etc/sudoers.d/openforticustom` or `visudo` to customize; as an apt upgrade of OpenFortiGUI may override your changes):
+```bash
+includedir /etc/sudoers.d
+```
+
+
+2)
+
+**Allow a User that's Not in the Sudo Group**
+
+No need to add your user to sudo group, just to access 1 application.
+
+- As root, run:
 ```bash
 visudo
 ```
 
-Find:
+- Find:
 ```bash
 root    ALL=(ALL:ALL) ALL
 ```
 
-Add *beneath* (replace angela for your username):
+- Add *beneath* (replace angela for your username):
 ```bash
 angela    ALL=(ALL) NOPASSWD:SETENV: /usr/bin/openfortigui
 ```
@@ -83,7 +113,7 @@ No internet after using OpenFortiGUI:
 sudo /usr/bin/openfortigui --start-vpn --vpn-name NameOfMyConnection --main-config '/home/angela/.openfortigui/main.conf'
 ```
 
-### Troubleshooting
+### Segfaults
 I had an issue where I was getting a segfault:
 ```text
 debian kernel: [  573.164599] traps: openfortigui[30174] general protection ip:558fd01e9ed4 sp:7fff8bd2c658 error:0
