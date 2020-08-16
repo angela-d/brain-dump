@@ -19,7 +19,7 @@ For me:
 Here's a workaround:
 - I threw together a bash script to gather scrolllock led inputs and activate them: [keyboard-led-wayland.sh](keyboard-led-wayland.sh) -- put this in `~/.config`
 - As root/sudo, open the sudo config: `visudo`
-- Append the following line, under *# User privilege specification* (beneath any existing entries):
+- Append the following line, under *# See sudoers(5) for more information on "#include" directives:* (beneath any existing entries):
 ```bash
 angela  ALL=(ALL) NOPASSWD: /home/angela/.config/keyboard-led-wayland.sh
 ```
@@ -49,6 +49,18 @@ That is it!
 
 The keyboard LED setup will now persist through reboots.
 
+### Troubleshooting
+You can run the script directly, from your terminal:
+```bash
+angela@debian$ ~: sudo /home/angela/.config/keyboard-led-wayland.sh
+```
+If you are prompt for a sudo password:
+
+- Check your placement in `visudo` and experiment with entry locations.  
+
+When I started adding entries *after* the existence of the keyboard-led-wayland.sh script, I found my script had stopped working - only when I ran it directly via terminal did I see it had begun prompting for a sudo password.
+
+Reorganizing it's location in `visudo` solved the issue and it continues to run non-interactively.
 
 ***
 ***
