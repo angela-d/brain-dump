@@ -56,3 +56,18 @@ When network roaming isn't needed
 - Go to WIFI settings
 - Select your network
 - Identity > BSSID > Select your router's MAC > Apply
+
+## For Laptops
+Battery saving:
+```bash
+apt install tlp powertop
+```
+Run powertop and check the **tunables** tab
+```bash
+sudo powertop
+```
+- Don't recommend enabling auto-suspend for network card, USB mice or keyboards
+
+TLP should auto-configure for best settings.
+
+- [CPUFREQ extension](https://extensions.gnome.org/extension/1082/cpufreq/) if using Gnome
