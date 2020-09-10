@@ -70,4 +70,18 @@ sudo powertop
 
 TLP should auto-configure for best settings.
 
+[Remove irqbalance](http://konkor.github.io/cpufreq/faq/#irqbalance-detected)
+```bash
+apt remove irqbalance --purge
+```
+
 - [CPUFREQ extension](https://extensions.gnome.org/extension/1082/cpufreq/) if using Gnome
+
+## Disk Space Control
+Use `localepurge` to rid manuals for languages/locales you don't use on your system
+
+> This tool is a hack which is *not* integrated with the system's package management system and therefore is not for the faint of heart. Its interference can provoke strange, but usually harmless, behavior in programs related to apt/dpkg, such as dpkg-repack, reportbug, etc. Responsibility for its usage and possible breakage of the system therefore lies in the system administrator's hands.
+
+```bash
+apt install localepurge
+```
