@@ -1,0 +1,39 @@
+/*
+  Display the status bar in Firefox Quantum (Firefox 57+)
+  permanently at the bottom of the browser window.
+  Code below works best for the Dark Firefox theme and is based on:
+  https://github.com/MatMoul/firefox-gui-chrome-css/blob/master/chrome/userChrome.css
+*/
+
+#browser-bottombox {
+	height: 20px;
+	border-top: solid 1px #505050;
+}
+#statuspanel {
+	height: 20px !important;
+	width: 100% !important;
+	left: 0px !important;
+	bottom: 0px !important;
+	padding: 0px !important;
+	transition-duration: 0s !important;
+	transition-delay: 0s !important;
+	transition-property: none !important;
+}
+#statuspanel-inner {
+	height: 20px !important;
+}
+#statuspanel-label {
+	top: 0px !important;
+	margin-left: 0px !important;
+	margin-top: 0px !important;
+	border: none !important;
+	padding: 0px !important;
+	background: transparent !important;
+}
+
+html[inFullscreen="true"] #browser-bottombox {
+	display:none !important;
+}
+html[inFullscreen="true"] #statuspanel {
+	display:none !important;
+}
