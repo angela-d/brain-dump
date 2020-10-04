@@ -9,21 +9,23 @@ My setup:
 
 Application | Version
 ------------|----------
-**Grafana** | Grafana v6.6.0 (5c11bbdfb4)
+**Grafana** | Grafana v7.2.0 (efe4941ee3)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
-**PRTG** | 20.1.55.1775+
+**PRTG** | 20.3.60.1623+
 
 Development / Testing Environment ([see notes for setup](dev-environment.md)):
 
 Application | Version
 ------------|-----------
-**Grafana** | Grafana v6.7.0-pre (63d999a739)
+**Grafana** | Grafana v7.2.0 (efe4941ee3)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
-**PRTG** | 20.1.55.1775+
+**PRTG** | 20.3.60.1623+
 
 ^ The plugin is tested & working up to (at least) this Grafana version.
 
-Note: When upgrading from v4.0.3 to v4.0.4, some graphs may break due to the channel name change.  To fix, I went in and re-added the channel for the affected visualizations.
+>> [Upgrading Grafana](upgrading.md)
+
+Note: When upgrading (the PRTG extension) from v4.0.3 to v4.0.4, some graphs may break due to the channel name change.  To fix, I went in and re-added the channel for the affected visualizations.
 
 
 Grafana also runs on Linux (which is easier to maintain + substantially lighter on resources), but since this is primarily for PRTG, it made the most sense (for me) to install it to PRTG's Windows Server.
