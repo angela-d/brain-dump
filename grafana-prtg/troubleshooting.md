@@ -54,3 +54,26 @@ Also useful:
   - Right-click on a blank part of the page > Inspect element > click the `...` in the far right of the console window > Settings > check **Disable HTTP Cache (when toolbox is open)** and leave the console open while testing
 
 - Read the console messages in this same window (under the console tab)
+
+## v7.0.0 - Plugin must be signed
+I personally have not run into this, as I skipped several versions - but a few people posted about this in the [issues](https://github.com/neuralfraud/grafana-prtg/issues/168)
+
+From the release notes:
+> It’s possible to allow unsigned plugins using a configuration setting, but is something we strongly advise against doing.
+>
+> [Allowing unsigned plugins](https://grafana.com/docs/grafana/latest/administration/configuration/#allow-loading-unsigned-plugins)
+
+## Forgot Password
+Thank you to [torkel](https://community.grafana.com/t/how-do-i-reset-admin-password/23) for posting this tip!
+
+On Linux:
+```bash
+sudo sqlite3 /var/lib/grafana/grafana.db
+```
+
+```text
+sqlite> update user set password = '59acf18b94d7eb0694c61e60ce44c110c7a683ac6a8f09580d626f90f4a242000746579358d77dd9e570e83fa24faa88a8a6', salt = 'F3FAxVm33R' where login = 'admin';
+sqlite> .exit
+```
+
+This sets the "admin" username back to **admin**
