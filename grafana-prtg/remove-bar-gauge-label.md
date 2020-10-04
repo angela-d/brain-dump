@@ -39,3 +39,9 @@ Device | Graph Bar
 -------|-------
 Linux VM | //////////////////
 Windows VM | //////////
+
+## v7.2 Upgrade
+When I upgraded from 6.4 to 7.2, my bar gauges lacked a device name.  To bring them back, I went into the options pane (**< Show Options** button) and toggled the unit measurement.  (Save > Apply to keep the changes)
+![toggle fix](img/toggled.PNG)
+
+I also found the **Percentages** unit doesn't use the % symbol, so I had to select Misc > Humidity (%H) in order for the value to be suffixed with xx%
