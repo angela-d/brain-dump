@@ -8,7 +8,8 @@ Read the release note(s) on the [downloads](https://grafana.com/grafana/download
 ## Linux
 1. Simply [download the .deb](https://grafana.com/grafana/download?platform=linux)
 2. Follow the instructions (though I prefer to use `apt install` instead of `dpkg -i`)
-3. ```bash
+3.
+```bash
 service grafana-server restart
 ```
 4. Done.
