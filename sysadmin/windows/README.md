@@ -41,7 +41,7 @@ Active Directory Users
 - [GPO Central Store](active-directory/gpo-central-store-templates.md)
 
 Active Directory Domains
-- [Forward Lookup Zones](active-directory/forward-lookup-zones.md)
+- [Forward Lookup Zones](active-directory/forward-lookup-zone.md)
 
 Making Windows Machines Cooler
 - [Installing Debian to a Surface Tablet](install-debian-surface-tablet.md)
