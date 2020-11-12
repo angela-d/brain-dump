@@ -33,14 +33,15 @@ For times when hanging out in purgatory is necessary.
 
 Windows Troubleshooting
 - [Regex File Searches with Powershell](regex-search-with-powershell.md)
-- [LDAP Binding Change](ldap-binding-change.md)
+- [LDAP Binding Change](active-directory/ldap-binding-change.md)
 
 Active Directory Users
-- [Troubleshooting](active-directory-troubleshooting.md)
-- [User Creation Templates](active-directory-user-templates.md)
+- [Troubleshooting](active-directory/active-directory-troubleshooting.md)
+- [User Creation Templates](active-directory/active-directory-user-templates.md)
+- [GPO Central Store](active-directory/gpo-central-store-templates.md)
 
 Active Directory Domains
-- [Forward Lookup Zones](forward-lookup-zones.md)
+- [Forward Lookup Zones](active-directory/forward-lookup-zones.md)
 
 Making Windows Machines Cooler
 - [Installing Debian to a Surface Tablet](install-debian-surface-tablet.md)
