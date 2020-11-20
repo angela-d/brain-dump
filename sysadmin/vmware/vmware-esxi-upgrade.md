@@ -4,6 +4,8 @@
 
  [According to this Dell rep](https://www.dell.com/community/PowerEdge-OS-Forum/R620-R610-patching-dell-esxi-5-5-to-dell-esxi-6-0u3/td-p/5148907) you can use VMware's repositories for Dell servers.
 
+ [My notes](vmware-esxi-custom-image-upgrade.md) on custom image upgrades.
+
 ## First, offload VMs to another host, a reboot will be required.
 
 Enable SSH in ESXi:
