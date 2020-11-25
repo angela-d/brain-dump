@@ -10,7 +10,7 @@ For *source addresses* that will likely need modifications in the future, I set 
 
 | Local-in Policy | Address Group | Example Addresses |
 | ------------- |:-------------:| ------------- |
-| Allow IPSEC / IKE service | ALLOWED-IPSEC | Your ISPEC partners |
+| Allow IPSEC / IKE service | ALLOWED-IPSEC | Your IPSEC partners |
 | VPN connections / any chatter to the firewall | Firewall-Allowed | Geo locations permitted to log onto your corp VPN |
 | Public webserver | Webserver Group | Countries you service |
 
@@ -80,6 +80,10 @@ show full
 
 > Without `show full` you will not see the deny action
 
+## Enable logging for local-in policies
+```bash
+set local-in-allow enable
+```
 ***
 
 It is worth noting you should use the local-in conservatively, if you're too loose with the "all" and "always" options, you may find yourself with an inaccessible network and you'll need to console in to bring it back up!
