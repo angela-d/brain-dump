@@ -1,4 +1,4 @@
-# Wifi No Internet on Android 9 / Lineage 16
+# Wifi No Internet on Android 9 / Lineage 16 & Android 10 / Lineage 17
 On Android 7 / Lineage 14 I had a recurring issue where if I took the phone off airplane mode or switched networks, I'd get an x over the wifi saying no internet.. but it would always work anyway.  However, if mobile data was also switched on, it would default to that - indicating a deeper issue.
 
 It was easy enough to turn off mobile data when using wifi, never had further issues.
@@ -6,6 +6,9 @@ It was easy enough to turn off mobile data when using wifi, never had further is
 On Android 9 / Lineage 16 that seems to not be the case.  Everything works, except for Signal to Signal messages (vanilla SMS work, but MMS or messages to other Signal app users do not, unless the phone is reboot).
 
 Thanks to [this post](https://github.com/ukanth/afwall/issues/761) on AFWall's Github issues, I was able to get it resolved.  I'll duplicate the fixes in my notes incase the AFWall repo/post ever gets moved or migrated to another host.
+
+### Update for Android 10 / Lineage 17
+This issue persists and the same resolution below, fixes it.
 
 ## Tools Needed
 - Rooted phone
