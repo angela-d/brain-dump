@@ -15,3 +15,31 @@ Once the files are in PDF format, they can be merged together, to become one PDF
 ```bash
 pdftk p1.pdf p2.pdf output mergedpages.pdf
 ```
+
+## Troubleshooting
+When trying to convert a png to pdf:
+> convert-im6.q16: attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/408.
+
+### Fix
+```bash
+pico /etc/ImageMagick-7/policy.xml
+```
+
+Find:
+```bash
+<policy domain="coder" rights="none" pattern="PDF" />
+```
+
+Change to:
+```bash
+<policy domain="coder" rights="read|write" pattern="PDF" />
+```
+
+### Cause
+Apparently this was a [security vulnerability](https://www.kb.cert.org/vuls/id/332928/) patch for ghostscript 9.24; if running anything later:
+```bash
+gs --version
+```
+> 9.27
+
+You could also simply remove the entire batch of `rights="none"` from `/etc/ImageMagick-7/policy.xml`
