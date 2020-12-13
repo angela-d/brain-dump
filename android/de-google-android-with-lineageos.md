@@ -106,7 +106,7 @@ Easy:
   - Only blocks ads while web browsing
 
 Advanced:
-- [System-based hosts file](updating-hosts-file)
+- [System-based hosts file](updating-hosts-file.md)
   - Blocks ads in apps, as well as while web browsing; but does not auto-update
 
 ***
