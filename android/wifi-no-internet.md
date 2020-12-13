@@ -56,13 +56,18 @@ everCaptivePortalDetected{false} lastCaptivePortalDetected{false} clat{null}
 
 
 ### Mobile Data / No Internet Fix
-Onto check the Capacitive Portal status.  Weirdly, this was enabled on my Android 9, yet the captive_portal_server values were null (perhaps Microg/Lineage devs removed them):
+Onto check the Capacitive Portal status.  Weirdly, this was enabled on my Android 9, yet the captive_portal_server values were null (null = Google's choice):
 ```bash
 settings get global captive_portal_mode
 ```
 If this returns 1, its enabled.  Mine was 0, but I ran these anyway - as I had nothing to lose.
 
- (You can also probe the status of any of the values before you run the disable commands, by swapping `put` for `get` and omitting the value argument)
+   (You can also probe the status of any of the values before you run the disable commands, by swapping `put` for `get` and omitting the value argument)
+
+### The commands below will disable captive portal
+Caveat: If you frequent public wifi, you may not want to *disable* the captive portal; but opt to use a different one.  [Security researcher Mike Kuketz](https://www.kuketz-blog.de/android-captive-portal-check-204-http-antwort-von-captiveportal-kuketz-de/) offers one.
+
+> If you never use public wifi/networks with login pages, disabling the captive portal will not make any difference to you; continue on disabling it.
 
 Run the following, one line at a time (my shell session didn't accept multi line commands):
 ```bash
