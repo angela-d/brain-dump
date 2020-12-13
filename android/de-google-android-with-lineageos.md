@@ -99,6 +99,10 @@ Network connections often overlooked
 - [NTP / Time Servers](custom-time-server-lineageos.md)
 - [This thread](https://old.reddit.com/r/fossdroid/comments/clg2ca/how_to_degoogle_lineageos_in_2019_xpost/) covers DNS, GPS, AOSP Webview and other services built-in
 
+### Maximize Privacy
+- **Disable** Bluetooth and wifi scanning!  Settings > search "scanning" > toggle **off** for Bluetooth & wifi options
+- Turn off wifi and Bluetooth after you leave your home/work; your MAC address is used by stores to fingerprint you (and subsequently cross-reference and share data with vendors like Facebook or Google).  Android 10 / Lineage 17 has MAC randomization for wifi, but you're better off turning it off, anyway, in my opinion
+- Turn off GPS unless it is actively in use; this should be self-explanatory
 
 ### Ad Blocking
 Easy:
