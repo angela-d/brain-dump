@@ -74,7 +74,7 @@ You'll see the following options:
 ### Secure Your Phone
 - [AF Wall](https://f-droid.org/en/packages/dev.ukanth.ufirewall/) (requires root) is a substantially thorough firewall.  Once installed, block everything by default and trial-and-error what truly needs access.  Warning: For whatever reason, the Linux kernel hammers web access and I've yet to find a reason for this.  Android being Google at the core, one can only suspect this is some unsavory occurrence.  I've had it blocked for 2+ years without adverse reaction; Lineage and all apps update (when I want them to).
 
-Apps like music players, note taking apps and calendars *don't* need web access and I find most apps hammer the web trying to send analytic data to the mothership, cycle ads, or whatever creepy data the app development companies want in exchange for giving you 'free' apps; even with the "don't send diagnostic data to developers" checked.  
+Apps like music players, note taking apps and calendars *don't* need web access (if you have local mp3s on your phone) and I find most apps hammer the web trying to send analytic data to the mothership, cycle ads, or whatever creepy data the app development companies want in exchange for giving you 'free' apps; even with the "don't send diagnostic data to developers" checked.  
 
 Apps like *period trackers* have been caught siphoning users' personal data.
 
@@ -91,50 +91,23 @@ AF Wall has a neat log that will show you how many times a blocked app tried to 
   - **uBlock Origin is a necessity and works on even the garbage versions of Firefox Mobile (v68+)**
 - Instead of swiping the browser away when you're done with it, click the three dot hamburger menu ... and go to **Settings** > **Privacy** > Tick **Do not track** and > **Clear private data on exit** > a prompt will pop up -- tick everything for maximum privacy.  When you close out a browsing session, click the ... and scroll to the very bottom > **Quit** - if you close any other way, 'Exit' is not triggered, so the Clear private data on exit options aren't executed.
 
-### Adding a Hosts File (root required)
-Hosts files are a click away if using DNS66 or Magisk.  If you wish to roll your own, instead:
 
-[Why hosts files are useful](https://github.com/angela-d/autohosts)
+### Unintended Network Connections to Google
+Network connections often overlooked
+- [Captive Portal](https://www.kuketz-blog.de/android-captive-portal-check-204-http-antwort-von-captiveportal-kuketz-de/) - [My captive portal notes](wifi-no-internet.md)
+- [Most Push notifications (app dependent)](https://forum.f-droid.org/t/push-notifications-without-google/6010) (even if you use [microG](https://microg.org))
+- [NTP / Time Servers](custom-time-server-lineageos.md)
+- [This thread](https://old.reddit.com/r/fossdroid/comments/clg2ca/how_to_degoogle_lineageos_in_2019_xpost/) covers DNS, GPS, AOSP Webview and other services built-in
 
-- Download a copy of [Steven Black's Host file](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts) to your desktop.
-- It must be saved as **hosts** (not hosts.txt -- no file extension)
 
-Hook up your phone to your PC via USB and launch adb
-```bash
-adb devices
-```
+### Ad Blocking
+Easy:
+- Use [Fennec F-Droid](https://f-droid.org/en/packages/org.mozilla.fennec_fdroid/) - Firefox fork with telemetry stripped; install [uBlock Origin add-on](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
+  - Only blocks ads while web browsing
 
-We'll need shell access to load the hosts file
-```bash
-adb shell
-```
-
-We'll need root/super user access (we're performing elevated commands and writing to a system directory normal users can't write to)
-```bash
-su
-```
-
-By default, the system mounts as read only, let's re-mount it as read+write (/system is the directory where the hosts file is kept)
-```bash
-mount -o remount,rw /system
-```
-
-Copy the file from the desktop, to Lineage (adjust the local path to *your* path to the hosts file)
-```bash
-adb push /home/angela/Desktop/hosts /storage/emulated/0/Download/hosts
-```
-> [100%] /storage/emulated/0/Download/hosts
-
-notifies of the copy success, set the system back to read-only
-```bash
-mount -o remount,ro /system
-```
-
-Shut down adb
-```bash
-adb kill-server
-```
-You can now browse ad & tracker free.  I haven't gotten around to testing autohosts on Android, so you'll want to periodically update the hosts file manually.
+Advanced:
+- [System-based hosts file](updating-hosts-file)
+  - Blocks ads in apps, as well as while web browsing; but does not auto-update
 
 ***
 # Useful Commands
