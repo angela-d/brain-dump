@@ -18,7 +18,7 @@ Options:
 
 App Stores:
 - [F-Droid](https://f-droid.org/en/) - Download their apk, slide it onto your SD card or internal storage > Double-click to install.  Free & open source apps.
-- [Aurora Store](https://f-droid.org/en/packages/com.dragons.aurora/) - Access to Play Store apps, without needing Google for anything
+- [Aurora Store](https://f-droid.org/en/packages/com.aurora.store/) - Access to Play Store apps, without needing Google for anything
 
 ***
 ### My Notes:
@@ -29,8 +29,12 @@ App Stores:
 - [Wireshark](wireshark-android.md) - tcpdump with Wireshark
 - [Disabling System Apps](disable-system-apps.md)
 - [Updating a hosts file](updating-hosts-file.md)
+- [Custom Time Server](custom-time-server-lineageos.md) - Otherwise defaults to Google servers
+- [Upgrading a Major Version](upgrade-major-lineage-version.md) - Major version jumps; ie. v16 > v17
 
 **Troubleshooting**
+- [Suspicious Network Activity](suspicious-network-activity.md) - Determine the source of unwanted network requests
+- [No root](adb-no-root-magisk.md) - No root over ADB with Magisk
 - [Updates](updating.md) - Updates that boot into recovery mode
 - [Wi-fi No Internet](wifi-no-internet.md) - Networking and firewall issues
 - [Hidden SSIDs](not-connecting-hidden-ssid.md) - Wifi doesn't connect to hidden SSIDs
