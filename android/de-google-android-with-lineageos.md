@@ -95,9 +95,28 @@ AF Wall has a neat log that will show you how many times a blocked app tried to 
 ### Unintended Network Connections to Google
 Network connections often overlooked
 - [Captive Portal](https://www.kuketz-blog.de/android-captive-portal-check-204-http-antwort-von-captiveportal-kuketz-de/) - [My captive portal notes](wifi-no-internet.md)
-- [Most Push notifications (app dependent)](https://forum.f-droid.org/t/push-notifications-without-google/6010) (even if you use [microG](https://microg.org))
+- [Most Push notifications (app dependent; Signal and Tutanota don't require)](https://forum.f-droid.org/t/push-notifications-without-google/6010) (even if you use [microG](https://microg.org))
 - [NTP / Time Servers](custom-time-server-lineageos.md)
 - [This thread](https://old.reddit.com/r/fossdroid/comments/clg2ca/how_to_degoogle_lineageos_in_2019_xpost/) covers DNS, GPS, AOSP Webview and other services built-in
+ - [Detailed Post about Android GPS](https://forum.level1techs.com/t/fixing-the-android-gps-configuration/142542)
+- [Your browser's "Safe Browsing" feature, Youtube](https://www.techjunkie.com/the-mysterious-1e100-net/)
+  - [Privacy Redirect Firefox Extension](https://addons.mozilla.org/en-US/firefox/addon/privacy-redirect/) - Currently only works on Firefox/Fennec for Android up to v68 ([Icecat for Android is still v68](https://f-droid.org/en/packages/org.gnu.icecat/)), but will route Youtube hits through [Invidious instances](https://github.com/iv-org/documentation/blob/master/Invidious-Instances.md), as well as Twitter to Nitter instances, etc.
+  - [Your choice of apps](https://exodus-privacy.eu.org/en/) - Many apps from Aurora (Play Store) will have Google Firebase/Crashlytics, etc; as those are typically unique subdomains which also conveniently reside on similar subnets as Google Cloud customers (sites hosted by Google that aren't ran by Google, you may actually want to access.) - a bit of elbow grease, time and Wireshark can easily circumvent the analytics attempts, with hosts/custom DNS blockers.
+   - Reducing your dependency on apps obtained through the Play Store/Aurora can go a long way in keeping your distance from Google.
+   - Sites you visit on your device that embed Google Fonts, Google APIs, etc. Using [Noscript](https://addons.mozilla.org/en-US/firefox/addon/noscript/) or [uMatrix](https://addons.mozilla.org/en-US/firefox/addon/umatrix/) can prevent such from pre-loading (with the option to load), but both have a bit of a learning curve.  Pack your patience.  [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) has a settings toggle to block remote fonts (works on *all* versions of Firefox for Android).
+
+### Android GPS
+Root required to remove (or reduce) Google bits.  If you don't use GPS, you can alternatively simply firewall it and block its network access, too.
+
+**Modifying this incorrectly could break your GPS!**
+
+The following is excerpted from [Level1 Techs](https://forum.level1techs.com/t/fixing-the-android-gps-configuration/142542):
+
+**GPS Config Location**
+ - Dependant on phone; either `/system/etc/gps.conf` or `/vendor/etc/gps.conf`
+  - Once you find the path, see what Google bits are present: `cat /vendor/etc/gps.conf | grep google`
+  - Then modify all entries with the appropriate vendors whom you trust, or neuter what info is available to Goog:
+  - `vi /vendor/etc/gps.conf`, type `i` to modify, `:wq` to save changes or `:q!` to exit without saving
 
 ### Maximize Privacy
 - **Disable** Bluetooth and wifi scanning!  Settings > search "scanning" > toggle **off** for Bluetooth & wifi options
