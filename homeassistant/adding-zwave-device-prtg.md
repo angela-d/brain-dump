@@ -1,7 +1,7 @@
-# Connect a Z-Wave Multisensor 6 Device in Home Assistant to PRTG
-Use PRTG to monitor a Z-Wave Multisensor 6 device.  This assumes you already have a PRTG sensor group that you wish to add these sensors to, as well as have the Z-Wave devices active in Home Assistant.
+# Connect a Z-Wave Device in Home Assistant to PRTG
+Use PRTG to monitor a device utilizing the Home Assistant API.  This assumes you already have a PRTG sensor group that you wish to add these sensors to, as well as have the Z-Wave devices active in Home Assistant.
 
-![aeotec multisensor 6](aeotec-multisensor-6.png)
+In my notes, I set up a AEON Labs ZW100 MultiSensor 6 device.
 
 ## Initial Setup
 API tokens in Home Assistant expire 10 years from the date of issue (or until there's a breaking change, of course.)
@@ -40,8 +40,26 @@ Now that you've confirmed your API token gets the info you want, you can create 
 After you get your first successful read, now you can customize it.
 
 The HTTP XML/REST Value sensor is one of the heavier types for PRTG, so it's probably a good idea to seldom check it, unless you have multiple probes or need a lesser frequency threshold.
-1. Settings > Scanning Interval > `5 minutes`
-2. Under Unit String > change from **#** to `%` > Save
-3. Back on the sensor page, click the wheel icon beside the percentage readouts
-4. Under Lookups and Limits > select `Enable alerting based on limits`
+1. Settings > Scanning Interval > `30 minutes`
+2. Custom Message: `%1 °F` -- will display *only* the temperature value (otherwise will read: *Node state holds value 73.9*)
+3. Unit String: `°F`
+4. Under Unit String > change from **#** to `°` > Save
+5. Back on the sensor page, click the wheel icon beside the percentage readouts
+6. Under Lookups and Limits > select `Enable alerting based on limits`
   - Set your preferred upper/lower limits in which PRTG will trigger errors or warnings depending on the value read of this sensor.
+
+Now that it's in PRTG and thresholds have been set, PRTG will alert you based on your thresholds.  You can also easily add widgets to the PRTG Grafana dashboard without having to connect Home Assistant to Grafana.
+
+## Worth Noting
+I had a Zooz ZSE40 4-in-1 sensor that seemingly hung on "Initializing" - from [Home Assistant documentation](https://www.home-assistant.io/docs/z-wave/query-stage/):
+
+> While devices that are mains or USB powered are always awake, battery-powered devices spend most of their time asleep. Because of this, you can expect that after startup your battery powered devices will spend time in Initializing (CacheLoad) - how long depends on the device.
+>
+> Your devices will still function normally while marked as Initializing.
+
+Interestingly, the USB-powered device (AEON Labs ZW100 MultiSensor 6) was always "sleeping."
+
+## API Documentation
+Available Home Assistant [actions](https://developers.home-assistant.io/docs/api/rest/) for API use.
+
+You can optionally use the JSON sensors of PRTG to auto-generate channels if you need more than a few of the results, by building [custom sensors](https://www.paessler.com/manuals/prtg/custom_sensors)
