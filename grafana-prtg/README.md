@@ -11,7 +11,7 @@ Application | Version
 ------------|----------
 **Grafana** | Grafana v7.2.0 (efe4941ee3)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
-**PRTG** | 20.3.62.1397+
+**PRTG** |  20.4.64.1402+
 
 Development / Testing Environment ([see notes for setup](dev-environment.md)):
 
@@ -19,7 +19,7 @@ Application | Version
 ------------|-----------
 **Grafana** | Grafana v7.2.0 (efe4941ee3)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
-**PRTG** | 20.3.62.1397+
+**PRTG** | 20.4.64.1402+
 
 ^ The plugin is tested & working up to (at least) this Grafana version.
 
