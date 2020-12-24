@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<opml version="2.0">
+  <head>
+    <title>AntennaPod Subscriptions</title>
+    <dateCreated>24 Dec 20 02:04:26 -0600</dateCreated>
+  </head>
+  <body>
+    <outline text="2.5 Admins" title="2.5 Admins" type="rss" xmlUrl="https://2.5admins.com/feed/podcast" htmlUrl="https://2.5admins.com" />
+    <outline text="Ask Noah Show" title="Ask Noah Show" type="rss" xmlUrl="https://podcast.asknoahshow.com/rss" htmlUrl="https://podcast.asknoahshow.com" />
+    <outline text="Darknet Diaries" title="Darknet Diaries" type="rss" xmlUrl="https://feeds.megaphone.fm/darknetdiaries" htmlUrl="https://darknetdiaries.com/" />
+    <outline text="Destination Linux" title="Destination Linux" type="rss" xmlUrl="https://destinationlinux.org/feed/mp3/" htmlUrl="https://destinationlinux.org" />
+    <outline text="GNU World Order Linux Cast" title="GNU World Order Linux Cast" type="rss" xmlUrl="https://gnuworldorder.info/ogg.xml" htmlUrl="http://www.gnuworldorder.info" />
+    <outline text="Home Assistant Podcast" title="Home Assistant Podcast" type="rss" xmlUrl="https://hasspodcast.io/feed/podcast/" htmlUrl="https://hasspodcast.io/" />
+    <outline text="Late Night Linux" title="Late Night Linux" type="rss" xmlUrl="https://latenightlinux.com/feed/mp3" htmlUrl="https://latenightlinux.com" />
+    <outline text="Linux Action News" title="Linux Action News" type="rss" xmlUrl="https://feeds.fireside.fm/linuxactionnews/rss" htmlUrl="https://linuxactionnews.com" />
+    <outline text="Linux For Everyone" title="Linux For Everyone" type="rss" xmlUrl="https://feeds.fireside.fm/linuxforeveryone/rss" htmlUrl="https://www.linux4everyone.com" />
+    <outline text="LINUX Unplugged" title="LINUX Unplugged" type="rss" xmlUrl="https://feeds.fireside.fm/linuxunplugged/rss" htmlUrl="https://linuxunplugged.com" />
+    <outline text="Linux Weekly Daily Wednesday" title="Linux Weekly Daily Wednesday" type="rss" xmlUrl="https://linuxgamecast.com/feed/lwdwaudio/" htmlUrl="https://linuxgamecast.com" />
+    <outline text="Open Source Security Podcast" title="Open Source Security Podcast" type="rss" xmlUrl="https://opensourcesecuritypodcast.libsyn.com/rss" htmlUrl="http://opensourcesecuritypodcast.com" />
+    <outline text="Open Source – Software Engineering Daily" title="Open Source – Software Engineering Daily" type="rss" xmlUrl="https://softwareengineeringdaily.com/category/open-source/feed/" htmlUrl="https://softwareengineeringdaily.com/category/open-source/" />
+    <outline text="Self-Hosted" title="Self-Hosted" type="rss" xmlUrl="https://selfhosted.show/rss" htmlUrl="https://selfhosted.show" />
+    <outline text="Sudo Show" title="Sudo Show" type="rss" xmlUrl="https://feeds.fireside.fm/sudoshow/rss" htmlUrl="https://sudo.show" />
+    <outline text="The Changelog: Software Dev &amp; Open Source" title="The Changelog: Software Dev &amp; Open Source" type="rss" xmlUrl="https://changelog.com/podcast/feed" htmlUrl="https://changelog.com/podcast" />
+    <outline text="The Joe Rogan Experience" title="The Joe Rogan Experience" type="rss" xmlUrl="https://spotifeed.timdorr.com/4rOoJ6Egrf8K2IrywzwOMk" htmlUrl="https://open.spotify.com/show/4rOoJ6Egrf8K2IrywzwOMk" />
+    <outline text="The Linux Link Tech Show MP3 Feed" title="The Linux Link Tech Show MP3 Feed" type="rss" xmlUrl="http://www.thelinuxlink.net/tllts/tllts.rss" htmlUrl="http://www.tllts.org" />
+    <outline text="This Week in Linux" title="This Week in Linux" type="rss" xmlUrl="https://tuxdigital.com/feed/thisweekinlinux-mp3" htmlUrl="https://tuxdigital.com/thisweekinlinux" />
+    <outline text="Ubuntu Podcast" title="Ubuntu Podcast" type="rss" xmlUrl="https://ubuntupodcast.org/feed/podcast" htmlUrl="https://ubuntupodcast.org" />
+    <outline text="Ubuntu Security Podcast" title="Ubuntu Security Podcast" type="rss" xmlUrl="https://ubuntusecuritypodcast.org/episode/index.xml" htmlUrl="https://ubuntusecuritypodcast.org/" />
+  </body>
+</opml>
