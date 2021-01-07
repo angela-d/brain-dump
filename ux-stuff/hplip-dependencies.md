@@ -16,8 +16,9 @@ apt -t buster-backports install hplip-gui
   - Run it: `./hplip*.run`
     - Follow the prompts
     - Finally, most of the dependencies are resolved! But...
-    ```text
-    error: A required dependency 'pyqt4-dbus (PyQt 4 DBus - DBus Support for PyQt4)' is still missing.
+
+```text
+error: A required dependency 'pyqt4-dbus (PyQt 4 DBus - DBus Support for PyQt4)' is still missing.
 error: A required dependency 'pyqt4 (PyQt 4- Qt interface for Python (for Qt version 4.x))' is still missing.
 error: Installation cannot continue without these dependencies.
 error: Please manually install this dependency and re-run this installer.
