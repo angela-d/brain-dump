@@ -10,6 +10,10 @@ Worth noting:
 apt -t buster-backports install hplip-gui
 ```
 (`hplip` is a dependency of hplip-gui and will be installed, too) -- the same dependency problems surfaced, even though the version was a minor point release away from HP's Sourceforge version.
+  - Remove the packages that didn't solve the problem:
+  ```bash
+  apt remove --purge hplip
+  ```
 
 2. I gave the [Sourceforge](https://developers.hp.com/hp-linux-imaging-and-printing) installation method, a shot
   - After the run script downloads, make it executable: `chmod +x hplip*.run`
@@ -37,7 +41,7 @@ qt5=yes
 ```
 
 ## The Fix
-Compile the run script and *disable qt4* at install time!
+Compile the run script and *disable qt4* at install time! (Step 2 from above; grab the Sourceforge script and proceed until you hit a roadblock, then begin this fix.)
 1. Run `ls -l` and you'll see a directory with read permissions for your root/sudo user was created, launch sudo/root and then `cd` into that directory
 2. Run the makefile with qt4 disabled (this picks you up where it left off before complaining about dependencies):
 ```bash
