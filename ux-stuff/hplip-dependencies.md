@@ -5,8 +5,7 @@ Worth noting:
 > Ubuntu often has dependency issues with HPLIP based on my clicks around the web while researching this problem.  The below steps should work for other supported distros, too.
 
 ## Scroll Past for the Fix - Troubleshooting Overview:
-1.
-I decided to install the latest version, via backports:
+1. I decided to install the latest version, via backports:
 ```bash
 apt -t buster-backports install hplip-gui
 ```
@@ -24,6 +23,7 @@ error: Installation cannot continue without these dependencies.
 error: Please manually install this dependency and re-run this installer.
 ```
 Take note that pyqt4 is not in Debian's repos.  This app works perfectly fine in Qt5, so I'm unsure of why they chose this requirement.  Doing a check for something *greater* than the minimum version would make more sense, here; rather than a hard stop at the 'last' supported version.
+
 3. Disable Qt4 in the config:
 ```bash
 pico /etc/hp/hplip.conf
