@@ -6,8 +6,9 @@ One of them happened to be `216.239.35.12` - a `whois 216.239.35.12` reports bac
 
 Does this IP have a nameserver that can clue me in on what it does?
 ```bash
-nslookup time4.google.com
+nslookup 216.239.35.12
 ```
+> 12.35.239.216.in-addr.arpa	name = time4.google.com.
 
 I'd rather deprive Google of that sliver of data of my device phoning in, so I want to change the NTP server (and then I will allow NTP to access the web!)
 - Hook up the device to a laptop with ADB / Android Debug Bridge
