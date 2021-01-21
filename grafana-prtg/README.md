@@ -9,7 +9,7 @@ My setup:
 
 Application | Version
 ------------|----------
-**Grafana** | Grafana v7.2.0 (efe4941ee3)
+**Grafana** | Grafana v7.3.7 (1e261642f4)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
 **PRTG** |  20.4.64.1402+
 
@@ -17,7 +17,7 @@ Development / Testing Environment ([see notes for setup](dev-environment.md)):
 
 Application | Version
 ------------|-----------
-**Grafana** | Grafana v7.2.0 (efe4941ee3)
+**Grafana** | Grafana v7.3.7 (1e261642f4)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
 **PRTG** | 20.4.64.1402+
 
