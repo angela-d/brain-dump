@@ -26,9 +26,13 @@ Failure to follow them accurately will result in the device sitting on the Linea
 Lineage has abandoned the su addon due to the breaking changes in Android 10, so [Magisk](https://www.didgeridoohan.com/magisk/HomePage) is the de facto if you want to root your device.
 
 1. Download the [Magisk vXX .zip & Magisk Manager apk](https://github.com/topjohnwu/Magisk/releases) from the developer's Github
-2. Plug a USB into the phone and use a file manager to add the .img into your *Downloads* folder
-3. [Boot into recovery](boot-into-recovery.md) and head to **Install**
-4. Navigate to the *Downloads* folder and select the .zip you placed there in step 2
+2. Plug a USB into the phone and use a file manager to add the .zip into your *Downloads* folder
+3. [Boot into recovery](https://github.com/angela-d/firmware_oneplus/blob/master/boot-into-recovery.md) and head to (in TWRP) Advanced > Sideload
+4. Navigate to the *Downloads* folder (in your terminal) and run `adb sideload Magisk-vxx.x.zip` (the .zip you placed in Downloads from step 2)
 5. Hit **Swipe to Confirm Flash**
 6. Once the zip is installed, go to the "Wipe cache/Dalvik" option, select > **Swipe to wipe**, then reboot
 Magisk should now be installed as soon as the phone reboots.
+
+The APK can be ran from within Lineage by simply opening your file manager and clicking on it.
+
+SU does not survive OTA updates and the above steps will need to be re-ran after each OS upgrade.  The APK is self-updating, so once installed, you only need to re-flash the Magisk .zip.
