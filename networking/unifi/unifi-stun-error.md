@@ -15,6 +15,6 @@ New firewall rule:
 - Source: `Unifi Controller`
 - Destination: `172.28.60.0/24` (range of the Ubiquiti devices)
 - Source Port: `UDP 3478`
-- Destination: `UDP Range: 33102-60730` (start and end ports may vary - these were just the min/max when checking the logs)
+- Destination Port: `UDP Range: 33102-60730` (start and end ports may vary - these were just the min/max when checking the logs)
 
 Almost instantly they started connecting on STUN, properly.
