@@ -1,5 +1,11 @@
 # Wifi VLAN for OpenWRT
-Useful to segment untrustworthy devices like "smart" TVs and prevent bad behavior, snooping and surveillance of network traffic.
+Updated for OpenWrt 19.07.6
+
+Useful to segment untrustworthy devices like "smart" TVs or wifi for guests and prevent bad behavior, snooping and surveillance of network traffic.
+
+> Note that if you try to send data to the "smart" TV from another wifi network (like casting from a Youtube Android app, for example), you'll break that capability with device isolation.
+>
+> Your device may also need to login to this VLAN/SSID to communicate, unless you set up IGMP/inter-VLAN traffic for your desired device(s), which is outside of the scope of my notes.
 
 ## Backup, first
 System > Backup / Flash Firmware
@@ -8,80 +14,65 @@ System > Backup / Flash Firmware
 
 **Network > Interfaces**
 - Click 'Add New Interface' button
-- Name 'vlan3'
-- Protocol: Static address
-- Click the radio for *Custom Interface* and fill **eth0.3** (Piggyback off the **lan**, so whatever eth ID the lan is, +1 to the last available VLAN ID.  If you have no other VLANs, this would be eth0.2) > Submit
-- IPv4 address: 192.168.3.1
-- IPv4 netmask 255.255.255.0
-- Leave the rest blank
+- Name: `Guest`
+- Protocol: `Static address`
+- Click the radio for *Custom Interface* and fill `wan2` (hit enter to create) > Submit
+- IPv4 address: `192.168.2.1`
+- IPv4 netmask `255.255.255.0`
+- Leave the rest blank and continue to the remaining tabs
 
-**Select DHCP server setup (same page)**
+**Select DHCP server setup tab (same section)**
 
-- Enter the starting octet (ex. 100)
-- Enter the preferred total of IPs you'll be handing out; if you only have 1 device, set it low.  If multiple devices will connect, set higher.
+- Enter the starting octet (ex. `100`)
+- Enter the preferred total of IPs you'll be handing out; if you only have 1 device you want to put on this VLAN, like a tv, enter `1` for the limit.  If multiple devices will connect, set higher.
 - Save & Apply
 
-**Network > Wifi**
+**Network > Wireless tab**
 - Click 'Add'
-- Select the mode, channel, channel width and transmit power (shorter if your device is close, higher if farhter away)
-- ESSID: "415bzp" (something uninteresting to bored people with scanners)
-- Mode: Access Point
-- Network: vlan3
-- WMM Mode (leave ticked; when disabled, can revert to legacy speeds in some routers)
 
-Wireless Security Tab
-- Encryption: WPA2-PSK
-- Cipher: Force CCMP (AES)
+### Under Device Configuration:
+- Select the mode (`AC` for newer devices, `N` for legacy)
+- Channel (ideally, channels with no neighboring access points are on)
+- Channel width *(higher widths can both improve performace but may also cause disturbances; this option should be trialed to see what works best)*
+- Transmit power *(shorter if your device is close, higher if farther away or needs to penetrate a lot of walls)*
+- ESSID: `415bzp` (something uninteresting to bored people with scanners)
+- Mode: `Access Point`
+- Network: `wan2`
+- WMM Mode (leave `ticked`; when disabled, can revert to legacy speeds in some routers)
+
+## Under Interface Configuration:
+**Wireless Security Tab**
+- Encryption: `WPA2-PSK`
+- Cipher: `Force CCMP (AES)`
+- [x] Enable key reinstallation (KRACK) countermeasures
 - Save & Apply
+
+**Advanced Settings Tab**
+
+Before ticking isolate clients, see the note at the top of this page.
+- [x] Isolate Clients (devices can't talk to eachother)
 
 
 ### Configure isolation via Firewall rules
-**Network > Firewall from the main pulldown**
+In this area we'll make it so the wifi VLAN has web access.
 
-In this area we'll make it so the VLAN has web access.
+**Network > Firewall from the main pulldown** >
+**Under Zones > Zone Forwardings:**
+- lan:
+  - Click Edit > For *Allow forward to destination zones:*, hit the pull-down, select `wan2` > Save & Apply at the bottom of page
+- wan:
+  - Click Edit > For *Allow forward from source zones:*, hit the pull-down, select `wan2` > Save & Apply at the bottom of page
+- wan2:
+  - Edit > Under *Covered networks*, tick `wan2`
 
-LAN
-- Edit > For *Allow forward to destination zones:*, tick 'vlan3' > Save & Apply at the bottom of page
+![Wifi Guest VLAN Zones](../img/wifi-zones.png)
 
-**Enabling Isolation**
-
-My router's GUI did not have a checkbox for isolation, so I SSH'd into the router and modified `vi /etc/config/wireless
-` and found the block with the SSID (wifi broadcast name) and changed:
-```bash
-config wifi-iface                     
-        option device 'radio0'
-        option mode 'ap'      
-        option ssid 'boring ssid name'
-        option network 'vlan3'
-        option encryption 'psk2+ccmp'
-        option key 'thispasswordisnotencryptedbyopenwrt..'
-```
-to:
-```bash
-config wifi-iface                     
-        option device 'radio0'
-        option mode 'ap'      
-        option ssid 'boring ssid name'
-        option network 'vlan3'
-        option encryption 'psk2+ccmp'
-        option key 'thispasswordisnotencryptedbyopenwrt..'
-        option isolate '1'
-```
-
-Note that if you try to send data to the "smart" TV from another wifi network, you'll break that capability with isolation.  Your device will need to login to this VLAN/SSID to communicate.
 
 **Back on the Firewall main page > Under Custom Rules tab**
 
-**Note:** This page is a continuation of my [OpenWRT Switchport VLAN notes](openwrt-switchport-vlan.md), if you're utilizing both of these.. the firewall rules there might make more sense, as the version below was redone to fit vlan3 into the mix.
+**Note:** This page is a continuation of my [OpenWRT Switchport VLAN notes](openwrt-switchport-vlan.md), if you're utilizing both of these.. the firewall rules there might make more sense, as the version below was redone to fit wan2 into the mix.
 
 Append the following:
-- Firewall rules toward the bottom of [Switchport VLAN](openwrt-switchport-vlan.md)
-
-If you want to tweak or extend the firewall filtering, you can make changes in the GUI, but they won't be loaded until next reboot of the router.
-- SSH into the router
-- Run `/etc/init.d/firewall restart`
-- The rules are now in effect!
-
-Try to access a device/IP on the forbidden VLAN.
+- Paste the [firewall rules](custom-firewall-rules.md)
 
 Done!
