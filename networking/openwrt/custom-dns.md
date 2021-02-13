@@ -21,19 +21,39 @@ DNS for All Interfaces:
 ***
 
 ## DNSCrypt with OpenWRT
-These instructions are based on [David C's OpenWRT build](https://dc502wrt.org/) - should work on other builds, providing ca-bundle is installed: `opkg update && opkg install ca-bundle`
+These instructions are based on **dnscrypt-proxy v2** from [official OpenWRT documentation](https://openwrt.org/docs/guide-user/services/dns/dnscrypt_dnsmasq_dnscrypt-proxy2)
 
+### Pre-requisites
+There is no GUI on vanilla OpenWRT for dnscrypt-proxy2 at the time of writing; some custom builds offer one.
 1. Login to the router via CLI
-2. Remove dnscrypt-proxy v1 (if installed): `opkg remove --autoremove luci-app-dnscrypt-proxy`
-3. Current versions of David's build include dnscrypt-proxy v2 by default
+2. Remove dnscrypt-proxy v1 (if installed): `opkg remove --autoremove luci-app-dnscrypt-proxy dnscrypt-proxy`
+3. Install dependencies:
+  - Install *ca-bundle* for CA certificates `opkg update && opkg install ca-bundle`
+  - Install *dnsmasq* & *dnscrypt-proxy2*: `opkg install dnsmasq dnscrypt-proxy2`
 
-4. In the Luci GUI dashboard, set the DNS per interface (Network > Interfaces > Edit > Use custom DNS servers) to route DNS requests through DNSCrypt, use `127.0.0.53` as the DNS IP.
+
+4. Enable DNS encryption
+Continue running these commands in the router's terminal.
+```bash
+uci -q delete dhcp.@dnsmasq[0].server
+uci add_list dhcp.@dnsmasq[0].server="127.0.0.53#53"
+```
+
+5. Enforce DNS encryption for LAN clients
+```bash
+uci set dhcp.@dnsmasq[0].noresolv="1"
+uci commit dhcp
+/etc/init.d/dnsmasq restart
+```
 
 ### Configure DNSCrypt
-By default, *Cloudflare* is the primary; to pick another host, get the server name from the [public servers list](https://dnscrypt.info/public-servers).
+With `server_names` commented out (prefixed with #), dnscrypt will choose resolvers based on the config settings in **/etc/dnscrypt-proxy2/dnscrypt-proxy.toml**
+
+To override and use specific servers, uncomment that variable and choose your servers from the DNSCrypt public list.
+
 1. Edit the DNSCrypt config: `vi /etc/dnscrypt-proxy2/dnscrypt-proxy.toml`
 
-2. To choose another host, change the following line:
+2. (optional) To choose custom hosts, change the following line:
 ```bash
 server_names = ['cloudflare']
 ````
@@ -46,6 +66,12 @@ server_names = ['arvind-io','adguard-dns-doh','bottlepost-dns-nl','aaflalo-me-ny
 
 
 - :warning: When using `yandex` it appears they "poison" the DNS by loading Russian paypal.com over PayPal's own regional auto-detect settings
+
+  **Optionally add these resolvers to your blacklist:**  Modify the existing variable *disabled_server_names*:
+  ```bash
+  # Server names to avoid even if they match all criteria                         
+  disabled_server_names = ['ams-dnscrypt-nl','cloudflare','yandex']    
+  ```
 
 3. Test loading configs:
 ```bash
