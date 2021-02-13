@@ -39,6 +39,7 @@ The router lights will flash and power off for a second, when they return, proce
   ![Start flashing](../img/6.png)
 
 10. You'll get a warning, click **Yes**
+
   ![Start flashing](../img/7.png)
 
 11. Another prompt, basically saying don't touch it until it boots back up.  You can check its progress by continually reloading http://192.168.1.1 - once you see OpenWRT, go set a password and start configuring.
@@ -68,6 +69,6 @@ cd /tmp && sysupgrade -F -n -v <image-name>.img
 ## Upgrading
 Upgrading OpenWRT is not like Linux, do not set unattended/automatic upgrades; things are known to break when doing so.
 
-Upgrading is as simple as going to your build's vendor (for example, [OpenWRT](https://openwrt.org/toh/linksys/linksys_wrt1900ac)) and obtaining the latest **Firmware OpenWrt Upgrade** (.bin file)
+Upgrading is as simple as going to your build's vendor (for example, [OpenWRT](https://openwrt.org/toh/linksys/linksys_wrt1900ac)) and obtaining the latest **Firmware OpenWrt Upgrade** (.bin file) and uploading the .bin under the System > Backup / Flash Firmware section.
 
 - The dashboard will not alert you when there is a new release or security patch.  Keep track of it, yourself.
