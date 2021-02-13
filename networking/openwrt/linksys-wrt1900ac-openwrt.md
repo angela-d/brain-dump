@@ -15,27 +15,59 @@ The router lights will flash and power off for a second, when they return, proce
 3. If you have a manual-set IP, set it to 192.168.1.2; otherwise, DHCP is fine.
 
 4. Load the Linksys GUI, at http://192.168.1.1 and select **Manual Configuration**
-![Linksys Manual Config](img/1.png)
+
+  ![Linksys Manual Config](../img/1.png)
 
 5. The router will complain there is no internet connection -- click **Login**:
-![Linksys no internet](img/2.png)
+
+  ![Linksys no internet](../img/2.png)
 
 6. Login with the password **admin**
-![Linksys login](img/3.png)
+
+  ![Linksys login](../img/3.png)
 
 7. In the left menu, select **Connectivity**
-![Linksys menu](img/4.png)
+
+  ![Linksys menu](../img/4.png)
 
 8. Beneath the *Router Firmware Update* menu, and the **Manual** box, select **Choose File** -- you're going to select the **.img** file you downloaded from OpenWRT's site.
-![Firmware Update](img/5.png)
+
+  ![Firmware Update](../img/5.png)
 
 9. Click **Start** to begin flashing
-![Start flashing](img/6.png)
+
+  ![Start flashing](../img/6.png)
 
 10. You'll get a warning, click **Yes**
-![Start flashing](img/7.png)
+  ![Start flashing](../img/7.png)
 
 11. Another prompt, basically saying don't touch it until it boots back up.  You can check its progress by continually reloading http://192.168.1.1 - once you see OpenWRT, go set a password and start configuring.
-![Start flashing](img/8.png)
+![Start flashing](../img/8.png)
 
 If you've previously flashed other WRT1900AC models, you can also copy over their settings by simply uploading their backup.  Any add-ons won't copy over, but firewall, interface, networking and switch config will. (Untested on v1 > v2 models, or vice-versa)
+
+***
+## Changing OpenWRT Builds
+When jumping from vanilla OpenWRT to a custom build (or vice-versa) it is not necessary to downgrade to stock firmware.
+
+However, you **do not** want to save settings; start fresh!!
+
+More detailed steps in the [OpenWRT documentation](https://openwrt.org/toh/linksys/linksys_wrt1900ac)
+
+1. Wire in to the router via ethernet
+2. Obtain the .img for the build you want to use (as if it's a new install, *not* the .bin upgrade option for the build)
+3. If uploading the **.img** via luci fails due to missing metadata, a flash via the router's command line will do the trick:
+```bash
+cd /tmp && opkg update && opkg install wget && wget <Image-Link>.img
+```
+4. Flash the image:
+```bash
+cd /tmp && sysupgrade -F -n -v <image-name>.img
+```
+
+## Upgrading
+Upgrading OpenWRT is not like Linux, do not set unattended/automatic upgrades; things are known to break when doing so.
+
+Upgrading is as simple as going to your build's vendor (for example, [OpenWRT](https://openwrt.org/toh/linksys/linksys_wrt1900ac)) and obtaining the latest **Firmware OpenWrt Upgrade** (.bin file)
+
+- The dashboard will not alert you when there is a new release or security patch.  Keep track of it, yourself.
