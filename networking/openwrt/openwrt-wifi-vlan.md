@@ -47,6 +47,35 @@ System > Backup / Flash Firmware
 - [x] Enable key reinstallation (KRACK) countermeasures
 - Save & Apply
 
+**802.11w Management Frame Protection** [[what is 802.11w?](https://www.cwnp.com/wireless-lan-security-and-ieee-802-11w/)]
+
+Some users have reported disconnects when using this option.  Older devices (router/wireless devices) or cheap IOT devices may not support 802.11w, check your specific device for support, or trial and error.
+
+**Check if your device supports 802.11w**
+- Windows:
+  ```powershell
+  netsh wlan show driver
+  ```
+  > 802.11 Management Frame Protection supported : **Yes**
+
+- Linux:
+  ```bash
+  sudo iw phy | grep 00-0f-ac:6
+  ```
+  > 		* CMAC (00-0f-ac:6)
+
+  *If `00-0f-ac:6` is returned, 802.11w is supported.*
+
+
+- Check to see what chip your router has (ath9k, ath10k, mwlwifi and mt76) are supported
+- [Wikipedia](https://en.wikipedia.org/wiki/WRT1900AC) lists WRT1900AC as having Marvell (mwlwifi); so it is supported
+- Check to see what version of wpad or hostapd you have: System > Software > Update Lists
+- Under filter, search `wpad` and `hostapd`; I only had hostapd-common & wpad-basic, so I went ahead and installed `hostapd` to get the full version
+  ![Overwrite](../img/overwrite.png)
+  A /bin file also contained in *hostapd* already existed, so I ticked the checkbox to let it overwrite *(you'll get a warning if you attempt to install without checking the box; clearly read the warning & understand what will happen before opting to let it overwrite)*
+- Head back into Network > Wireless > Wireless Security > select your preference of *Required* or *Optional* and set the values of the maximum & rety timeouts; if you're not sure what to use, use the defaults greyed in the boxes.
+- Save > disconnect & reconnect your wifi devices to make sure none of them have troubles connecting
+
 **Advanced Settings Tab**
 
 Before ticking isolate clients, see the note at the top of this page.
