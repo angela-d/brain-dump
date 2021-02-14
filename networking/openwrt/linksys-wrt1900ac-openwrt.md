@@ -70,5 +70,11 @@ cd /tmp && sysupgrade -F -n -v <image-name>.img
 Upgrading OpenWRT is not like Linux, do not set unattended/automatic upgrades; things are known to break when doing so.
 
 Upgrading is as simple as going to your build's vendor (for example, [OpenWRT](https://openwrt.org/toh/linksys/linksys_wrt1900ac)) and obtaining the latest **Firmware OpenWrt Upgrade** (.bin file) and uploading the .bin under the System > Backup / Flash Firmware section.
+- You can opt to save settings when doing an upgrade, if you're staying on the same vendor build.  There is a checkbox for it.  Your config files will be retained, but you will have to re-install any addons (previous settings will re-populate upon reinstall).
 
 - The dashboard will not alert you when there is a new release or security patch.  Keep track of it, yourself.
+
+This thread [regarding updating OpenWrt](https://forum.openwrt.org/t/opkg-upgrade-vs-flashing-sysupgrade/58906) on the OpenWrt forum has a detailed discussion of why you shouldn't use the package manager (or GUI) even if updates are showing.
+
+The only time I update packages outside of a sysupgrade:
+- CVEs for a **particular application/component**, then, only the affected package will get updated until the next sysupgrade.
