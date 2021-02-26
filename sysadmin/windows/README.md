@@ -1,5 +1,4 @@
 # Windows Brain Dumps
-For times when hanging out in purgatory is necessary.
 
 ```bash
                         _.-;:q=._
@@ -30,6 +29,8 @@ For times when hanging out in purgatory is necessary.
                        ``""---...__        .-'
                                    ``""---'
 ```
+Group Policy
+- [uBlock Origin Deployment](active-directory/ublock-origin-custom-deployment.md)
 
 Windows Troubleshooting
 - [Regex File Searches with Powershell](regex-search-with-powershell.md)
