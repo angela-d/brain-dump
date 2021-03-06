@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# script to customize some annoyances away when migrating to a new machine
+
+# i like to run apt manually and see what's being upgraded, so i don't want my desktop bothering me about it
+# silence gnome update notifications
+echo "Turning off Gnome OS Update prompt.."
+gsettings set org.gnome.software download-updates false
+gsettings set org.gnome.software allow-updates false
+
+# i also don't want gnome software running at startup; on-demand only!
+echo "Disabling Gnome Software startup..."
+cp /etc/xdg/autostart/gnome-software-service.desktop ~/.config/autostart
+echo "X-GNOME-Autostart-enabled=false" >> ~/.config/autostart/gnome-software-service.desktop
+
+echo "Fix gedit annoyances..."
+# gedit should be a plain notepad, no line numbers or highlights!
+gsettings set org.gnome.gedit.preferences.editor display-line-numbers false
+# line highlighting looks like garbage on dark themes
+gsettings set org.gnome.gedit.preferences.editor highlight-current-line false
+
+# turn off screenshot delay default
+gsettings set org.gnome.gnome-screenshot delay 0
+
+# i do not like the overlay scrollbar in tilix
+gsettings set com.gexperts.Tilix.Settings use-overlay-scrollbar false
+
+# plank dock preferences
+echo "Setting Plank dock preferences..."
+gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ hide-mode 'dodge-maximized'
+gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme 'Transparent'
+gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ zoom-enabled true
+
+# plank dock duplicator from: https://gist.github.com/notanimposter/952ec7aefad1825ee9a30cbbbc4a6453
+newdock="dock2"
+plank -n "$newdock" &
+kill $!
+# get the non-primary monitor
+monitor=$(xrandr | grep " connected" | awk '$3 !="primary" { print $1 }')
+echo "Using $monitor as monitor for $newdock"
+gsettings reset-recursively net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock2/
+for key in $(gsettings list-keys net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/);
+do
+  val=$(gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ "$key")
+  gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock2/ "$key" "$val"
+done
+gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock2/ monitor "$monitor"
+
+# symlink dock1 to dock2
+mkdir -p "$HOME"/.config/plank/dock2/
+rm -rf "$HOME"/.config/plank/dock2/launchers
+ln -s "$HOME"/.config/plank/dock1/launchers "$HOME"/.config/plank/dock2/launchers
+
+# enable dock 2
+current=$(gsettings get net.launchpad.plank enabled-docks)
+append=$(echo "$current" | sed "s@dock1@dock1','dock2@g")
+gsettings set net.launchpad.plank enabled-docks "$append"
+killall plank
