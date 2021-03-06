@@ -119,3 +119,19 @@ iwconfig wlp3s0 power off
 ```
 
 Next system boot, powersave for wifi is disabled.
+
+***
+
+## Disable All Evolution Services
+Since Evolution is a dependency for Gnome, Gnome users cannot uninstall them.
+
+If you don't use its features (calendar events being one of them), they're completely un-needed.
+
+Add the following to your startup script:
+```bash
+# kill all services prefixed with evolution-
+for serv in `pgrep evolution-*`;
+do
+  kill $serv
+done
+```
