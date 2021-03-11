@@ -1,6 +1,10 @@
 # Fortinet SSL VPN on Linux
 
-Fortinet's proprietary Linux client didn't work well on Debian 9. (Haven't bothered trying it on Debian 10, as OpenFortiGUI has worked quite well)
+Fortinet's proprietary Linux client didn't work well on Debian 9. (I've used OpenFortiGUI through Debian 10 and now 11 -- it has worked quite well)
+
+> Transition from Debian 10 to 11: Absolutely no change whatsoever (10 > 11 March 2021)
+
+> Debian 9 to 10 (some effort was involved)
 
 - Compile from source for a non-proprietary [CLI version](https://github.com/adrienverge/openfortivpn)
 - Non-proprietary [GUI version](https://github.com/theinvisible/openfortigui) or [apt installation](https://apt.iteas.at/)
@@ -8,7 +12,7 @@ Fortinet's proprietary Linux client didn't work well on Debian 9. (Haven't bothe
 ## GUI Installation
 These instructions are for Debian 10.  For Ubuntu, check the [developer's blog](https://hadler.me/linux/openfortigui/).
 
-Add the developer's signing key
+Add the developer's signing key (old notes; confirm with [Hadler's site](https://hadler.me/linux/openfortigui/) to ensure nothing has changed.)
 ```bash
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2FAB19E7CCB7F415
 ```
