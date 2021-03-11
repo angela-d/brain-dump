@@ -111,8 +111,8 @@ Unlike Chrome, when you use [gorhill's](http://raymondhill.net/ublock/adminSetti
 5. Force install Firefox
   - Computer Configuration > Policies > Administrative Templates > Mozilla > Firefox > Extensions > Extensions to Install
   - Set to `Enabled`
-  - Get the latest XPI by going to [See all versions on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/versions/)
-  - Click **Show** > paste https://addons.mozilla.org/firefox/downloads/file/3719054/ublock_origin-1.33.2-an+fx.xpi (there may be a later version, don't copy this one; get it from the *See all versions* link above)
+  - Get the latest XPI by using the extension shortname, like so: `https://addons.mozilla.org/firefox/downloads/latest/EXTENSION-SHORT-NAME-HERE/latest.xpi`
+  - Click **Show** > paste https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi
 
   ### See if the extension auto-installs
   - Go to `about:profiles` > Create a new profile and launch in a new window > check for uBlock Origin and troll its settings
