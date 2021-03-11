@@ -1,6 +1,6 @@
 # Fortinet SSL VPN on Linux
 
-Fortinet's proprietary Linux client didn't work well on Debian 9. (I've used OpenFortiGUI through Debian 10 and now 11 -- it has worked quite well)
+Fortinet's proprietary Linux client didn't work well on Debian 9. (I started using OpenFortiGUI through Debian 9, 10 and now 11 -- it has worked quite well)
 
 > Transition from Debian 10 to 11: Absolutely no change whatsoever (10 > 11 March 2021)
 
