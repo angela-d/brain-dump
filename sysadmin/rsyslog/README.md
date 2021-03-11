@@ -44,3 +44,24 @@ You need to know the application name, as rsyslog sees it.
 - View `/var/log/syslog` and look for the app name to the left of [pid]: like so: `firefox-esr[17145]:` -- `firefox-esr` is the application name.
 
 - gtk warnings tend to trigger with the binary app name, not .desktop shortcut (but also depends on how you're launching the application on the desktop); so you may need to do both (see firefox-esr.conf for an example)
+
+### Delete Logs and Gzips by Age with logrotate
+I had a ton of logs (and compressed backups) from years ago left in /var/log; because they didn't meet a threshold for rotation, so they just stick around.
+
+To clean up this kind of stuff, I added the following to [/etc/logrotate.d/rsyslog](etc/logrotate.d/rsyslog):
+```bash
+find /var/log/ -mtime +14 -delete
+```
+which runs anytime `/etc/logrotate.d/rsyslog` is run and will delete anything older than 14 days, irregardless of log type.
+
+If you want to *test* this implementation before running it, remove `-delete` and run it with `-print` to see what will go (although it will list folders, this command leaves directories behind, but will go into them and clear nested matches).
+
+Run via commandline:
+```bash
+find /var/log/ -mtime +14 -print
+```
+
+You can force a log rotation (even if a threshold is unmet), like so:
+```bash
+logrotate -f /etc/logrotate.d/rsyslog
+```
