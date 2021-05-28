@@ -16,6 +16,11 @@ Once the files are in PDF format, they can be merged together, to become one PDF
 pdftk p1.pdf p2.pdf output mergedpages.pdf
 ```
 
+Split a pdf:
+```bash
+pdftk sourcefile.pdf cat 3-7 output destinationfile.pdf
+```
+
 ## Troubleshooting
 When trying to convert a png to pdf:
 > convert-im6.q16: attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/408.
