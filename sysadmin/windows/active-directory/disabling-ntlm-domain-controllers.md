@@ -43,10 +43,11 @@ After getting the Kerberos ticket, I still had to make some changes in [Remmina]
 
 **What changed between NTLM auth and Kerberos auth?**
 
- - Under Basic:
-  - **Domain** must be specified
-  - FQDN under **server** must be used; using IP addresses fails
+  - Under Basic:
+    - **Domain** must be specified
+    - FQDN under **server** must be used; using IP addresses fails
 
+***
 
   - Under Advanced:
     - **Security protocol negotiation** must be set to TLS protocol security
