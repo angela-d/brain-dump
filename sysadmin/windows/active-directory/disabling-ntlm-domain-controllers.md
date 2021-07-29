@@ -4,6 +4,8 @@ Reject authentications to domain controllers sent over NTLM.
 ## What was Affected (in my environment)
 - Synology shared drives
 - RDP via Linux clients (not joined to the domain)
+- Papercut (IP referenced in config)
+- Radius (IP-based)
 
 ## GPO to Disable NTLM
 - Domain Controllers / Computer Configuration / Windows Settings / Security Settings  / Local Policies / Security Options / Network security:  Restrict NTLM: Incoming NTLM traffic = `Deny All Accounts`
@@ -45,12 +47,24 @@ After getting the Kerberos ticket, I still had to make some changes in [Remmina]
 
   - Under Basic:
     - **Domain** must be specified
+    - **Username** must be full `user@example.com` instead of `user`
     - FQDN under **server** must be used; using IP addresses fails
 
-***
+
 
   - Under Advanced:
     - **Security protocol negotiation** must be set to TLS protocol security
 
 ### Auto-renewing Kerberos tickets
 Optional: [kstart](https://packages.debian.org/sid/kstart)
+
+***
+
+### Fix for Papercut
+Pending testing
+
+***
+
+### Fix for Radius
+Pending testing; some AP controllers only have IP requested; errors out on FQDN.  Looking for workarounds.
+- Most APs set to FQDN for Radius server settings
