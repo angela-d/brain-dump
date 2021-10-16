@@ -34,7 +34,7 @@ XDG_RUNTIME_DIR="/run/user/1000"
 # if you have insanely large databases you may want to trim obsolete records; bzip has great compression, but is also slow
 # absolute paths for system executables may/may not be necessary, depending on your system; nowadays probably not
 # --defaults-extra-file usage prevents using mysql passwords on cli & storing in a non-public system directory
-cd /home/user/hiddenpath/ && /usr/bin/mysqldump --defaults-extra-file=/home/user/sql.cnf --opt --all-databases | bzip2 > /home/user/hiddenpath/sqlbackup-`date +\%Y\%m\%d`.sql.bz2 && git add . && git commit -m "Backup" && cd > /dev/null 2>&1
+cd /home/user/hiddenpath/ && /usr/bin/mysqldump --defaults-extra-file=/home/user/sql.cnf --opt --all-databases --ignore-database=information_schema --ignore-database=mysql --ignore-database=performance_schema --ignore-database=phpmyadmin | bzip2 > /home/user/hiddenpath/sqlbackup-`date +\%Y\%m\%d`.sql.bz2 && git add . && git commit -m "Backup" && cd > /dev/null 2>&1
 
 # rotate database backups older than 5 days, automate git commit so my local cron can login via ssh (pk auth) and do a pull without manual intervention
 # only remove files with the sqlbackup-*.sql.bz2 filename, to prevent removal for the .git folder
