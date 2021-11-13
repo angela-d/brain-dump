@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# obtain your ppds from https://openprinting.org/printers/manufacturer/KONICA+MINOLTA
+# upload to https://localhost:631/
+# *then* run this script
+
+# for colored output
+function green() {
+  echo -e "\033[32m$1\033[0m"
+}
+
+function red() {
+  echo -e "\033[0;31m$1\033[0m"
+}
+
+function brown() {
+  echo -e "\033[0;33m$1\033[0m"
+}
+
+# if the clean arg is passed, uninstall everything
+if [ "$1" == 'clean' ];
+then
+
+  lpadmin -x "Main_Printer" && red "Removed Main_Printer"
+  lpadmin -x "Secondary_Printer" && red "Removed Secondary_Printer"
+
+  exit 0
+
+fi
+
+green "\tWhat is your Active Directory username?"
+read -r ACTIVE_USER
+
+# 1st arg of printList function is the queue name
+function printList() {
+
+  # pre-fill the ppd path, so we can make sure the drivers even exist; throw an error if not
+  PPD_PATH="/opt/OpenPrinting-KONICA_MINOLTA/ppds/KONICA_MINOLTA/$5-Postscript-KONICA_MINOLTA-en.ppd.gz"
+
+
+  # check for existing queues and do not add if they already exist
+  if [ ! -e /etc/cups/ppd/"$1".ppd ];
+  then
+
+    ## queue does not exist ##
+
+    # standard path ppd all share the same location, short of the gz data; make sure it exists
+    if [ -e "$PPD_PATH" ];
+    then
+      lpadmin -p "$1" -D "$2" -L "$3" -E -v "lpd://$ACTIVE_USER@print.example.com/$4" -P "$PPD_PATH" -o printer-is-shared=false -o KMDuplex=Single && green "$4 added"
+  	else
+  	  red "ERROR: $1 PPD does not exist: $PPD_PATH"
+      ERROR="1"
+
+      # since an error was triggered, purge all ppds to force a "reset" like is done from sys pref > reset printing
+      rm -rf /etc/cups/ppd/"$4".ppd && echo "Reset /etc/cups/ppd/$4 -- reinstall this queue"
+    fi
+
+    # give a detailed error & fail at the first sign of trouble
+    [[ "$ERROR" == "1" ]] && red ">> Something went wrong setting up a printer; exiting" && exit 0
+
+  ## queue exists, so make sure the ppd does, too ##
+
+  elif [ -e /etc/cups/ppd/"$1".ppd ];
+  then
+    brown "$1 queue dependencies exist; good to go (skipping)"
+  fi
+
+}
+
+# trigger printer list deployment function, printList()
+# each space suffixed indicates a +1 of the argument passed into the printList() function
+
+# PPD FILE    = $1 (ls /etc/cups/ppd)
+# DESCRIPTION = $2
+# LOCATION    = $3
+# URL         = $4
+# DRIVERPATH  = $5 (lpinfo -m | grep -i konica w/ these already installed)
+printList "Main_Printer" "Main Printer" "Lobby" "MainPrinter" "KONICA_MINOLTA-500_420_360_PS_P"
+printList "Secondary_Printer" "Secondary Printer" "Hallway" "Secondary_Printer" "KONICA_MINOLTA-C550_PS_P"
+
+red ">> Do not manage these queues via https://localhost:631 <<"
+echo "The AD prefix gets stripped from the connection name; your prints may blackhole."
+echo -e "Fix bugs in this script and re-run as necessary.\n"
+exit 0
