@@ -47,3 +47,8 @@ Directly modifying the shell script supplied by Filemaker fixes this issue.
 ```
 
 7. In your working directory (/Users/yourusername/Desktop/Filemaker18/), a new pkg will be created: **FileMaker Pro 18 Advanced ARD.pkg** - this is the *only* file you need to give to your MDM (JAMF, Filewave, etc).  The rest of the files in your working directory can now be discarded.
+
+
+:warning: The reference of **Registration.app** is obsolete as of at least Filemaker v18+
+
+:information_source: These two issues were submitted to Claris support via email in November of 2021; hopefully these notes soon become obsolete and their script gets updated! :)
