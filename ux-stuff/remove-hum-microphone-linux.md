@@ -1,5 +1,5 @@
 # Removing Microphone Hum or Buzzing on Linux Desktop
-Pulseaudio in Debian doesn't appear to have noise cancellation on, by default.
+Pulseaudio in Debian doesn't appear to have noise cancellation on, by default.  Pretty much necessary for the overly aggressive sound in Google Meets.
 
 I attempted to add this to `~/.config/pulse/default.pa` and Pulseaudio would crash each reboot; it appears to have to be done in the defaults of `/etc/pulse/`
 
@@ -33,11 +33,14 @@ pico /etc/pulse/default.pa
 Append the following, to the bottom of the file:
 ```bash
 # noise canceling
+.ifexists module-echo-cancel.so
 load-module module-echo-cancel aec_method=webrtc
+.endif
 ```
 
-In some cases you can restart Pulseaudio, but it didn't take effect for me until a system reboot. (Run as user, not root/sudo):
+In some cases you can restart Pulseaudio and load the module, without requiring a reboot (Run as user, not root/sudo):
 ```bash
+pactl load-module module-echo-cancel
 pulseaudio --start
 ```
 
@@ -55,10 +58,14 @@ Set the profile so it defaults to this after reboot:
 pico /etc/pulse/default.pa
 ```
 
-Append:
+Append into the initial conditional statement, like so:
 ```bash
+# noise canceling
+.ifexists module-echo-cancel.so
+load-module module-echo-cancel aec_method=webrtc
 # choose the noice canceling input profile, by default
 set-default-source alsa_input.pci-0000_00_1f.3.analog-stereo.echo-cancel
+.endif
 ```
 
 If it hasn't improved noticeably, the [Arch wiki](https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting) has a thorough list of arguments that can be appended to `aec_args`.
