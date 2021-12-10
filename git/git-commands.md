@@ -3,6 +3,17 @@ I use git almost daily so I don't really need my cheat-sheet anymore, but there 
 
 Taking note of these, so I don't have to dig for them the next time they're needed.
 
+## See unpublished commits
+Stuff that got added after `git add filename`
+```bash
+git cherry -v
+```
+
+## Undo an unpublished commit (without losing the code changes)
+```bash
+git reset --soft HEAD~;
+```
+
 ## Delete a Commit from the History (Plus it's contents)
 If you committed a mistake to the repo that shouldn't stay in the history; a hard reset can clean it up - providing it's executed rapidly.  If other systems/users have already received this commit, this will cause a mess.
 
