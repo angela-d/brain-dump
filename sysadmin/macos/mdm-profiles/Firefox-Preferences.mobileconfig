@@ -19,10 +19,17 @@
                 <dict>
                   <key>mcx_preference_settings</key>
                   <dict>
+                    <key>AllowedDomainsForApps</key>
+                    <string>example.com</string>
                     <key>AppAutoUpdate</key>
                     <true />
+                    <key>BackgroundAppUpdate</key>
+                    <true />
                     <key>DNSOverHTTPS</key>
-                    <false />
+                    <dict>
+                      <key>Enabled</key>
+                      <false />
+                    </dict>
                     <key>DisableFirefoxStudies</key>
                     <true />
                     <key>DisablePocket</key>
@@ -89,6 +96,8 @@
                               <string>force_installed</string>
                             </dict>
                           </dict>
+                          <key>ExtensionUpdate</key>
+                          <true />
                           <key>FirefoxHome</key>
                           <dict>
                             <key>Highlights</key>
@@ -101,6 +110,12 @@
                             <true />
                             <key>Snippets</key>
                             <false />
+                            <key>SponsoredPocket</key>
+                            <false />
+                            <key>SponsoredTopSites</key>
+                            <false />
+                            <key>TopSites</key>
+                            <true />
                             <key>TopSites</key>
                             <false />
                           </dict>
@@ -117,14 +132,41 @@
                           <false />
                           <key>NoDefaultBookmarks</key>
                           <true />
+                          <key>OverrideFirstRunPage</key>
+                          <string></string>
+                          <key>OverridePostUpdatePage</key>
+                          <string></string>
                           <key>SSLVersionMin</key>
                           <string>tls1.2</string>
+                          <key>SearchEngines</key>
+                          <dict>
+                            <key>Add</key>
+                            <array>
+                              <dict>
+                                <key>Alias</key>
+                                <string>@brave</string>
+                                <key>Description</key>
+                                <string>Privacy-focused web searching with Brave</string>
+                                <key>IconURL</key>
+                                <string>https://aws1.discourse-cdn.com/brave/optimized/3X/6/e/6e7fe393c59fe7d1e4e6977f631a39e19eb59d40_2_32x32.png</string>
+                                <key>Method</key>
+                                <string>GET</string>
+                                <key>Name</key>
+                                <string>Brave Search</string>
+                                <key>SuggestURLTemplate</key>
+                                <string>name=value&amp;q={searchTerms}</string>
+                                <key>URLTemplate</key><string>https://search.brave.com/search?q={searchTerms}</string>
+                              </dict>
+                            </array>
+                          </dict>
                           <key>UserMessaging</key>
                           <dict>
                             <key>ExtensionRecommendations</key>
                             <false />
                             <key>FeatureRecommendations</key>
                             <false />
+                            <key>SkipOnboarding</key>
+                            <true />
                             <key>UrlbarInterventions</key>
                             <false />
                             <key>WhatsNew</key>
@@ -132,10 +174,7 @@
                           </dict>
                       </dict>
                 </dict>
-              </array>
             </dict>
-          </dict>
-        </dict>
-      </array>
+    </array>
   </dict>
 </plist>
