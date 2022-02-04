@@ -46,3 +46,8 @@ Active Directory Domains
 
 Making Windows Machines Cooler
 - [Installing Debian to a Surface Tablet](install-debian-surface-tablet.md)
+
+***
+## Useful Log Locations
+Driver setup logs (for printer drivers)
+- C:\Windows\INF\setupapi.dev.log
