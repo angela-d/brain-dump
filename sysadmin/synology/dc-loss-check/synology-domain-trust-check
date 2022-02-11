@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# based on helpful concepts from https://stackoverflow.com/questions/7706095/filter-log-file-entries-based-on-date-range
+
+# log to scan
+LOGMONITOR="/var/log/messages"
+# the date format of the log
+DATENOW="$(date +"%FT%T%:z")"
+DATEFORMAT="%FT%T%:z"
+# go back 24
+INITIALDATE="$(date -d "$DATENOW"'-24 hours' +"$DATEFORMAT")"
+# typical domain disconnects: synouserdir: domain_get_all_trust.c:304 trust domain info miss
+SEARCHFOR="trust domain info miss"
+# whether or not you want an email (0 for testing via cli)
+SENDNOTIFICATION="1"
+# recipient of the notification
+EMAIL_TO="you@example.com"
+# triggernotice is set once a record is found, don't touch
+TRIGGERNOTICE="0"
+
+# grab a chunk of the logs relevant to a timeframe we wanna look up
+TARGET=$(awk -v date_range="$INITIALDATE" '{ if ($1 > date_range) print $0 }' "$LOGMONITOR")
+
+# do some addl processing, because we need a column slice & i couldn't figure a better way to do this in one swoop
+if [ "$TARGET" ];
+then
+
+  # display output
+  MAIL="::: Date range: $INITIALDATE to $DATENOW :::"
+  MAIL+=$(echo -e "\n----------------------------------------------------------------------")
+
+  IFS=$'\n'
+  for line in $TARGET;
+  do
+    # regex match, because otherwise you have to pull cols 5-7 & gets uglier
+    if [[ $line =~ $SEARCHFOR ]];
+    then
+
+      # make the singular matches stand out, in the event this occurs more than once within the window lookup
+      MAIL+=$(echo -e "\n\n=============")
+      MAIL+=$(echo -e "\nMATCH FOUND:")
+      MAIL+=$(echo -e "\n=============")
+      MAIL+=$(echo -e "\n$line")
+      # go back a few mins and gather more data, so i don't have to login anywhere to investigate
+      GETDATE=$(echo "$line" | awk '{ print $1 }')
+      STARTDATE=$(date -d "$GETDATE"'-3 minute' +"$DATEFORMAT")
+      ENDDATE=$(date -d "$GETDATE"'+3 minute' +"$DATEFORMAT")
+      MAIL+=$(echo -e "\n\n :: Pulling addl records from $STARTDATE to $ENDDATE ::\n\r")
+      MAIL+=$(awk -v start_date="$STARTDATE" -v end_date="$ENDDATE" '{ if ($1 > start_date && $1 < end_date) print $0 }' "$LOGMONITOR")
+
+      # cli output
+      echo -e "\n$MAIL"
+
+      # since there's matches, prepare an email
+      TRIGGERNOTICE="1"
+    fi
+  done
+
+  echo "Sending an email notice: $TRIGGERNOTICE"
+
+  if [ $SENDNOTIFICATION -eq 1 ] && [ $TRIGGERNOTICE -eq 1 ];
+  then
+
+    # headers so php doesn't eat the formatting
+    HEADER="MIME-Version: 1.0"
+    HEADER+="Content-Type: text/plain; charset=utf-8"
+    /usr/bin/php -r "mail('$EMAIL_TO', 'Possible DC Loss on Synology', '$MAIL', '$HEADER');";
+
+  fi
+fi
