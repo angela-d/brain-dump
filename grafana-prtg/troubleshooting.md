@@ -55,13 +55,35 @@ Also useful:
 
 - Read the console messages in this same window (under the console tab)
 
-## v7.0.0 - Plugin must be signed
-I personally have not run into this, as I skipped several versions - but a few people posted about this in the [issues](https://github.com/neuralfraud/grafana-prtg/issues/168)
+## v7.0.0+ - Plugin must be signed
+A few people posted about this in the [issues](https://github.com/neuralfraud/grafana-prtg/issues/168)
 
 From the release notes:
 > It’s possible to allow unsigned plugins using a configuration setting, but is something we strongly advise against doing.
 >
 > [Allowing unsigned plugins](https://grafana.com/docs/grafana/latest/administration/configuration/#allow-loading-unsigned-plugins)
+
+**Fix:**
+
+Windows:
+- Open `C:\Program Files\GrafanaLabs\grafana\conf\custom.ini`
+- Under `[plugins]` add `allow_loading_unsigned_plugins = plugin1,plugin2`
+- Mine looks like:
+  ```text
+  [plugins]
+  enable_alpha = false
+  app_tls_skip_verify_insecure = false
+  allow_loading_unsigned_plugins = yesoreyeram-boomtheme-panel,simpod-json-datasource,jasonlashua-prtg-datasource
+  ```
+- Restart the Grafana service
+
+Linux:
+- Open `/etc/grafana/grafana.ini`
+- Do the same for `[plugins]` as the Windows example above
+-
+  ```bash
+  service grafana-server restart
+  ```
 
 ## Forgot Password
 Thank you to [torkel](https://community.grafana.com/t/how-do-i-reset-admin-password/23) for posting this tip!
