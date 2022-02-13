@@ -1,5 +1,5 @@
 # Upgrading Grafana while Retaining Data
-How I upgrade Grafana.  My development/testing environment runs Grafana on a Debian 10 desktop.  The live/production version runs on Windows Server 2016.
+How I upgrade Grafana.  My development/testing environment runs Grafana on a Debian 11 desktop.  The live/production version runs on Windows Server 2016.
 
 ## Pre-upgrade Prep
 Read the release note(s) on the [downloads](https://grafana.com/grafana/download) page to see if there's any ominous warnings of things that might break my install
