@@ -28,6 +28,8 @@ Gives output like:
 > drwxr-xr-x 3 root root 4096 Apr  7 19:45 /home/usernametocreate
 
 ### Does the user need SSH stuff?  If not, skip this! (until the SSH config)
+If they only need sftp for uploading of files and nothing else -- skip.
+
 Explanation of flags:
 - `-m` - Permission bits
 - `c` - character file
@@ -74,6 +76,22 @@ chmod -R 0700 $JAILDIR/web
 ```
 
 That's it!
+
+## Connecting via SFTP
+If the user uses Linux desktop, they can connect using almost any file manager, no additional software necessary. (File > Connect to server, on most distros)
+
+Mac and Windows probably require a SFTP client.
+
+- [WinSCP](https://winscp.net) is a fantastic SFTP tool for Windows.
+
+
+Connection example:
+
+  - Host `example.com`
+  - Port `your custom SSH port`
+  - Directory `/`
+  - Username `usernametocreate`
+  - Password `[send the password via a secure channel, like a password manager]`
 
 ## Whitelist the User at the Firewall
 And block everyone else.
