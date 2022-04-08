@@ -89,6 +89,7 @@ Connection example:
 
   - Host `example.com`
   - Port `your custom SSH port`
+  - Type `SSH`
   - Directory `/`
   - Username `usernametocreate`
   - Password `[send the password via a secure channel, like a password manager]`
