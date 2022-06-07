@@ -11,7 +11,7 @@ Pre-setup:
 
 Post-setup:
 
-- While attempting to pair an agent-based setup, the following error appears in **Event Viewer > Custom Views > Administrative Events**:
+- While attempting to pair an agent-based setup, the following error appears in **Event Viewer > Custom Views > Administrative Events** and the Datto service continuously crashes when attempting to pair:
   > The certificate received from the remote server has not validated correctly.  The error code is 0x80092013.  The SSL connection request has failed.  The attached data contains the server certificate.
 
     - Click on the Details tab
