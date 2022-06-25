@@ -31,6 +31,8 @@ Obtaining the MSI & PKGs allows for pushing updates to your users via MDM, easil
 
 ## Deploying the MSI / PKG
 - MSI - No issues, like any other MSI
+  - **Caveat:** If you send the update while the user is online/Forticlient is running, it will not actually update and if they attempt to do check/use it after, it will make them reboot before the update commences.  A preinstall script is necessary.
+
 - PKG - For some reason, it would not upload into Filewave, renaming it to **Forticlientx.x.x.pkg** allowed it to upload without any issues
   - During deployment, the user will receive the following popup:
   > "Fortitray" Would Like to Add VPN Configurations
@@ -54,3 +56,6 @@ Obtaining the MSI & PKGs allows for pushing updates to your users via MDM, easil
 
 ## Another Approach
 The following link: `https://filestore.fortinet.com/forticlient` has XML content of the latest installers.
+
+## MDM Deployment
+My notes for MDM deployment of Forticlient to Macs can be found at [filewave-scripts/mac/forticlient-vpn](https://github.com/angela-d/filewave-scripts/mac/forticlient-vpn)
