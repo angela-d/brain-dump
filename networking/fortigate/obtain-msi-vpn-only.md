@@ -58,4 +58,4 @@ Obtaining the MSI & PKGs allows for pushing updates to your users via MDM, easil
 The following link: `https://filestore.fortinet.com/forticlient` has XML content of the latest installers.
 
 ## MDM Deployment
-My notes for MDM deployment of Forticlient to Macs can be found at [filewave-scripts/mac/forticlient-vpn](https://github.com/angela-d/filewave-scripts/mac/forticlient-vpn)
+My notes for MDM deployment of Forticlient to Macs can be found at [filewave-scripts/mac/forticlient-vpn](https://github.com/angela-d/filewave-scripts/tree/master/mac/forticlient-vpn)
