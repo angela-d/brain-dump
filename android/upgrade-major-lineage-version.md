@@ -1,7 +1,7 @@
 # Upgrading Major Versions of Lineage on Oneplus
-The OTA updater does not currently upgrade from v17 to v18, so there's a few more steps involved.
+The OTA updater does not currently upgrade from v18 to v19, so there's a few more steps involved.
 
-:warning: The upgrade steps deviate between versions with changes to Android and su/Magisk.  I tend to update my notes after each change I've run into.
+:warning: The upgrade steps deviate between versions with changes to Android and su/Magisk.  I tend to update my notes after each change I've run into. (v17 to v18 and v18 to v19 used exactly the same ugprade approach)
 
 **These notes are based on a Oneplus device - if you have a different model, the steps & requirements may differ greatly; especially with regards to Magisk.**
 
@@ -26,10 +26,10 @@ If you're running [microG Lineage](https://download.lineage.microg.org/) and not
 Failure to follow them accurately will result in the device sitting on the Lineage splash screen and you'll have to do a factory reset and lose your data!
 - You could follow all of these instructions and still have a bootloop if you did any customizations that didn't carry over - so have an adequate backup of anything worth keeping.
 
-## SU / root permissions on v18
+## SU / root permissions on v19
 Lineage has abandoned the su addon due to the breaking changes in Android 10, so [Magisk](https://www.didgeridoohan.com/magisk/HomePage) is the de facto if you want to root your device.
 
-After upgrading from v17 to v18, root/su was gone (as expected) - The app was still present, so skip steps 1-2 for typical upgrade situations.
+After upgrading from v18 to v19, root/su was gone (as expected) - The app was still present, so skip steps 1-2 for typical upgrade situations.
 
 1. Download the [Magisk apk](https://github.com/topjohnwu/Magisk/releases) from the developer's Github
 2. Plug a USB into the phone and use a file manager to add the .apk into your *Downloads* folder > click on it to install
