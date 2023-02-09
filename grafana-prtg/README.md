@@ -9,17 +9,17 @@ My setup:
 
 Application | Version
 ------------|----------
-**Grafana** | Grafana v8.3.6 (bf8766bbf2)
+**Grafana** |  v9.3.6 (978237e7cb)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
-**PRTG** |  21.4.73.1656+
+**PRTG** |  22.4.81.1532+
 
 Development / Testing Environment ([see notes for setup](dev-environment.md)):
 
 Application | Version
 ------------|-----------
-**Grafana** | Grafana v8.3.6 (bf8766bbf2)
+**Grafana** | v9.3.6 (978237e7cb)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
-**PRTG** | 21.4.73.1656+
+**PRTG** | 22.4.81.1532+
 
 ^ The plugin is tested & working up to (at least) this Grafana version.
 
