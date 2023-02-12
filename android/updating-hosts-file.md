@@ -1,5 +1,12 @@
 # Updating the Hosts File on Android
-Using a rooted Android device.
+
+:warning: [Magisk has a warning](https://topjohnwu.github.io/Magisk/ota.html) for A/B slot devices not to modify `/system` with regards to OTA; if you don't want to re-flash Magisk after every update, check out these alternatives for hosts files:
+- Built-in toggle for systemless hosts in Magisk app
+- [DNS66](https://f-droid.org/en/packages/org.jak_linux.dns66/)
+
+
+
+## Using a rooted Android device with non-A/B slots
 
 Pre-requisites:
 - Rooted phone
