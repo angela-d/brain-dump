@@ -35,6 +35,6 @@ App Stores:
 **Troubleshooting**
 - [Suspicious Network Activity](suspicious-network-activity.md) - Determine the source of unwanted network requests
 - [No root](adb-no-root-magisk.md) - No root over ADB with Magisk
-- [Updates](updating.md) - Updates that boot into recovery mode
+- [Updates](upgrading-oneplus9.md) - Updating Oneplus 9
 - [Wi-fi No Internet](wifi-no-internet.md) - Networking and firewall issues
 - [Hidden SSIDs](not-connecting-hidden-ssid.md) - Wifi doesn't connect to hidden SSIDs
