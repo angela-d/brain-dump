@@ -26,6 +26,7 @@ While on the Grub boot screen:
   ```bash
   ip a
   ```
+  
     - If not:
     ```bash
     ifconfig eth0 up
