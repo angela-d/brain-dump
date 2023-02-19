@@ -27,16 +27,19 @@ While on the Grub boot screen:
   ip a
   ```
   
-    - If not:
-    ```bash
-    ifconfig eth0 up
-    ```
-      - The ethernet interface may be 'renamed' by your distro, `ip a` should show you the available networking interfaces, replace eth0 with yours
-      - Now that the interface is active, force it to get a DHCP IP:
-      ```bash
-      dhclient eth0
-      ```
-        - Use the same interface name you used prior, if yours isn't eth0
+  If not:
+    
+  ```bash
+  ifconfig eth0 up
+  ```
+    
+  - The ethernet interface may be 'renamed' by your distro, `ip a` should show you the available networking interfaces, replace eth0 with yours
+  - Now that the interface is active, force it to get a DHCP IP:
+      
+  ```bash
+  dhclient eth0
+  ```
+  - Use the same interface name you used prior, if yours isn't eth0
 
 3. Confirm you have an IP from your network:
   ```bash
