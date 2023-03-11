@@ -1,6 +1,6 @@
-# Post-Updates for Android 12 / Lineage 19 and Retaining Root on Oneplus 9
-Root is lost after OTA updates.
+# Root for Android 12 / Lineage 19 and Android 13 / Lineage 20 on Oneplus 9
 
+## Initial Setup
 **Pre-requisites**
 - Full image of the upgrade/payload.bin
   - For microG Lineage, obtain it from the [downloads](https://download.lineage.microg.org/) page
@@ -36,3 +36,19 @@ fastboot flash boot magisk_patched-22100_o0abc.img
 ```
 
   - Root/su is now accessible after restarting the device
+
+# OTA Updates
+
+Retaiting root during updates (without having to follow the initial setup steps)
+
+Summarized from [Magisk official OTA wiki](https://topjohnwu.github.io/Magisk/ota.html)
+
+1. Download the new OTA update from Settings > System > Updater
+2. Open the Magisk app & click the big **Uninstall Magisk** button front & center
+  - Select *Restore Images*
+
+3. Wait for the installation to complete (both step 1: “installing update”, and step 2: “optimizing your device”, of the OTA)
+  - Do not press the “Restart now” or “Reboot” button, yet!
+
+4. Go into the Magisk app > Install > Install to Inactive Slot (After OTA)
+5. A reboot option appears after Magisk patches the image; after rebooting, root should persist post-upgrade
