@@ -14,9 +14,12 @@ Although Cyberpunk Technotronic has a similar directory structure to the default
 ***
 
 **Cause:**
+
 Presence of **network.svgz** in `~/.local/share/plasma/desktoptheme/Dracula/icons`
+    - Referenced in the [KDE docs](https://develop.kde.org/docs/plasma/theme/theme-details/#use-icons-from-icon-theme)
 
 **Fix:**
+
 - Remove **network.svgz** (and any other monochrome icons you'd like to be ignored and use your icon theme, instead)
 - Replace with a dummy text file, named `network.svgz` and with the content `<svg></svg>`
     - [This script](plasma-icon-override.sh) will automate that for you!
