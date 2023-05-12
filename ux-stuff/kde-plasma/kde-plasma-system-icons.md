@@ -3,6 +3,8 @@ Although more flexibile than Gnome with regards to customization, I found Plasma
 
 This seems to be with regards to how the Plasma theme is allowed to bundle its own icons.
 
+While this is one (arguably faster) approach, you can also modify the [.svgz icon packs](kde-svgz-icons.md) if your theme uses them.
+
 ***
 **Scenario:**
 
@@ -36,3 +38,5 @@ Presence of **network.svgz** in `~/.local/share/plasma/desktoptheme/Dracula/icon
 
 ### Worth Noting
 Each time you switch to a new Plasma theme, you'll have to pull out any of the themes icons you don't want overriding your icon theme.
+
+I also found (for this particular icon theme) I also had to modify `~/.local/share/icons/cyberpunk-technotronic-icon-theme/index.theme` and set `Inherits=` to empty, otherwise some of the icons in the system config and Dolphin were using Breeze icons, instead of from the theme.
