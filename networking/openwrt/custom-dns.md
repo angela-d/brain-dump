@@ -123,6 +123,36 @@ I ran into this when I decided to move my router: for whatever reason once I hoo
 Once everything appears to be running:
 - Network > DHCP and DNS > General Settings > DNS forwardings: `127.0.0.53` > try to access/ping a page > Go to [DNS Leak Test](https://dnsleaktest.com/) and make sure you're not on 9.9.9.9, anymore
 
+***
+
+Internet seemingly stopped working at random.
+
+In the OpenWRT dashboard:
+
+ - Status > System Log
+ - The following entries were present:
+ 
+  ```text
+  Thu May 11 06:52:03 2023 daemon.err dnscrypt-proxy[14362]: [ERROR] No useable certificate found
+  Thu May 11 06:52:03 2023 daemon.err dnscrypt-proxy[14362]: [NOTICE] dnscrypt-proxy is waiting for at least one server to be reachable
+ ```
+
+ Seems the time got messed up:
+
+ - System > System > Time Synchronization
+   - Make sure valid NTP servers are set
+  - Under General Settings tab > make sure the proper timezone is set
+    - Select Sync with NTP server
+
+Internet / DNS is working again:
+
+  ```text
+  Thu May 11 19:38:15 2023 daemon.err dnscrypt-proxy[15063]: [NOTICE] [ams-dnscrypt-nl] OK (DNSCrypt) - rtt: 115ms
+  Thu May 11 19:38:15 2023 daemon.err dnscrypt-proxy[15063]: [NOTICE] [cs-tx2] OK (DNSCrypt) - rtt: 141ms
+  Thu May 11 19:38:15 2023 daemon.err dnscrypt-proxy[15063]: [NOTICE] Sorted latencies:
+  Thu May 11 19:38:15 2023 daemon.err dnscrypt-proxy[15063]: [NOTICE] -   115ms ams-dnscrypt-nl
+  Thu May 11 19:38:15 2023 daemon.err dnscrypt-proxy[15063]: [NOTICE] -   141ms cs-tx2
+  ```
 
 # Caveats
 This will intermittently jag up the tracking from coupon sites like Ebates / Rakuten (if you choose a DNSCrypt provider that offers filtering).
