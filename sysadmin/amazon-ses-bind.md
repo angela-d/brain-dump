@@ -5,7 +5,7 @@ Adding a domain keys CNAME to Bind's DNS record wasn't as straight forward as on
 Amazon issues the CNAME like so:
 
 | Type | Name | Value |
-| ----------- | ----------- |
+| :----: | :---: | :-------: |
 | CNAME | abc123._domainkey.example.com | abc123.dkim.amazonses.com |
 | CNAME | def456._domainkey.example.com | def456.dkim.amazonses.com |
 | CNAME | ghi789._domainkey.example.com | ghi789.dkim.amazonses.com |
