@@ -99,3 +99,9 @@ sqlite> .exit
 ```
 
 This sets the "admin" username back to **admin**
+
+## Logs
+On Linux installs, the Grafana logs are located at:
+```bash
+/var/log/grafana
+```

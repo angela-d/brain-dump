@@ -116,3 +116,73 @@ Because of that, I need to reconnect my API in my local Grafana install so that 
 2. Add PRTG as a new datasource
 3. Create new boards and see if you can break any needed capability
 4. When you're done testing, turn the Grafana server off `service grafana-server stop`
+
+
+---
+---
+## Copying the Entire Environment
+Because this plugin is EOL and will break in a future release of Grafana & it's been a while since I upgraded, I wanted to mirror my production environment to my development environment before upgrading the live server.
+
+**Live environment:** Windows Server
+
+**Dev environment:** Debian 11
+
+---
+
+1. Copy the Grafana database:
+    ```powershell
+    C:\Program Files\GrafanaLabs\grafana\data\grafana.db
+    ```
+
+    - Linux location:
+    ```bash
+    /var/lib/grafana/grafana.db
+    ```
+
+2. Copy the plugins directory:
+    ```powershell
+    C:\Program Files\GrafanaLabs\grafana\data\plugins
+    ```
+
+    - Linux location:
+    ```bash
+    /var/lib/plugins
+    ```
+
+3. I have some custom RSS feeds on an intranet server that Grafana connects to, with network filtering in NGINX, I have to open that up to my VPN connection since I like to do my testing off-network.
+
+  - NGINX config (on the remote intranet server, not Grafana):
+  ```bash
+  /etc/nginx/sites-enabled/zendesk
+  ```
+  ```bash
+  server {
+    listen 443;
+    ssl on;
+    server_name zendesk.example.com;
+    index feed.json;
+    ssl_certificate /home/syncthing/cert/cert.pem;
+    ssl_certificate_key /home/syncthing/cert/key.pem;
+    client_max_body_size 25m;
+    add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+    add_header 'Access-Control-Allow-Origin' "*";
+
+    location / {
+        allow 172.16.0.0/16;
+        allow 127.0.0.1;
+        # vpn network
+        allow 10.0.1.0/24;
+        allow 172.17.0.0/16;
+        deny all;
+        root /var/www/zendesk/;
+    }
+
+}
+
+  ```
+  - Adjust appropriate server and permititer firewall rules, as well
+  - Also ran into the following issue triggering **502 Bad Gateway Errors** on a custom RSS feed (found in Grafana's logs):
+
+    > logger=data-proxy-log userId=1 orgId=1 uname=admin path=/api/datasources/proxy/uid/tLuXuReVk/feed remote_addr=127.0.0.1 referer=https://localhost:3000/datasources/edit/tLuXuReVk level=error msg="Proxy request failed" err="tls: failed to verify certificate: x509: certificate signed by unknown authority"
+
+    Grafana's setting to disable TLS validation doesn't seem to work, so changing the datasource's feed path to http instead of https got rid of the issue.

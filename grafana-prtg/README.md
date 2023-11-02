@@ -17,9 +17,9 @@ Development / Testing Environment ([see notes for setup](dev-environment.md)):
 
 Application | Version
 ------------|-----------
-**Grafana** | v9.3.6 (978237e7cb)
+**Grafana** | v10.0.3 (eb8dd72637)
 **PRTG Plugin** |  v4.0.4 (master branch from Github)
-**PRTG** | 22.4.81.1532+
+**PRTG** | 23.2.84.1566
 
 ^ The plugin is tested & working up to (at least) this Grafana version.
 
