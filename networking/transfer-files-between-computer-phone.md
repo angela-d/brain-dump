@@ -20,9 +20,10 @@ On the laptop:
     alias localsendoff='ufw delete allow from 192.168.1.0/24 to any port 53317 && echo "Removed firewall rule to port 53317" && ufw status numbered && echo -e "\n\n\tBe sure to re-enable isolation on the wifi network!!"'
     ```
 
-        - Source for the IP ranges: my home network (most people's, by default)
-        - Ports for Localsend: [Localsend protocol](https://github.com/localsend/protocol)
-        - **What does this do?** By default, this port is not open on my laptop.  Running these commands will enable/disable access to these ports, along with a textual reminder of what to do once they're run.
+
+- Source for the IP ranges: my home network (most people's, by default)
+- Ports for Localsend: [Localsend protocol](https://github.com/localsend/protocol)
+- **What does this do?** By default, this port is not open on my laptop.  Running these commands will enable/disable access to these ports, along with a textual reminder of what to do once they're run.
 
 - Usage:
     ```bash
@@ -30,21 +31,25 @@ On the laptop:
     localsendon
     ```
 
-    ```bash
-    root [~]: localsendon
-    Rule added
+Output:
 
 
-	Be sure to disable isolation on the wifi network!!
+```bash
+root [~]: localsendon
+Rule added
+
+
+Be sure to disable isolation on the wifi network!!
 ```
 
-- **What does this mean?*
+
+- **What does this mean?**
     - I have device isolation enabled in OpenWRT on my home network.  
     
     Pop into the dashboard and go to (for OpenWRT users):
-        - Network > Wireless > select your SSID > Edit > Advanced Settings tab under **Interface Configuration** > *un-check* Isolate Clients to activate LocalSend; un-check to deactivate
-
-        - Transfer your files/folders as necessary
+  
+- Network > Wireless > select your SSID > Edit > Advanced Settings tab under **Interface Configuration** > *un-check* Isolate Clients to activate LocalSend; un-check to deactivate
+- Transfer your files/folders as necessary
 
 
 To turn off localsend on my laptop:
