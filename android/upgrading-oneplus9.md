@@ -1,9 +1,9 @@
 # Upgrading Lineage OS
-Notes for upgrading major versions (LineageOS 19 to LineageOS 20) as well as OTA and Magisk notes.
+Notes for upgrading major versions (LineageOS 20 to LineageOS 21) as well as OTA and Magisk notes.
 
 My notes are based off an A/B slot device.
 
-## Major Upgrade (Lineage 19 to 20)
+## Major Upgrade (Lineage 20 to 21)
 Note that the firmware update is done in fastboot**d** and not fastboot; trying to run the commands in regular fastboot will yield the error:
 > fastboot: error: Could not check if partition abl has slot all
 
@@ -11,7 +11,7 @@ Note that the firmware update is done in fastboot**d** and not fastboot; trying 
  - *Then* go into "fastboot" and you'll be in the fastbootd window (in Lineage Recovery, this is red colored, opposed to purple-themed)
 
 Using the official documentation:
-1. [Upgrade the firmware](https://wiki.lineageos.org/devices/lemonade/fw_update)
+1. [Upgrade the firmware, if necessary](https://wiki.lineageos.org/devices/lemonade/fw_update) - was not necessary from v20 to v21
   - Oxygen Updater drops the Android 13 zip in the main folder where Ringtones, Podcast, Download, etc. folders are.
   - Drag the downloaded zip to a PC
   - Unzip
@@ -19,13 +19,14 @@ Using the official documentation:
   - Proceed with upgrade commands to flash the modem and other firmwares.
 
 
-2. While still in Recovery, use the volume keys to pop back into the bootloader
-3. Continue with the `adb sideload` command to upload the Lineage 20 zip.
+2. **Completely uninstall Magisk** from within the Magisk app; reboot
+3. While still in Recovery, use the volume keys to pop back into the bootloader
+4. Continue with the `adb sideload` command to upload the Lineage 21 zip.
 
 
 ***
 
-## Upgrading Magisk on A/B Devices
+## Upgrading Magisk on A/B Devices (minor upgrades - v21.1 to v21.2)
 Overlooking this will uninstall root.
 
 From [official Magisk wiki](https://topjohnwu.github.io/Magisk/ota.html):
@@ -49,7 +50,7 @@ From [official Magisk wiki](https://topjohnwu.github.io/Magisk/ota.html):
 
 ***
 
-### Troubleshooting
+### Troubleshooting or Re-installing Magisk Post-Major Upgrade
 If any step is missed for Magisk after an OTA, simply do a fresh patching of boot and vbmeta images and reflash:
 1. Download the **full** zip of the latest upgrade from Lineage or microG Lineage (matching your existing OS)
 
