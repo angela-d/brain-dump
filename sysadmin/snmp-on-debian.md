@@ -1,6 +1,8 @@
 # SNMP Monitoring on Debian/Debian downstream Linux distros
 
-First, check if you have **non-free** added to your apt sources list.  The **snmp-mibs-downloader** package cannot be obtained without non-free.
+Updated for Debian 12 / bookworm
+
+First, check if you have **non-free** added to your apt sources list.
 ```bash
 grep "non-free" /etc/apt/sources.list
 ```
@@ -8,19 +10,23 @@ grep "non-free" /etc/apt/sources.list
 If no results, simply append **non-free** to your `/etc/apt/sources.list` repo list, like so:
 - Before:
 ```bash
-deb http://ftp.us.debian.org/debian/ stretch main contrib
-deb-src http://ftp.us.debian.org/debian/ stretch main contrib
+deb http://ftp.us.debian.org/debian/ bookworm main contrib
+deb-src http://ftp.us.debian.org/debian/ bookworm main contrib
+deb http://deb.debian.org/debian/ bookworm-updates main contrib
+deb-src http://deb.debian.org/debian/ bookworm-updates main contrib
 ```
 
 - After:
 ```bash
-deb http://ftp.us.debian.org/debian/ stretch main non-free contrib
-deb-src http://ftp.us.debian.org/debian/ stretch main non-free contrib
+deb http://ftp.us.debian.org/debian/ bookworm main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ bookworm main contrib non-free
+deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free
 ```
 
-Install SNMP and snmp-mibs-downloader
+Install SNMP
 ```bash
-apt update && apt install snmpd snmp-mibs-downloader
+apt update && apt install snmpd snmp libsnmp-dev
 ```
 
 
@@ -37,7 +43,7 @@ agentAddress udp:127.0.0.1:161
 
 To:
 ```bash
-agentAddress udp:161
+agentAddress udp:127.0.0.1:161,udp:[public/dmz ip]:161
 ```
 
 Whitelist the monitoring IP(s)
@@ -52,7 +58,7 @@ service snmpd restart
 ```
 
 ## Testing
-From the monitoring server, trigger a probe and watch the local logs for activity
+From the monitoring server, trigger a probe and watch the local logs for activity (assuming you have rsyslog setup; if not, check journald for your logs)
 ```bash
 tail -f /var/log/syslog
 ```
