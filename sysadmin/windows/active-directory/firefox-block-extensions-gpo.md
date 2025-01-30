@@ -8,12 +8,11 @@ Make sure you have all of the extensions installed to an existing Firefox browse
 3. GPO: Computer Configuration > Administrative Templates > Mozilla > Firefox > Extensions > Extension Management
   - [x] Enabled
   - Options: *see below*
-4. From the [official documentation](https://github.com/mozilla/policy-templates#extensionsettings), plop your extension IDs in the following structure into the **Options** field:
+4. From the [official documentation](https://github.com/mozilla/policy-templates/blob/master/docs/index.md), plop your extension IDs in the following structure into the **Options** field:
   ```json
   {
   	"*": {
   		"blocked_install_message": "Please contact IT if you wish to install this addon",
-  		"install_sources": ["https://addons.mozilla.org/"],
   		"allowed_types": ["theme", "extension"]
   	},
   	"uBlock0@raymondhill.net": {
@@ -63,3 +62,15 @@ To disallow (and remove) any extension not listed in the JSON, GPO: Computer Con
 
 ### Worth Noting
 When utilizing the **Extension Management** GPO, you don't need *Extensions to Install* when force installing extensions.
+
+As of v128.6.0esr, it was reported extensions could not install via addons.mozilla.org; removing `"install_sources": ["https://addons.mozilla.org/"],` from `"*": {` seems to have done the trick.
+
+For good measure:
+
+```bash
+	"support@lastpass.com": {
+		"installation_mode": "allowed",
+		"install_url": "https://addons.mozilla.org/firefox/downloads/latest/lastpass-password-manager/latest.xpi"
+	},
+```
+also works.
