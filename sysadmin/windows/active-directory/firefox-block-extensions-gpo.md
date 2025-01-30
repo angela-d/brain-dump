@@ -74,3 +74,6 @@ For good measure:
 	},
 ```
 also works.
+
+
+- To see if any of your policies generate errors, go to `about:policies`
