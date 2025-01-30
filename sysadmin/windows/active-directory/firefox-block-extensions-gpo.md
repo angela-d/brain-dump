@@ -61,7 +61,7 @@ Make sure you have all of the extensions installed to an existing Firefox browse
 			"installation_mode": "allowed"
 		}
 	}
-	```
+```
   
 ## Block Installation of Unapproved Extensions, Remove Any Previously Installed
 To disallow (and remove) any extension not listed in the JSON, GPO: Computer Configuration > Administrative Templates > Mozilla > Firefox > Extensions > Extensions to Uninstall
