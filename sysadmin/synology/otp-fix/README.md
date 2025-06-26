@@ -10,4 +10,7 @@ This small script should fix that by forcefully resynchronizing the time.
 From the Synology admin:
 - Go to Control Panel > Task Scheduler
 - Create: `scheduled task` > `user-defined script`
-- Under **Task Settings** > paste the script
+- Under **Task Settings** > paste the script:
+```bash
+/sbin/ntpdate -u time.nist.gov
+```
