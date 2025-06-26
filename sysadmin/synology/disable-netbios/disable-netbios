@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ "$(systemctl status pkg-synosamba-nmbd | grep "(active)")" ];
+then
+    systemctl stop pkg-synosamba-nmbd && systemctl disable pkg-synosamba-nmbd
+fi
