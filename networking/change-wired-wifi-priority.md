@@ -21,3 +21,11 @@ Utilizing nmcli got them to stick:
   ```
 
 Repeat to adjust priorty for other interfaces.
+
+## Setting Up a Second Wired Interface to Work Off a Dongle
+This works only if you have a PCI network card + an external dongle (or multiple dongles).
+
+In the GUI, setup a new wired interface.  These appear to be stored in `/etc/NetworkManager/system-connections` and even though the priority appears to be stored correctly, it does not seem to be obeyed until nmcli is ran against the connection.
+
+The important bit to keep the PCI & dongles' interfaces from replacing one another:
+- Be sure to set **Restrict to device** via the GUI (this seems to be obeyed)
