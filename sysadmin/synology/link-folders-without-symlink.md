@@ -9,6 +9,6 @@ This workaround allows a shared folder to be 'synced' without the need of symlin
 3. `sudo su` into root
 4. Run the following:
   ```bash
-  mount --bind /volume1/Target_Directory/Target_Folder /volume1/Source_Directory/Source_Folder
+  mount --bind /volume1/Source_Directory/Source_Folder /volume1/Target_Directory/Target_Folder
   ```
 5. In DSM, go to `Source_Directory` and select Properties > set permissions to the Active Directory group permitted to have access to this shared folder
